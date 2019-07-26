@@ -11,7 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/steam', 'MainController@index');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', 'MainController@index')->name('index');;
+
+// Auth Controller
+Route::get('auth', 'AuthController@handle')->name('auth');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// User Controller
+Route::get('profile', 'UserController@index')->name('profile');
+Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
+Route::get('user/{id}', 'UserController@single')->name('user');

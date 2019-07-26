@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45a8024fc42098531ac501324587fadc",
+    "content-hash": "9a31d6be8647b2815529e97e89703762",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -564,6 +564,61 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "invisnik/laravel-steam-auth",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/invisnik/laravel-steam-auth.git",
+                "reference": "10fd44efbaeddc43fbe1331737b532fef2afe557"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/invisnik/laravel-steam-auth/zipball/10fd44efbaeddc43fbe1331737b532fef2afe557",
+                "reference": "10fd44efbaeddc43fbe1331737b532fef2afe557",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "illuminate/http": "^5.8",
+                "illuminate/routing": "^5.8",
+                "illuminate/support": "^5.8",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Invisnik\\LaravelSteamAuth\\SteamServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Invisnik\\LaravelSteamAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Brytkov",
+                    "email": "invis.nik@gmail.com"
+                }
+            ],
+            "description": "Laravel Steam Auth",
+            "keywords": [
+                "auth",
+                "laravel",
+                "steam"
+            ],
+            "time": "2019-04-25T10:44:02+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

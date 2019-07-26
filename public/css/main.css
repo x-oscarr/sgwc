@@ -1,0 +1,426 @@
+:root {
+    --block-border: 0px;
+}
+
+html {
+    overflow-y: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #18191c;
+    font-family: 'comfortaa', sans-serif;
+    min-height: 100vh;
+}
+hr {
+    color: white;
+}
+div.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    background: #18181c;
+    z-index: 9999;
+}
+div.preloader .penguin {
+    width: 200px;
+    height: 200px;
+    background-image: url(../img/penguin.gif);
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+div.preloader_disable {
+    display: none;
+}
+div.header {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    max-height: 50px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
+    align-content: center;
+    z-index: 999;
+}
+div.header .logo {
+    padding: 0 5px;
+    margin-left: 45px;
+    transition: 0.7s ease-in-out;
+    user-select: none;
+}
+div.header .logo_active {
+    margin-left: 345px;
+}
+div.header .menu-button {
+    padding: 5px;
+    margin-right: 45px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+div.header .menu-button span, div.header .menu-button span::before, div.header .menu-button span::after {
+    display: block;
+    margin-top: -2px;
+    width: 25px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+div.header .menu-button:hover span, div.header .menu-button:hover span::before, div.header .menu-button:hover span::after {
+    background-color: rgba(255, 255, 255, 1);
+}
+div.header .menu-button span::before, div.header .menu-button span::after {
+    content: ''}
+div.header .menu-button span::before {
+    transform: translatey(-6px);
+}
+div.header .menu-button span::after {
+    transform: translatey(6px);
+}
+div.header .menu-button_active span {
+    height: 0;
+}
+div.header .menu-button_active span::before {
+    transform: rotatez(-45deg);
+}
+div.header .menu-button_active span::after {
+    transform: rotatez(45deg);
+}
+div.navigation {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 300px;
+    height: 100vh;
+    background-color: #161619;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 1s ease-in-out;
+    z-index: 999;
+}
+div.navigation .title {
+    width: 100%;
+    line-height: 50px;
+}
+div.navigation .title h2 {
+    margin: 0;
+    margin-left: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5em;
+    cursor: default;
+    user-select: none;
+    margin-top: 15px;
+}
+div.navigation nav.nav {
+    margin-top: 30px;
+    width: 100%}
+div.navigation nav.nav ul {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+}
+div.navigation nav.nav li {
+    padding: 10px 0;
+    padding-left: 20px;
+    width: calc(100% - 20px);
+    transition: 0.2s;
+}
+
+div.navigation nav.nav i {
+    margin-right: 5px;
+}
+
+div.navigation nav.nav a {
+    width: 100%;
+    color: #fff;
+    font-weight: 300;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+div.navigation nav.nav li:hover {
+    border-left: 3px solid #512da8;
+}
+div.navigation_active {
+    left: 0;
+}
+div.main {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+.sup-title {
+    text-align: center;
+    transition: 0.7s;
+    margin-bottom: 30px;
+}
+.sup-title h1 {
+    margin: 0;
+    padding-top: 20vh;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 3em;
+    font-weight: 700;
+    cursor: default;
+    user-select: none;
+}
+.sup-title h1 span {
+    color: #512da8;
+}
+.sub-title {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    padding-top: 2vh;
+    transition: 0.7s;
+}
+
+div.main .sub-title .version, div.main .sub-title .online {
+    user-select: none;
+}
+div.main .sub-title i {
+    color: #fff;
+    font-style: normal;
+}
+div.main .sub-title .ip {
+    margin: 0 10vh;
+}
+div.particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    z-index: -100;
+}
+div.particle .item {
+    width: 39px;
+    height: 39px;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.6;
+}
+div.particle .item-circle {
+    background-image: url(../img/particle/default-01.png);
+}
+div.particle .item-cross {
+    background-image: url(../img/particle/default-02.png);
+}
+div.particle .item-cube {
+    background-image: url(../img/particle/default-03.png);
+}
+div.particle .item-triangle {
+    background-image: url(../img/particle/default-04.png);
+}
+div.particle .item-anim-1 {
+    background-image: url(../img/particle/purple-01.png);
+    margin-top: 30vh;
+    animation: particleanimationitem1 5s infinite ease-in-out;
+}
+div.particle .item-anim-2 {
+    margin-top: 60vh;
+    transform: rotatez(-10deg);
+    animation: particleanimationitem2 10s infinite ease-in-out;
+}
+div.particle .item-anim-3 {
+    background-image: url(../img/particle/purple-02.png);
+    animation: particleanimationitem3 11s infinite ease-in-out;
+}
+div.particle .item-anim-4 {
+    margin-top: 90vh;
+    animation: particleanimationitem4 15s infinite ease-in-out;
+}
+div.particle .item-anim-5 {
+    background-image: url(../img/particle/purple-03.png);
+    animation: particleanimationitem5 12s infinite ease-in-out;
+}
+div.particle .item-anim-6 {
+    animation: particleanimationitem6 9s infinite ease-in-out;
+}
+div.particle .item-anim-7 {
+    background-image: url(../img/particle/purple-02.png);
+    margin-top: 80vh;
+    animation: particleanimationitem7 13s infinite ease-in-out;
+}
+
+.content {
+
+}
+
+.content-center {
+    margin: 0 auto;
+    max-width: 550px;
+}
+
+.monitoring {
+    color: white;
+}
+
+.monitoring span {
+    font-size: 1.3em;
+    font-weight: 700;
+    display: block;
+}
+.monitoring i {
+    color: #fff;
+}
+
+.blockcontent {
+    max-width: 960px;
+    margin: 20px auto 0;
+    color: white;
+    padding: 20px;
+    border: var(--block-border, 1px) solid #fff;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.blockcontent-title {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.profile-username {
+    font-size: 2em;
+}
+
+@keyframes particleanimationitem1 {
+    50% {
+        margin-top: 50vh;
+    }
+}
+@keyframes particleanimationitem2 {
+     50% {
+         margin-top: 10vh;
+         transform: rotatez(10deg);
+     }
+}
+@keyframes particleanimationitem3 {
+    50% {
+      margin-top: 80vh;
+      margin-right: 20px;
+      transform: rotatez(90deg);
+    }
+}
+@keyframes particleanimationitem4 {
+    50% {
+       margin-top: 30vh;
+    }
+}
+@keyframes particleanimationitem5 {
+    50% {
+        margin-top: 80vh;
+        transform: rotatez(10deg);
+    }
+}
+@keyframes particleanimationitem6 {
+    50% {
+     margin-top: 80vh;
+     margin-right: 10px;
+     transform: rotatez(90deg);
+    }
+}
+@keyframes particleanimationitem7 {
+    50% {
+      margin-top: 5vh;
+      transform: rotatez(360deg);
+    }
+}
+@media (max-width:1024px) {
+    div.main .sup-title_active, div.main .sub-title_active {
+        margin-left: 30vw;
+    }
+}
+@media (max-width:768px) {
+    div.header .logo {
+        margin-left: 5px;
+    }
+    div.header .logo_active {
+        margin-left: 5px;
+    }
+    div.header .menu-button {
+        margin-right: 20px;
+    }
+}
+@media (max-width:425px) {
+    div.header .menu-button {
+        margin-right: 5px;
+    }
+    div.navigation {
+        width: calc(100% - 45px);
+        left: -100%}
+    div.navigation_active {
+        left: 0;
+    }
+    div.main {
+        z-index: 0;
+    }
+    div.main .sup-title_active, div.main .sub-title_active {
+        margin-left: 0;
+    }
+    div.donate .type-credits .title h2, div.donate .type-privilage .title h2, div.donate .select-type .title h2 {
+        padding-left: 10px;
+        font-size: 1.2em;
+    }
+    div.links {
+        margin-top: 10vh;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+    }
+    div.links .item {
+        margin-top: 5vh;
+    }
+    div.links a {
+        margin-top: 5vh;
+    }
+    div.particle .item {
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (max-width:320px) {
+    div.header .menu-button {
+        margin-right: 5px;
+    }
+    div.navigation {
+        width: calc(100% - 50px);
+    }
+    div.main .sub-title .ip {
+        margin: 0 5vw;
+    }
+    div.main .sub-title span {
+        font-size: 1em;
+    }
+    div.donate .type a {
+        padding: 10px 20px;
+    }
+}
