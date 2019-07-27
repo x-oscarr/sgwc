@@ -2,367 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf534c35-9712-425e-8803-29ef19964406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/sqee_icon.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/sqee_icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/sqee_icon.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/sqee_icon.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/sqee_icon.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ad.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ae.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/af.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ag.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ai.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/al.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/am.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/an.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ao.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ar.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/as.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/at.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/au.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/aw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ax.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/az.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ba.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bb.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bd.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/be.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bi.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bj.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bo.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/br.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bs.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/by.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/bz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ca.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/catalonia.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cd.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ch.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ci.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ck.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/co.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cs.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cx.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/cz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/de.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/dj.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/dk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/dm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/do.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/dz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ec.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ee.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/eg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/eh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/england.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/er.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/es.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/et.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/europeanunion.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fam.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fi.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fj.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fo.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/fr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ga.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gb.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gd.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ge.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gi.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gp.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gq.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gs.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/gy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/hk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/hm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/hn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/hr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ht.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/hu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/id.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ie.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/il.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/in.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/io.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/iq.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ir.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/is.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/it.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/jm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/jo.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/jp.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ke.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ki.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/km.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kp.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ky.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/kz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/la.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lb.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/li.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ls.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/lv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ly.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ma.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/md.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/me.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ml.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mo.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mp.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mq.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ms.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mx.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/my.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/mz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/na.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ne.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ng.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ni.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/no.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/np.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/nz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/om.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pa.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pe.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ph.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ps.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/pw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/py.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/qa.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/re.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ro.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/rs.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ru.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/rw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sa.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sb.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/scotland.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sd.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/se.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sh.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/si.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sj.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/so.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/st.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/sz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/td.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/th.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tj.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tk.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/to.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tr.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tv.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/tz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ua.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ug.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/um.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/us.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/uy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/uz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/va.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/vc.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ve.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/vg.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/vi.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/vn.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/vu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/wales.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/wf.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ws.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/ye.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/yt.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/za.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/zm.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/zw.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/country/zz.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/35hp_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/aim_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/awp_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ba_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/bhop_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/bp_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/br_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/cs_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/de_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/deathrun_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dm_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dr_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dz_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/fun_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/fy_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/gg_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/he_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/hg_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/hns_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/jailbreak_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/jb_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ka_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/kz_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/mg_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/nade.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/nade_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ph_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/scout.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/scout_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/scoutz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/scoutz_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/surf_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/sz_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ttt_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/undefined.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ze_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/zm_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/default-01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/default-02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/default-03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/default-04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/purple-01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/purple-02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/purple-03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/particle/purple-04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/penguin.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/cloud.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/diamond.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/fox.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/fox2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/ghost.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/icecream.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/nyancat.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/owl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/panda.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/penguin.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/pikachu.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/pikachu2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/pizza.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/raccoon.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/source.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/preloaders/zombie.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/ranks/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery-3.3.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/monitoring.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/script.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/base.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/builder/menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sgwc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sgwc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_27_041747_create_servers_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/SettingSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Server.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/steam-api.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/steam-api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_07_27_032418_create_settings_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/builder/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/builder/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -375,16 +31,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>15</find>
-      <find>primary</find>
-      <find>.bg-primary</find>
-      <find>a.text-primary:hover, a.text-primary:focus {</find>
-      <find>512da8</find>
-      <find>-15</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -491,22 +137,23 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../guestbook" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/public/css" />
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/errors" />
       <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/css" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -546,6 +193,8 @@
       <workItem from="1564052679679" duration="247000" />
       <workItem from="1564108043795" duration="2042000" />
       <workItem from="1564112012498" duration="2078000" />
+      <workItem from="1564116219875" duration="20150000" />
+      <workItem from="1564200012823" duration="1590000" />
     </task>
     <servers />
   </component>
@@ -573,5 +222,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

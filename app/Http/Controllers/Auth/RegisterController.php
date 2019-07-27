@@ -71,7 +71,8 @@ class RegisterController extends Controller
             'avatar_sm' => $data['avatar_sm'],
             'url' => $data['url'],
             'realname' => $data['realname'],
-            'location' => $data['location'],
+            'steam32' => $data['steam32'],
+            'steam3' => $data['steam3']
         ]);
     }
 }

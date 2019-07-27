@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use Auth;
 use Illuminate\Http\Request;
-use App;
+use Syntax\SteamApi\Facades\SteamApi;
 
 class UserController extends Controller
 {

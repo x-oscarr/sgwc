@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Invisnik\LaravelSteamAuth\SteamAuth;
+use Syntax\SteamApi\Facades\SteamApi;
 use App\User;
 use Auth;
 
@@ -95,6 +96,8 @@ class AuthController extends Controller
             'url' => $info->profileurl,
             'realname' => $info->realname,
             'location' => $info->loccountrycode,
+            'steam32' => SteamApi::convertId($info->steamID64, 'ID32'),
+            'steam3' => SteamApi::convertId($info->steamID64, 'ID3'),
         ]);
     }
 }

@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('url');
             $table->string('realname');
             $table->string('location');
+            $table->string('steam32');
+            $table->string('steam3');
             $table->rememberToken();
             $table->timestamps();
         });

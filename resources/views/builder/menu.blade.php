@@ -1,6 +1,6 @@
 <div class="header">
     <div class="logo">
-        <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Логотип"></a>
+        <a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}" alt="Логотип"></a>
     </div>
     <div class="menu-button">
         <span></span>

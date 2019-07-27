@@ -2,9 +2,6 @@
     --block-border: 0px;
 }
 
-html {
-    overflow-y: hidden;
-}
 body {
     margin: 0;
     padding: 0;
@@ -15,6 +12,10 @@ body {
 hr {
     color: white;
 }
+strong {
+    color: #b39ddb;
+}
+
 div.preloader {
     position: fixed;
     top: 0;
@@ -308,6 +309,7 @@ div.particle .item-anim-7 {
 
 .profile-username {
     font-size: 2em;
+    margin-bottom: 0;
 }
 
 @keyframes particleanimationitem1 {
@@ -368,6 +370,13 @@ div.particle .item-anim-7 {
         margin-right: 20px;
     }
 }
+
+@media (max-width: 576px) {
+    .profile-header {
+        text-align: center;
+    }
+}
+
 @media (max-width:425px) {
     div.header .menu-button {
         margin-right: 5px;
