@@ -2,78 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf534c35-9712-425e-8803-29ef19964406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Helpers/Locale.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Helpers/Monitoring.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/35hp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/aim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/awp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/bhop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/bp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/br.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/cs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/de.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/deathrun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/dz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/fun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/fy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/gg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/he.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/hg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/hns.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/jailbreak.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/jb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/kz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/mg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ph.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/surf.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/sz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ttt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/ze.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/game_type/zm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mapmods.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PMLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PluginModules/LK.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PluginModules/Levelranks.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PluginModules/PMFrame.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PluginModules/Shop.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/PluginModules/Vip.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/PluginModule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/SiteModule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/custom_functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_27_140027_create_site_modules_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_27_140116_create_plugin_modules_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugin_modules.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/trasers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/35hp_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/aim_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/awp_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/ba_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/bhop_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/bp_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/br_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/cs_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/de_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/deathrun_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/dm_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/dr_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/dz_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/fun_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/fy_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/gg_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/he_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/hg_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/hns_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/jailbreak_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/jb_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/ka_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/kz_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/mg_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/nade_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/ph_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/scout_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/scoutz_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/surf_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/sz_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/ttt_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/ze_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/game_type/zm_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/database/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +37,20 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -196,22 +161,25 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Helpers/PluginModules" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Helpers/PluginModules" />
+      <recent name="$PROJECT_DIR$/app/Helpers" />
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/js" />
-      <recent name="$PROJECT_DIR$/resources/views/errors" />
-      <recent name="$PROJECT_DIR$/resources/views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Helpers/PluginModules" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public/" />
       <recent name="$PROJECT_DIR$/public/css" />
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -253,7 +221,8 @@
       <workItem from="1564112012498" duration="2078000" />
       <workItem from="1564116219875" duration="20150000" />
       <workItem from="1564200012823" duration="12102000" />
-      <workItem from="1564223303254" duration="8675000" />
+      <workItem from="1564223303254" duration="44308000" />
+      <workItem from="1564375402085" duration="2773000" />
     </task>
     <servers />
   </component>

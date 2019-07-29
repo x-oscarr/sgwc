@@ -24,3 +24,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('profile', 'UserController@index')->name('profile');
 Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
 Route::get('user/{id}', 'UserController@single')->name('user');
+
+//DEV
+Route::get('dev/', 'MainController@dev')->name('dev');

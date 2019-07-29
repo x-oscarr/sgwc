@@ -63,33 +63,6 @@ return [
             ]) : [],
         ],
 
-        'shop' => [
-            'driver'    => 'mysql',
-            'host'      => env('SHOP_HOST'),
-            'port'      => env('SHOP_PORT'),
-            'database'  => env('SHOP_DATABASE'),
-            'username'  => env('SHOP_USERNAME'),
-            'password'  => env('SHOP_PASSWORD'),
-        ],
-
-        'lk' => [
-            'driver'    => 'mysql',
-            'host'      => env('LK_HOST'),
-            'port'      => env('LK_PORT'),
-            'database'  => env('LK_DATABASE'),
-            'username'  => env('LK_USERNAME'),
-            'password'  => env('LK_PASSWORD'),
-        ],
-
-        'ranks' => [
-            'driver'    => 'mysql',
-            'host'      => env('RANKS_HOST'),
-            'port'      => env('RANKS_PORT'),
-            'database'  => env('RANKS_DATABASE'),
-            'username'  => env('RANKS_USERNAME'),
-            'password'  => env('RANKS_PASSWORD'),
-        ],
-
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

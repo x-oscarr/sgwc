@@ -1,0 +1,70 @@
+{
+    "shop": {
+        "auth": "ID32",
+        "class": "Shop",
+        "table_players": {
+            "name": "shop_players",
+            "col": "auth"
+        },
+        "table_toggles": {
+            "name": "shop_toggles",
+            "col": "player_id"
+        },
+        "table_items": {
+            "name": "shop_items",
+            "col": "id"
+        },
+        "table_boughts": {
+            "name": "shop_boughts",
+            "col": "player_id"
+        }
+    },
+    "vip_riko": {
+        "auth": "ID3",
+        "class": "Vip",
+        "table_players": {
+            "name": "vip_users",
+            "col": "account_id"
+        }
+    },
+    "lk_1mpulse": {
+        "auth": "ID32",
+        "class": "LK",
+        "table_players": {
+            "name": "lk",
+            "col": "auth"
+        }
+    },
+    "levelranks": {
+        "auth": "ID32",
+        "class": "Levelranks",
+        "table_players": {
+            "name": "lvl_base",
+            "col": "steam"
+        }
+    },
+    "shavit": {
+        "auth": "ID3",
+        "class": "Shavit",
+        "table_players": {
+            "name": "users",
+            "col": "auth"
+        },
+        "table_records": {
+            "name": "playertimes",
+            "col": "auth"
+        }
+    },
+    "influx": {
+        "auth": "ID32",
+        "class": "Influx",
+        "table_players": {
+            "name": "ck_playerrank",
+            "col": "steamid"
+        },
+        "table_records": {
+            "name": "ck_playertimes",
+            "col": "steamid"
+        }
+    }
+}

@@ -13,6 +13,7 @@ class UserController extends Controller
         if(!Auth::check()) {
             return redirect()->route('auth');
         }
+
         return view('profile');
     }
 

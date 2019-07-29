@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PMLoader;
 use Auth;
 use App\Helpers\Monitoring;
 use App\Server;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Syntax\SteamApi\Facades\SteamApi;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 
@@ -28,5 +30,18 @@ class MainController extends Controller
         return view('index', [
             'servers' => $servers
         ]);
+    }
+
+    public function dev() {
+
+        $plugin = DB::table('plugin_modules')->find(1);
+        $plugin2 = DB::table('plugin_modules')->find(2);
+        $plugin3 = DB::table('plugin_modules')->find(3);
+        $plugin4 = DB::table('plugin_modules')->find(4);
+////        $PMLoader = new PMLoader();
+        dump(PMLoader::getData($plugin, 'STEAM_1:0:72120179')->getUserData());
+        dump(PMLoader::getData($plugin2, 'STEAM_1:0:72120179')->getUserData());
+        dump(PMLoader::getData($plugin3, 'STEAM_1:0:72120179')->getUserData());
+        dump(PMLoader::getData($plugin4, '144240358')->getUserData());
     }
 }
