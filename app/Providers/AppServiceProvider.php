@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use Auth;
+use App\Helpers\PMLoader;
 use App\PluginModule;
 use App\Setting;
-use App\SiteModule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -37,12 +39,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['profile', 'user'], function($view) {
-            $plugin_modules_data = PluginModule::all();
-            $plugin_modules = null;
-            foreach ($plugin_modules_data as $module) {
-                $plugin_modules[$module['name']] = $module;
+            if(Auth::user()) {
+                $plugin_modules_data = DB::table('plugin_modules')->where(['is_enabled' => true])->get();
+                $plugin_modules = null;
+                foreach ($plugin_modules_data as $module) {
+                    $plugin_modules[$module->plugin] = PMLoader::getData($module, 'STEAM_1:0:72120179')->getUserData();
+                }
             }
-            $view->with(['plugin_modules' => $plugin_modules]);
+            $view->with(['plugin_modules' => $plugin_modules ?? null]);
         });
     }
 }

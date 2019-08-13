@@ -4,6 +4,7 @@
 namespace App\Helpers\PluginModules;
 
 use Illuminate\Support\Facades\DB;
+use Syntax\SteamApi\Facades\SteamApi;
 
 
 class PMFrame
@@ -14,6 +15,12 @@ class PMFrame
     public function __construct($pluginObject, $steamid)
     {
         $this->pluginObject = $pluginObject;
+        $steamid = SteamApi::convertId($steamid, $pluginObject->auth);
+        if (is_object($steamid)) {
+            switch ($pluginObject->auth) {
+                case 'ID3_S': preg_match('/[0-9]{9,11}/', $steamid->id3, $steamid); break;
+            }
+        }
         $this->steamid = $steamid;
     }
 

@@ -20,7 +20,7 @@
         }
     },
     "vip_riko": {
-        "auth": "ID3",
+        "auth": "ID3_S",
         "class": "Vip",
         "table_players": {
             "name": "vip_users",
