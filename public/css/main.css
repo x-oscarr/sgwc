@@ -16,6 +16,16 @@ strong {
     color: #b39ddb;
 }
 
+a {
+    color: inherit;
+    /*text-decoration: underline;*/
+}
+
+a:hover {
+    transition: 50ms;
+    color: white;
+}
+
 div.preloader {
     position: fixed;
     top: 0;
@@ -272,6 +282,15 @@ div.particle .item-anim-7 {
 
 }
 
+.status {
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.sub-text {
+    color: grey;
+}
+
 .content-center {
     margin: 0 auto;
     max-width: 550px;
@@ -312,48 +331,14 @@ div.particle .item-anim-7 {
     margin-bottom: 0;
 }
 
-@keyframes particleanimationitem1 {
-    50% {
-        margin-top: 50vh;
-    }
+.report-info {
+    display: block;
 }
-@keyframes particleanimationitem2 {
-     50% {
-         margin-top: 10vh;
-         transform: rotatez(10deg);
-     }
+
+.report-info-block {
+
 }
-@keyframes particleanimationitem3 {
-    50% {
-      margin-top: 80vh;
-      margin-right: 20px;
-      transform: rotatez(90deg);
-    }
-}
-@keyframes particleanimationitem4 {
-    50% {
-       margin-top: 30vh;
-    }
-}
-@keyframes particleanimationitem5 {
-    50% {
-        margin-top: 80vh;
-        transform: rotatez(10deg);
-    }
-}
-@keyframes particleanimationitem6 {
-    50% {
-     margin-top: 80vh;
-     margin-right: 10px;
-     transform: rotatez(90deg);
-    }
-}
-@keyframes particleanimationitem7 {
-    50% {
-      margin-top: 5vh;
-      transform: rotatez(360deg);
-    }
-}
+
 @media (max-width:1024px) {
     div.main .sup-title_active, div.main .sub-title_active {
         margin-left: 30vw;
@@ -374,6 +359,13 @@ div.particle .item-anim-7 {
 @media (max-width: 576px) {
     .profile-header {
         text-align: center;
+    }
+    .report-info {
+        display: flex;
+        margin-top: 10px;
+    }
+    .report-info-block {
+        width: 50%;
     }
 }
 
@@ -431,5 +423,49 @@ div.particle .item-anim-7 {
     }
     div.donate .type a {
         padding: 10px 20px;
+    }
+}
+
+
+@keyframes particleanimationitem1 {
+    50% {
+        margin-top: 50vh;
+    }
+}
+@keyframes particleanimationitem2 {
+    50% {
+        margin-top: 10vh;
+        transform: rotatez(10deg);
+    }
+}
+@keyframes particleanimationitem3 {
+    50% {
+        margin-top: 80vh;
+        margin-right: 20px;
+        transform: rotatez(90deg);
+    }
+}
+@keyframes particleanimationitem4 {
+    50% {
+        margin-top: 30vh;
+    }
+}
+@keyframes particleanimationitem5 {
+    50% {
+        margin-top: 80vh;
+        transform: rotatez(10deg);
+    }
+}
+@keyframes particleanimationitem6 {
+    50% {
+        margin-top: 80vh;
+        margin-right: 10px;
+        transform: rotatez(90deg);
+    }
+}
+@keyframes particleanimationitem7 {
+    50% {
+        margin-top: 5vh;
+        transform: rotatez(360deg);
     }
 }

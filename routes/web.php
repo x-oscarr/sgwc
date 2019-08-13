@@ -24,6 +24,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('profile', 'UserController@index')->name('profile');
 Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
 Route::get('user/{id}', 'UserController@single')->name('user');
+Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
+
+//Report Controller
+Route::get('report/add', 'ReportController@add')->name('report.add');
+Route::get('report/list', 'ReportController@index')->name('report.list');
+Route::get('report/{id}', 'ReportController@single')->name('report.single');
 
 //DEV
 Route::get('dev/', 'MainController@dev')->name('dev');

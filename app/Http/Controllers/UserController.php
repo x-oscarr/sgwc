@@ -26,4 +26,17 @@ class UserController extends Controller
             return view('errors.404');
         }
     }
+
+    public function steamid($steamid) {
+        if (empty(SteamApi::user($steamid)->GetPlayerSummaries())) {
+            return view('errors.404');
+        }
+
+        $user['info'] = SteamApi::user($steamid)->GetPlayerSummaries()[0];
+        $user['bans'] = SteamApi::user($steamid)->GetPlayerBans()[0];
+        return view('steamid', [
+            'user' => $user ?? null
+        ]);
+    }
+
 }

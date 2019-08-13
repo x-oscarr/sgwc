@@ -1,3 +1,3 @@
 *.sqlite
 *.sqlite-journal
-/seeds/KTMSeeder.php
+/database/seeds/KTMSeeder1.php

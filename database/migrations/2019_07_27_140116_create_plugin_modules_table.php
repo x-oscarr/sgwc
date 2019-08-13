@@ -14,12 +14,9 @@ class CreatePluginModulesTable extends Migration
     public function up()
     {
         Schema::create('plugin_modules', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name');
             $table->integer('server_id')->unsigned();
-            $table->foreign('server_id')
-                ->references('id')->on('servers')
-                ->onDelete('cascade');
             $table->string('plugin');
             $table->string('db');
             $table->string('db_host');
@@ -27,6 +24,12 @@ class CreatePluginModulesTable extends Migration
             $table->string('db_username');
             $table->string('db_password');
             $table->boolean('is_enabled');
+        });
+
+        Schema::table('plugin_modules', function($table) {
+            $table->foreign('server_id')
+                ->references('id')->on('servers')
+                ->onDelete('cascade');
         });
     }
 

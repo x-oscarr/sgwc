@@ -20,7 +20,7 @@
                 <a href="#"><li><i class="fas fa-chart-line"></i> Рейтинг</li></a>
                 <a href="#"><li><i class="fas fa-book"></i> Правила</li></a>
                 <a href="#"><li><i class="fas fa-shopping-cart"></i> Донат</li></a>
-                <a href="#"><li><i class="fas fa-flag"></i> Подать жалобу</li></a>
+                <a href="{{ route('report.add') }}"><li><i class="fas fa-flag"></i> Подать жалобу</li></a>
                 <a href="#"><li><i class="fas fa-ban"></i> SourceBans</li></a>
                 <hr style="margin: 20px;">
                 <a href="#"><li><i class="fas fa-laptop-code"></i> Админпанель</li></a>

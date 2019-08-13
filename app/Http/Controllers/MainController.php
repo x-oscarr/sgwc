@@ -28,7 +28,7 @@ class MainController extends Controller
         }
 
         return view('index', [
-            'servers' => $servers
+            'servers' => $servers ?? null
         ]);
     }
 

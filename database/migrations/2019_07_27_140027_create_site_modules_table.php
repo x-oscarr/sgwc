@@ -14,7 +14,7 @@ class CreateSiteModulesTable extends Migration
     public function up()
     {
         Schema::create('site_modules', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name');
             $table->string('value');
             $table->boolean('is_enabled');
