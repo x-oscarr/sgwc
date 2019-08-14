@@ -36,7 +36,8 @@ class Monitoring
     public function Online($ip, $port) {
         $server_data = $this->getData($ip, $port);
         if(isset($server_data['error']) || $server_data['info'] == false) {
-            return $server['online'] = false;
+            $server['online'] = false;
+            return $server;
         }
 
         $server['online'] = true;
