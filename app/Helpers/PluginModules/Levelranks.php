@@ -4,7 +4,7 @@
 namespace App\Helpers\PluginModules;
 
 
-class Levelranks extends PMFrame
+class Levelranks extends PMFrame implements PMInterface
 {
 
     public function getUserData() {

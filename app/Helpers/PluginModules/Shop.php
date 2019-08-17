@@ -4,7 +4,7 @@
 namespace App\Helpers\PluginModules;
 
 
-class Shop extends PMFrame
+class Shop extends PMFrame implements PMInterface
 {
 
     public function getUserData() {
@@ -12,6 +12,10 @@ class Shop extends PMFrame
             ->table($this->pluginObject->table_players['name'])
             ->where($this->pluginObject->table_players['col'], $this->steamid)
             ->first();
+    }
+
+    public function test() {
+        return 'ffff';
     }
 
 //    private function getUserInventory() {

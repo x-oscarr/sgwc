@@ -33,6 +33,10 @@
         "table_players": {
             "name": "lk",
             "col": "auth"
+        },
+        "table_pays": {
+            "name": "lk_pays",
+            "col": "pay_auth"
         }
     },
     "levelranks": {
@@ -65,6 +69,18 @@
         "table_records": {
             "name": "ck_playertimes",
             "col": "steamid"
+        }
+    },
+    "sourcebans": {
+        "auth": "ID32",
+        "class": "Sourcebans",
+        "table_players": {
+            "name": "sb_bans",
+            "col": "authid"
+        },
+        "table_admins": {
+            "name": "sb_admins",
+            "col": "authid"
         }
     }
 }

@@ -278,10 +278,6 @@ div.particle .item-anim-7 {
     animation: particleanimationitem7 13s infinite ease-in-out;
 }
 
-.content {
-
-}
-
 .status {
     font-size: 10px;
     cursor: pointer;
@@ -289,6 +285,15 @@ div.particle .item-anim-7 {
 
 .sub-text {
     color: grey;
+}
+
+.text-underline {
+    border-bottom: 3px #5446a9 solid;
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 960px;
 }
 
 .content-center {
@@ -310,8 +315,7 @@ div.particle .item-anim-7 {
 }
 
 .blockcontent {
-    max-width: 960px;
-    margin: 20px auto 0;
+    margin-top: 20px;
     color: white;
     padding: 20px;
     border: var(--block-border, 1px) solid #fff;
@@ -322,8 +326,18 @@ div.particle .item-anim-7 {
 
 .blockcontent-title {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.7em;
     margin-bottom: 20px;
+}
+
+.blockcontent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.blockcontent-grid > .blockcontent {
+    display: block;
 }
 
 .profile-username {
@@ -333,10 +347,6 @@ div.particle .item-anim-7 {
 
 .report-info {
     display: block;
-}
-
-.report-info-block {
-
 }
 
 @media (max-width:1024px) {
@@ -353,6 +363,10 @@ div.particle .item-anim-7 {
     }
     div.header .menu-button {
         margin-right: 20px;
+    }
+
+    .blockcontent-grid {
+        grid-template-columns: 1fr;
     }
 }
 

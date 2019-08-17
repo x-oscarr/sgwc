@@ -18,7 +18,10 @@ class PMFrame
         $steamid = SteamApi::convertId($steamid, $pluginObject->auth);
         if (is_object($steamid)) {
             switch ($pluginObject->auth) {
-                case 'ID3_S': preg_match('/[0-9]{9,11}/', $steamid->id3, $steamid); break;
+                case 'ID3_S':
+                    preg_match('/[0-9]{9,11}/', $steamid->id3, $steamid);
+                    $steamid = $steamid[0];
+                    break;
             }
         }
         $this->steamid = $steamid;

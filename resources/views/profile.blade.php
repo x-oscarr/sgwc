@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-    {{ dd($plugin_modules) }}
+
     <div class="blockcontent">
         <div class="d-block d-sm-flex">
             <div class="d-flex d-block justify-content-center">
@@ -53,8 +53,5 @@
             <div>VIP:</div>
             <strong>Legendary VIP</strong>
         </div>
-    </div>
-    <div class="blockcontent">
-
     </div>
 @endsection

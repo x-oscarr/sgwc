@@ -10,4 +10,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /database/seeds/KTMSeeder.php
+.DS_Store
+/database/.DS_Store
 
+/.idea/*
