@@ -9,7 +9,7 @@
             </div>
             <div class="ml-sm-3 profile-header">
                 <p class="profile-username">{{ Auth::user()->username }}</p>
-                <p>{{ Auth::user()->realname }}</p>
+                <p class="sub-text">{{ Auth::user()->realname }}</p>
                 <table class="d-flex d-sm-table justify-content-center">
                     <tr>
                         <td>SteamID<strong>64</strong>: </td>
@@ -23,23 +23,27 @@
                         <td>SteamID<strong>3</strong>: </td>
                         <td>{{ Auth::user()->steam3 }}</td>
                     </tr>
-                    <tr>
-                        <td>Server List</td>
-                        <td>
-                            <select class="custom-select">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </td>
-                    </tr>
+                    @if($servers && count($servers) != 1)
+                        <tr>
+                            <td>Server List</td>
+                            <td>
+                                <form method="GET">
+                                    <select class="custom-select" name="server" onchange='this.form.submit()'>
+                                        @foreach($servers as $server)
+                                            <option value="{{ $server->id }}" @if($server->id == $selected_server) selected @endif >{{ $server->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 </table>
             </div>
         </div>
     </div>
     <div class="blockcontent row justify-content-center">
         <div class="col-6 col-sm text-center mb-3 mb-sm-0">
-            <img src="{{ asset('img/ranks/2.png') }}" alt="rank" title="rank" width="95">
+            <img src="{{ asset('img/ranks/14.png') }}" alt="rank" title="rank" width="95">
         </div>
         <div class="col-6 col-sm text-center mb-3 mb-sm-0">
             <div>Shop:</div>
@@ -54,4 +58,20 @@
             <strong>Legendary VIP</strong>
         </div>
     </div>
+
+    @if($plugin_user_data)
+        @foreach($plugin_params as $params)
+            @include('plugin_modules.'.$params['template'] )
+        @endforeach
+
+        <div class="blockcontent-grid">
+            @yield('levelranks-userdata')
+            @yield('lk-userdata')
+        </div>
+        <div class="blockcontent-grid">
+
+        </div>
+        @yield('sourcebans')
+        @yield('shop-inventory')
+    @endif
 @endsection

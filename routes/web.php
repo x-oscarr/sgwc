@@ -23,6 +23,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 // User Controller
 Route::get('profile', 'UserController@index')->name('profile');
 Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
+Route::get('user/list', 'UserController@list')->name('user.list');
 Route::get('user/{id}', 'UserController@single')->name('user');
 Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
 

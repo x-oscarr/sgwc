@@ -23,7 +23,7 @@
                             <span class="badge badge-danger status" data-content="Last logoff: {{ $user['info']->lastLogoff }}">Offline</span>
                         @endif
                     </p>
-                    <p>{{ $user['info']->realName }}</p>
+                    <p class="sub-text">{{ $user['info']->realName }}</p>
                     <table class="d-flex d-sm-table justify-content-center">
                         <tr>
                             <td>SteamID<strong>64</strong>: </td>
@@ -45,7 +45,9 @@
                 </div>
                 <div class="ml-auto d-flex d-sm-block justify-content-around mt-3 mt-sm-1">
                     {{--Normal buttons--}}
-                    <a href="#" class="btn btn-primary d-block d-sm-none d-md-inline-block"><i class="fas fa-user"></i> Profile</a>
+                    @if($user['profile'] != null)
+                        <a href="{{ route('user', ['id' => $user['profile']->id]) }}" class="btn btn-primary d-block d-sm-none d-md-inline-block"><i class="fas fa-user"></i> Profile</a>
+                    @endif
                     <a href="{{ $user['info']->profileUrl }}" class="btn btn-primary d-block d-sm-none d-md-inline-block"><i class="fab fa-steam"></i> Steam</a>
                     {{--Short buttons--}}
                     <a href="#" class="btn btn-primary d-none d-sm-inline-block d-md-none"><i class="fas fa-user"></i></a>
@@ -74,6 +76,22 @@
                 </div>
             </div>
         </div>
+
+        @if($plugin_user_data)
+            @foreach($plugin_params as $params)
+                @include('plugin_modules.'.$params['template'] )
+            @endforeach
+
+            <div class="blockcontent-grid">
+                @yield('levelranks-userdata')
+                @yield('lk-userdata')
+            </div>
+            <div class="blockcontent-grid">
+
+            </div>
+            @yield('sourcebans')
+            @yield('shop-inventory')
+        @endif
     @else
         <center><h5>User Not Found</h5></center>
     @endif

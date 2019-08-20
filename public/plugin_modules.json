@@ -2,6 +2,7 @@
     "shop": {
         "auth": "ID32",
         "class": "Shop",
+        "template": "shop",
         "table_players": {
             "name": "shop_players",
             "col": "auth"
@@ -22,6 +23,7 @@
     "vip_riko": {
         "auth": "ID3_S",
         "class": "Vip",
+        "template": "vip_riko",
         "table_players": {
             "name": "vip_users",
             "col": "account_id"
@@ -30,6 +32,7 @@
     "lk_1mpulse": {
         "auth": "ID32",
         "class": "LK",
+        "template": "lk_1mpulse",
         "table_players": {
             "name": "lk",
             "col": "auth"
@@ -42,6 +45,7 @@
     "levelranks": {
         "auth": "ID32",
         "class": "Levelranks",
+        "template": "levelranks",
         "table_players": {
             "name": "lvl_base",
             "col": "steam"
@@ -50,6 +54,7 @@
     "shavit": {
         "auth": "ID3",
         "class": "Shavit",
+        "template": "shavit",
         "table_players": {
             "name": "users",
             "col": "auth"
@@ -62,6 +67,7 @@
     "influx": {
         "auth": "ID32",
         "class": "Influx",
+        "template": "influx",
         "table_players": {
             "name": "ck_playerrank",
             "col": "steamid"
@@ -74,8 +80,13 @@
     "sourcebans": {
         "auth": "ID32",
         "class": "Sourcebans",
-        "table_players": {
+        "template": "sourcebans",
+        "table_bans": {
             "name": "sb_bans",
+            "col": "authid"
+        },
+        "table_comms": {
+            "name": "sb_comms",
             "col": "authid"
         },
         "table_admins": {

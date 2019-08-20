@@ -22,6 +22,10 @@
                 font-size: 2em;
             }
 
+            .sb-none {
+                text-align: center;
+            }
+
             table.sourcebans {
                 width: 100%;
             }
@@ -37,10 +41,14 @@
             }
 
             @media (max-width: 575.98px) {
-
+                .sb-lenth {
+                    display: none;
+                }
             }
             @media (min-width: 576px) and (max-width: 767.98px) {
-
+                .sb-lenth {
+                    display: none;
+                }
             }
             @media (min-width: 768px) and (max-width: 991.98px) {
 
@@ -53,44 +61,86 @@
             }
         </style>
 
-        <div class="blockcontent">
+        <div class="blockcontent" id="sourcebans">
             <h3 class="blockcontent-title">[SB] Bans</h3>
             <div class="sb-grid">
                 <div>
-                    <div>Total bans:</div>
-                    <span class="sb-info"><strong>7548</strong></span>
+                    <div>Total blocks:</div>
+                    <span class="sb-info">
+                        @if($plugin_user_data['sourcebans']['count_bans'] >= 20)
+                            <strong>{{ $plugin_user_data['sourcebans']['count_bans'] }}</strong>
+                        @else
+                            {{ $plugin_user_data['sourcebans']['count_bans'] }}
+                        @endif
+                        /
+                        @if($plugin_user_data['sourcebans']['count_comms'] >= 20)
+                                <strong>{{ $plugin_user_data['sourcebans']['count_comms'] }}</strong>
+                        @else
+                            {{ $plugin_user_data['sourcebans']['count_comms'] }}
+                        @endif
+                    </span>
                 </div>
                 <div>
-                    <div>Status:</div>
-                    <span class="sb-info"><strong>Banned</strong></span>
+                    <div>Is banned:</div>
+                    <span class="sb-info">
+                        @if($plugin_user_data['sourcebans']['is_banned'])
+                            <strong>Yes</strong>
+                        @else
+                            No
+                        @endif
+                    </span>
+                </div>
+                <div>
+                    <div>Comms:</div>
+                    <span class="sb-info">
+                        @if($plugin_user_data['sourcebans']['is_muted'] == 1)
+                            <strong>Mute</strong>
+                        @elseif($plugin_user_data['sourcebans']['is_muted'] == 2)
+                            <strong>Gag</strong>
+                        @elseif($plugin_user_data['sourcebans']['is_muted'] == 3)
+                            <strong>All</strong>
+                        @else
+                            No
+                        @endif
+                    </span>
                 </div>
             </div>
-            <table class="sourcebans">
-                <thead>
-                <tr>
-                    <td>Created</td>
-                    <td>Ends</td>
-                    <td>Length</td>
-                    <td>Reason</td>
-                </tr>
-                </thead>
-                @foreach($plugin_user_data['sourcebans'] as $ban)
-                    @if($ban->ends > time())
-                        <tr class="banned">
+            @if(count($plugin_user_data['sourcebans']['bans']))
+                <table class="sourcebans">
+                    <thead>
+                    <tr>
+                        <td>Created</td>
+                        <td>Ends</td>
+                        <td class="sb-lenth">Length</td>
+                        <td>Reason</td>
+                    </tr>
+                    </thead>
+                    @foreach($plugin_user_data['sourcebans']['bans'] as $ban)
+                        @if($ban->ends > time())
+                            <tr class="banned">
+                                <td>{{ date('Y-m-d H:i:s', $ban->created) }}</td>
+                                <td>{{ date('Y-m-d H:i:s', $ban->ends) }}</td>
+                                <td class="sb-lenth">{{ $ban->length }}</td>
+                                <td>{{ $ban->reason }}</td>
+                            </tr>
+                        @endif
+                        <tr>
                             <td>{{ date('Y-m-d H:i:s', $ban->created) }}</td>
                             <td>{{ date('Y-m-d H:i:s', $ban->ends) }}</td>
-                            <td>{{ $ban->length }}</td>
+                            <td class="sb-lenth">{{ $ban->length }}</td>
                             <td>{{ $ban->reason }}</td>
                         </tr>
-                    @endif
-                    <tr>
-                        <td>{{ date('Y-m-d H:i:s', $ban->created) }}</td>
-                        <td>{{ date('Y-m-d H:i:s', $ban->ends) }}</td>
-                        <td>{{ $ban->length }}</td>
-                        <td>{{ $ban->reason }}</td>
-                    </tr>
-                @endforeach
-            </table>
+                    @endforeach
+                </table>
+            @else
+                <h5 class="sb-none sub-text">You don`t have bans</h5>
+            @endif
         </div>
+
+        <script>
+            if ($('#sourcebans').width() <= 430) {
+                $('.sb-lenth').hide()
+            }
+        </script>
     @endisset
 @endsection

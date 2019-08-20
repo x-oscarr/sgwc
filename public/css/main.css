@@ -292,13 +292,28 @@ div.particle .item-anim-7 {
 }
 
 .content {
+    display: flex;
+}
+
+.main {
     margin: 0 auto;
     max-width: 960px;
 }
 
-.content-center {
-    margin: 0 auto;
-    max-width: 550px;
+.sidebar {
+    position: absolute;
+    margin-top: 20px;
+}
+
+.sidebar-block {
+    position: sticky;
+    min-height: 200px;
+    color: white;
+    padding: 20px;
+    border: var(--block-border, 1px) solid #fff;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
 .monitoring {
