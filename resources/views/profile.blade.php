@@ -1,7 +1,6 @@
-@extends('base')
+@extends('builder.default')
 
 @section('content')
-
     <div class="blockcontent">
         <div class="d-block d-sm-flex">
             <div class="d-flex d-block justify-content-center">

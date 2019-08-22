@@ -7,6 +7,7 @@
     <title> {{ $settings['Ptitle'] }} </title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/builder.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 </head>
@@ -16,18 +17,11 @@
 </div>
 
 @include('builder.menu')
+
 <div class="content">
-    <div class="main">
-        @yield('content')
-    </div>
-    <div class="sidebar">
-        <dev class="sidebar-block">
-            test
-        </dev>
-    </div>
+    @yield('default_builder')
+    @yield('index_builder')
 </div>
-
-
 
 <div class="particle">
     <div class="item item-circle item-anim-1"></div>

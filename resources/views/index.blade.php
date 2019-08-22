@@ -1,4 +1,4 @@
-@extends('base')
+@extends('builder.index')
 
 @section('content')
     <div class="main">
@@ -73,9 +73,6 @@
                                 @else
                                     There is no player on the server
                                 @endif
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
