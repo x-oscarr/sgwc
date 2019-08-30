@@ -2,7 +2,4 @@
 
 @section('content')
 
-
-
 @endsection
-

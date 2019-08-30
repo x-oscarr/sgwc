@@ -27,6 +27,9 @@ Route::get('user/list', 'UserController@list')->name('user.list');
 Route::get('user/{id}', 'UserController@single')->name('user');
 Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
 
+// Rating Controller
+Route::get('rating', 'RatingController@index')->name('rating');
+
 //Report Controller
 Route::get('report/add', 'ReportController@add')->name('report.add');
 Route::get('report/list', 'ReportController@index')->name('report.list');

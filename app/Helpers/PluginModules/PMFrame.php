@@ -3,17 +3,17 @@
 
 namespace App\Helpers\PluginModules;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Syntax\SteamApi\Facades\SteamApi;
 
 
 class PMFrame
 {
-    protected $pluginObject;
-    protected $steamid;
+    public $pluginObject;
+    public $steamid;
 
-    public function __construct($pluginObject, $steamid)
-    {
+    public function __construct($pluginObject, $steamid) {
         $this->pluginObject = $pluginObject;
         $steamid = SteamApi::convertId($steamid, $pluginObject->auth);
         if (is_object($steamid)) {
@@ -37,5 +37,23 @@ class PMFrame
             'database' => $this->pluginObject->db,
         ]]);
         return DB::connection($this->pluginObject->plugin);
+    }
+    
+    protected function getTop(array $columns, string $sort_by) {
+        return $this->connect()->transaction(function () use(&$sort_by, &$columns) {
+            $this->connect()->statement('SET @place = 0');
+            $result = $this->connect()->table($this->pluginObject->table_players['name'])
+                ->selectRaw('@place:=@place+1 AS place,'.implode(',', $columns))
+                ->orderByDesc($sort_by)
+                ->get();
+            return $result;
+        });
+    }
+
+    public function getUserData() {
+        return $this->connect()
+            ->table($this->pluginObject->table_players['name'])
+            ->where($this->pluginObject->table_players['col'], $this->steamid)
+            ->first();
     }
 }

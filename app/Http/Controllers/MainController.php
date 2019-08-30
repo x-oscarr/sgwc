@@ -34,7 +34,9 @@ class MainController extends Controller
 
     public function dev() {
 
-        return view('dev');
-//        dump(PMLoader::getData($plugin4, '144240358')->getUserData());
+        //return view('dev');
+
+       dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
+        dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
     }
 }

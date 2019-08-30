@@ -22,9 +22,9 @@ class PMHandler
         }
 
         // Custom autoload data
-        $plugin_custom_data = [
-            'test' => isset($plugin_objects['shop']) ? PMLoader::getData($plugin_objects['shop'], $steamid)->test() : null,
-        ];
+//        $plugin_custom_data = [
+//            'test' => isset($plugin_objects['shop']) ? PMLoader::getData($plugin_objects['shop'], $steamid)->test() : null,
+//        ];
 
         return [
             'user_data'=> $plugin_user_data ?? null,

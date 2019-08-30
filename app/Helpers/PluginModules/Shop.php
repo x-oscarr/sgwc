@@ -4,6 +4,8 @@
 namespace App\Helpers\PluginModules;
 
 
+use Illuminate\Support\Facades\DB;
+
 class Shop extends PMFrame implements PMInterface
 {
 
@@ -14,8 +16,8 @@ class Shop extends PMFrame implements PMInterface
             ->first();
     }
 
-    public function test() {
-        return 'ffff';
+    public function getTopUserData($sort_by = 'money') {
+        return $this->getTop(['name', $this->pluginObject->table_players['col'], 'money'], $sort_by);
     }
 
 //    private function getUserInventory() {

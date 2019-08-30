@@ -1,0 +1,86 @@
+:root {
+    /* Custom variable */
+
+    /* Builder variable */
+    --content-grid-box: 960px;
+    --sidebar-grid-box: 200px;
+
+    /* Bootstrap variable*/
+    --blue: #158CBA;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #FF4136;
+    --orange: #fd7e14;
+    --yellow: #FF851B;
+    --green: #28B62C;
+    --teal: #20c997;
+    --cyan: #75CAEB;
+    --white: #fff;
+    --gray: #999;
+    --gray-dark: #333;
+
+    --primary: #512da8;
+    --secondary: #f0f0f0;
+    --additional: #b39ddb;
+    --success: #28B62C;
+    --info: #75CAEB;
+    --warning: #FF851B;
+    --danger: #FF4136;
+    --light: #f6f6f6;
+    --dark: #18191c;
+
+    --primary2: #46258c;
+    --primary-dark: #482790;
+    --primary-dark2: #3c2079;
+    --primary-disabled: #6e55a8;
+    --primary-disabled2: #5c488b;
+    --secondary2: #ececec;
+    --secondary-dark: #dddddd;
+    --secondary-dark2: #d7d6d6;
+    --secondary-disabled: #d7d6d6;
+    --secondary-disabled2: #d0d0d0;
+    --success2: #219724;
+    --success-dark: #219724;
+    --success-dark2: #1f8c22;
+    --success-disabled: #1f8c22;
+    --success-disabled2: #1d821f;
+    --info2: #54bde6;
+    --info-dark: #54bde6;
+    --info-dark2: #48b9e5;
+    --info-disabled: #48b9e5;
+    --info-disabled2: #3db5e3;
+    --warning2: #FF851B;
+    --warning-dark: #f47100;
+    --warning-dark2: #e76b00;
+    --warning-disabled: #e76b00;
+    --warning-disabled2: #da6500;
+    --danger2: #FF4136;
+    --danger-dark: #ff1d10;
+    --danger-dark2: #ff1103;
+    --danger-disabled: #ff1103;
+    --danger-disabled2: #f50d00;
+
+    --validated: #3dd441;
+    --invalid-validated: #ff7169;
+
+    --boxshadow: rgba(128, 108, 156, 0.25);
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --rgba-success: rgba(40, 182, 44, 0.9);
+    --rgba-success-btn: rgba(72, 193, 76, 0.5);
+    --rgba-valid: rgba(40, 182, 44, 0.25);
+    --rgba-danger: rgba(255, 65, 54, 0.9);
+    --rgba-invalid: rgba(255, 65, 54, 0.25);
+    --rgba-primary: rgba(81, 45, 168, 0.5);
+    --rgba-secondary: rgba(209, 209, 209, 0.5);
+    --rgba-info: rgba(138, 210, 238, 0.5);
+    --rgba-warning: rgba(255, 151, 61, 0.5);
+    --rgba-danger: rgba(255, 94, 84, 0.5);
+}

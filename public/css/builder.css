@@ -1,10 +1,5 @@
 /* SECTION: defaut_builder */
 
-:root {
-    --content-grid-box: 960px;
-    --sidebar-grid-box: 200px;
-}
-
 .content {
     z-index: 10;
 }

@@ -5,7 +5,8 @@
         "template": "shop",
         "table_players": {
             "name": "shop_players",
-            "col": "auth"
+            "col": "auth",
+            "order_by": "money"
         },
         "table_toggles": {
             "name": "shop_toggles",
@@ -35,7 +36,8 @@
         "template": "lk_1mpulse",
         "table_players": {
             "name": "lk",
-            "col": "auth"
+            "col": "auth",
+            "order_by": "all_cash"
         },
         "table_pays": {
             "name": "lk_pays",
@@ -48,7 +50,8 @@
         "template": "levelranks",
         "table_players": {
             "name": "lvl_base",
-            "col": "steam"
+            "col": "steam",
+            "order_by": "value"
         }
     },
     "shavit": {
