@@ -38,14 +38,14 @@ class PMFrame
         ]]);
         return DB::connection($this->pluginObject->plugin);
     }
-    
+
     protected function getTop(array $columns, string $sort_by) {
         return $this->connect()->transaction(function () use(&$sort_by, &$columns) {
             $this->connect()->statement('SET @place = 0');
             $result = $this->connect()->table($this->pluginObject->table_players['name'])
                 ->selectRaw('@place:=@place+1 AS place,'.implode(',', $columns))
                 ->orderByDesc($sort_by)
-                ->get();
+                ->get()->toArray();
             return $result;
         });
     }

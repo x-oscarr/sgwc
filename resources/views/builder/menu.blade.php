@@ -17,7 +17,7 @@
                     <a href="{{ route('auth') }}"><li><i class="fas fa-user"></i> Профиль</li></a>
                 @endif
 
-                <a href="#"><li><i class="fas fa-chart-line"></i> Рейтинг</li></a>
+                <a href="{{ route('rating') }}"><li><i class="fas fa-chart-line"></i> Рейтинг</li></a>
                 <a href="#"><li><i class="fas fa-book"></i> Правила</li></a>
                 <a href="#"><li><i class="fas fa-shopping-cart"></i> Донат</li></a>
                 <a href="{{ route('report.add') }}"><li><i class="fas fa-flag"></i> Подать жалобу</li></a>

@@ -6,7 +6,7 @@
 
 .content-grid {
     display: grid;
-    grid-template-columns: minmax(0, 960px) minmax(0, 150px);
+    grid-template-columns: minmax(0, 960px) minmax(0, 180px);
     grid-column-gap: 20px;
     max-width: calc(var(--content-grid-box) + var(--sidebar-grid-box));
     margin: 0 auto;

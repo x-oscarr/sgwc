@@ -36,4 +36,4 @@ Route::get('report/list', 'ReportController@index')->name('report.list');
 Route::get('report/{id}', 'ReportController@single')->name('report.single');
 
 //DEV
-Route::get('dev/', 'MainController@dev')->name('dev');
+Route::get('dev', 'MainController@dev')->name('dev');

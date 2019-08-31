@@ -317,7 +317,7 @@ div.particle .item-anim-7 {
     color: #fff;
 }
 
-.blockcontent {
+section, .blockcontent {
     margin-top: 20px;
     color: white;
     padding: 20px;
@@ -339,7 +339,8 @@ div.particle .item-anim-7 {
     grid-gap: 20px;
 }
 
-.blockcontent-grid > .blockcontent {
+.blockcontent-grid > .blockcontent,
+.blockcontent-grid > section {
     display: block;
 }
 
@@ -351,6 +352,18 @@ div.particle .item-anim-7 {
 .report-info {
     display: block;
 }
+
+/*.table-def {*/
+/*    width: 100%;*/
+/*    font-size: 1.2em;*/
+/*}*/
+
+/*.table-def tr {*/
+/*}*/
+
+/*.table-def td {*/
+/*    border-spacing: 2px 2px;*/
+/*}*/
 
 @media (max-width:1024px) {
 
