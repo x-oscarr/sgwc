@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('steamid');
-            $table->string('avatar');
-            $table->string('avatar_md');
-            $table->string('avatar_sm');
+            $table->string('avatar')->nullable(true);;
+            $table->string('avatar_md')->nullable(true);;
+            $table->string('avatar_sm')->nullable(true);;
             $table->string('url');
-            $table->string('realname');
-            $table->string('location');
+            $table->string('realname')->nullable(true);
+            $table->string('location')->nullable(true);;
             $table->string('steam32');
             $table->string('steam3');
             $table->rememberToken();

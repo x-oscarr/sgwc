@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Reports;
+use App\Server;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Syntax\SteamApi\Facades\SteamApi;
 
 class ReportController extends Controller
@@ -16,9 +18,19 @@ class ReportController extends Controller
         ]);
     }
 
-    public function add()
+    public function add(Request $request)
     {
-
+        if(!empty($request->all())) {
+            $validatedData = $request->validate([
+                'sender'  => 'required|max:50',
+                'perpetrator' => '',
+                'date' => 'required',
+                'time' => 'required',
+                'info' => 'required|min:30|max:600',
+                'image' => 'image'
+            ]);
+            dd($validatedData);
+        }
         return view('report/add', [
 
         ]);

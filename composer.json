@@ -13,6 +13,7 @@
         "invisnik/laravel-steam-auth": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "laravelcollective/html": "^5.8",
         "syntax/steam-api": "^2.0",
         "xpaw/php-source-query-class": "^1.0"
     },

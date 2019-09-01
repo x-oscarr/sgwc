@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\PMHandler;
+use App\Server;
 use Auth;
 use App\Helpers\PMLoader;
 use App\Setting;
@@ -30,12 +31,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function($view) {
+            $request = app(\Illuminate\Http\Request::class);
+
             $settings_data = Setting::all();
             $settings = null;
             foreach ($settings_data as $setting) {
                 $settings[$setting['parameter']] = $setting['value'];
             }
-            $view->with(['settings' => $settings]);
+
+            $servers = Server::where('display', true)->get();
+
+            $view->with([
+                'settings' => $settings,
+                'servers_list' => $servers,
+                'selected_server' => $request->get('server') ?? env('DEFAULT_SERVER', 1)
+            ]);
         });
 
         View::composer(['profile'], function($view) {

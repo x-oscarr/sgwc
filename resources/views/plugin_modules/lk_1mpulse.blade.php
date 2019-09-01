@@ -1,5 +1,5 @@
 @section('lk-userdata')
-    @if($plugin_user_data['lk_1mpulse'] != null)
+    @if($plugin_user_data['lk_1mpulse']['userdata'] != null)
         <style>
             .info-grid {
                 display: grid;

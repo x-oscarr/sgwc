@@ -58,15 +58,11 @@ class UserController extends Controller
         $user['profile'] = App\User::where('steamid', SteamApi::convertId($steamid, 'ID64'))->first();
         $PMData = PMHandler::load($request, $steamid);
 
-        $servers = App\Server::where('display', true)->get();
-
         return view('steamid', [
             'user' => $user ?? null,
             'plugin_user_data'=> $PMData['user_data'],
             'plugin_custom_data' => $PMData['custom_data'],
             'plugin_params' => $PMData['params'],
-            'servers' => $servers,
-            'selected_server' => $request->get('server') ?? env('DEFAULT_SERVER', 1)
         ]);
     }
 

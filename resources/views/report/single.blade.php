@@ -1,4 +1,4 @@
-@extends('base')
+@extends('builder.default')
 
 @section('content')
     <div class="blockcontent">

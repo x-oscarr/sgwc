@@ -28,7 +28,7 @@
                             <td>
                                 <form method="GET">
                                     <select class="custom-select" name="server" onchange='this.form.submit()'>
-                                        @foreach($servers as $server)
+                                        @foreach($servers_list as $server)
                                             <option value="{{ $server->id }}" @if($server->id == $selected_server) selected @endif >{{ $server->name }}</option>
                                         @endforeach
                                     </select>
