@@ -9,6 +9,7 @@ use App\Server;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Syntax\SteamApi\Facades\SteamApi;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 
@@ -33,10 +34,11 @@ class MainController extends Controller
     }
 
     public function dev() {
+        $url = Storage::url('uploads/reports/AIUi4jPXTndKWtXp86Doj59GUdAbOTPC4Mn4RK5E.png');
 
-        //return view('dev');
+        return view('dev', ['url' => $url]);
 
-       dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
-        dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
+//       dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
+//        dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
     }
 }

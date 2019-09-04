@@ -24,6 +24,7 @@ class CreateReportsTable extends Migration
             $table->integer('perpetrator_id')->unsigned()->nullable(true);
             $table->string('file')->nullable(true);
             $table->boolean('status')->nullable(true);
+            $table->boolean('is_anon')->default(false);
             $table->timestamp('time');
             $table->timestamps();
         });
@@ -31,6 +32,10 @@ class CreateReportsTable extends Migration
         Schema::table('reports', function($table) {
             $table->foreign('server_id')
                 ->references('id')->on('servers')
+                ->onDelete('cascade');
+
+            $table->foreign('sender_id')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
 
             $table->foreign('perpetrator_id')

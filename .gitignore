@@ -12,5 +12,6 @@ yarn-error.log
 /database/seeds/KTMSeeder.php
 .DS_Store
 /database/.DS_Store
+/public/uploads/*
 
 /.idea/*

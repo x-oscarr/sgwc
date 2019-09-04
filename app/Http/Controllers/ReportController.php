@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Reports;
 use App\Server;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Syntax\SteamApi\Facades\SteamApi;
 
 class ReportController extends Controller
@@ -18,19 +21,27 @@ class ReportController extends Controller
         ]);
     }
 
-    public function add(Request $request)
+    public function add(Request $request, File $file)
     {
-        if(!empty($request->all())) {
-            $validatedData = $request->validate([
+        if($request->all()) {
+            $validator = Validator::make(Input::all(), [
                 'sender'  => 'required|max:50',
-                'perpetrator' => '',
+                'perpetrator' => 'max:50'.($request->get('type') == 'player_report' || $request->get('type') == 'admin_report' ? '|required' : ''),
                 'date' => 'required',
                 'time' => 'required',
                 'info' => 'required|min:30|max:600',
-                'image' => 'image'
+                'image' => 'image|max:2048'
             ]);
-            dd($validatedData);
+            $validator->validate();
+
+            if(!$validator->fails()) {
+                if($request->hasFile('image')) {
+                    $path = $request->file('image')->store('reports', 'public');
+                    dd(Storage::url($path));
+                }
+            }
         }
+
         return view('report/add', [
 
         ]);

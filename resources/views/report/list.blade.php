@@ -5,8 +5,48 @@
 
         <div class="blockcontent">
             <h3 class="text-center">Reports</h3>
+            {!! Form::open(['method' => 'get']) !!}
+                <div class="form-row">
+                    <div class="col-md-1 mb-3">
+                        {!! Form::number('id', null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'ID'
+                        ]) !!}
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <select class="custom-select" name="server" onchange='this.form.submit()'>
+                            @foreach($servers_list as $server)
+                                <option>Select server</option>
+                                <option value="{{ $server->id }}" @if($server->id == $selected_server) selected @endif >{{ $server->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        {!! Form::select('type', [
+                            null => 'Select report type',
+                            'player_report' => 'Complaint on player',
+                            'admin_report' => 'Complaint on admin',
+                            'bug_report' => 'Bug report',
+                            'tech_report' => 'Technical problems'
+                        ], null, ['class' => 'custom-select']) !!}
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        {!! Form::text('user', null, [
+                            'class' => 'form-control',
+                            'placeholder' => 'User',
+                        ]) !!}
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        {!! Form::date('date', null, ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="col-md-1 mb-3">
+                        <button type="submit" class="btn btn-primary">Find</button>
+                    </div>
+                </div>
+            {!! Form::close() !!}
+
             @foreach($reports as $report)
-                <a class="blockcontent row text-decoration-none" href="{{ route('report.single', $report->id) }}">
+                <a class="blockcontent row text-decoration-none blockcontent-hover" href="{{ route('report.single', $report->id) }}">
                     <div class="col-2">
                         @if($report->status == true)
                             <span class="badge badge-success">accepted</span>
