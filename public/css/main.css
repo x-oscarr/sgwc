@@ -291,6 +291,11 @@ div.particle .item-anim-7 {
     border-bottom: 3px #5446a9 solid;
 }
 
+a.dis-link {
+    color: gray;
+    pointer-events: none;
+}
+
 
 .sidebar-block {
     position: sticky;

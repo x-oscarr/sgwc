@@ -21,7 +21,7 @@
                     </p>
                     <p>Для завершення реєстрації необхідно перейти за надісланим посиланням у листі поштової скриньки.Для завершення реєстрації необхідно перейти за надісланим посиланням у листі поштової скриньки.</p>
                     <div>
-                        <a href="{{ asset('img/preloaders/diamond.gif') }}" target="_blank" class="text-secondary">IMG_25326626.gif</a>
+                        <a href="{{ asset($report->file) }}" target="_blank" class="text-secondary">Screenshot</a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-4 col-md-3 report-info">
@@ -33,12 +33,28 @@
                     </div>
                     <div class="report-info-block">
                         <div>Sender:</div>
-                        <a href="{{ route('steamid', $report->sender) }}" class="text-secondary">{{ $sender }}</a>
+                        <a href="{{ $sender_url }}" class="text-secondary @if(!$sender_url) dis-link @endif">{{ $sender }}</a>
                         <div>Perpetrator:</div>
-                        <a href="{{ route('steamid', $report->perpetrator) }}" class="text-secondary">{{ $perpetrator }}</a>
+                        <a href="{{ $perpetrator_url }}" class="text-secondary @if(!$perpetrator_url) dis-link @endif">{{ $perpetrator }}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        // $('form').submit(function (e) {
+        //     e.preventDefault();
+        //     var data = $('form').serializeArray();
+        //     $.ajax({
+        //         type: "POST",
+        //         url: url,
+        //         data: data,
+        //         success: success,
+        //         dataType: dataType
+        //      });
+        // });
+    </script>
 @endsection

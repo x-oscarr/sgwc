@@ -19,7 +19,7 @@ class PMFrame
         if (is_object($steamid)) {
             switch ($pluginObject->auth) {
                 case 'ID3_S':
-                    preg_match('/[0-9]{9,11}/', $steamid->id3, $steamid);
+                    preg_match('/^\[U:1:([0-9]+)\]$/', $steamid->id3, $steamid);
                     $steamid = $steamid[0];
                     break;
             }

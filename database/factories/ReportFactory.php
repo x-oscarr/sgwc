@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Reports;
+use App\Report;
 use Faker\Generator as Faker;
 
-$factory->define(Reports::class, function (Faker $faker) {
+$factory->define(Report::class, function (Faker $faker) {
     return [
         'server' => 1,
         'type' => "player_report",

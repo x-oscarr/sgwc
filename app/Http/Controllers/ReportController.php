@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Reports;
-use App\Server;
+use App\Report;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +17,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $reports = Reports::all();
+        $reports = Report::all();
         return view('report/list', [
             'reports' => $reports
         ]);
@@ -35,10 +37,32 @@ class ReportController extends Controller
             $validator->validate();
 
             if(!$validator->fails()) {
-                if($request->hasFile('image')) {
-                    $path = $request->file('image')->store('reports', 'public');
-                    dd(Storage::url($path));
+                $valid_data = $validator->valid();
+
+                $report = new Report();
+                $report->server_id = $valid_data['server'];
+                $report->type = $valid_data['type'];
+                $report->description = $valid_data['info'];
+                if (isSteamId($valid_data['sender'])) {
+                    $report->sender = SteamApi::convertId($valid_data['sender'], 'ID32');
+                    $report->sender_id = User::where('steam32', $report->sender)->select('id')->value('id');
                 }
+                else $report->sender = $valid_data['sender'];
+                if (isSteamId($valid_data['perpetrator'])) {
+                    $report->perpetrator = SteamApi::convertId($valid_data['perpetrator'], 'ID32');
+                    $report->perpetrator_id = User::where('steam32', $report->perpetrator)->select('id')->value('id');
+                }
+                else $report->perpetrator = $valid_data['perpetrator'];
+                $report->is_anon = $valid_data['anonymously'] ?? false;
+                $report->time = Carbon::parse($valid_data['date'].' '.$valid_data['time'])->toDateTimeString();
+                if($request->hasFile('image')) {
+                    $path = $request->file('image')->store('report', 'public');
+                    $report->file = Storage::url($path);
+                }
+                if($report->save()) {
+                    return redirect()->route('report.single', ['id' => $report->id]);
+                }
+
             }
         }
 
@@ -49,15 +73,28 @@ class ReportController extends Controller
 
     public function single($id)
     {
-        $report = Reports::find($id);
-        $server = $report->server[0];
-        $sender = SteamApi::user($report->sender)->GetPlayerSummaries()[0]->personaName;
-        $perpetrator = SteamApi::user($report->perpetrator)->GetPlayerSummaries()[0]->personaName;
+        $report = Report::findOrFail($id);
+        $server = $report->server;
+
+        if(isSteamId($report->sender)) {
+            $sender = SteamApi::user($report->sender)->GetPlayerSummaries()[0]->personaName;
+            $sender_url = route('steamid', $report->sender);
+        }
+        else $sender = $report->sender;
+
+        if(isSteamId($report->perpetrator)) {
+            $perpetrator = SteamApi::user($report->perpetrator)->GetPlayerSummaries()[0]->personaName;
+            $perpetrator_url = route('steamid', $report->perpetrator);
+        }
+        else $perpetrator = $report->perpetrator;
+
         return view('report/single', [
             'report' => $report,
             'server' => $server,
             'sender' => $sender,
-            'perpetrator' => $perpetrator
+            'perpetrator' => $perpetrator,
+            'sender_url' => $sender_url ?? null,
+            'perpetrator_url' => $perpetrator_url ?? null
         ]);
     }
 }
