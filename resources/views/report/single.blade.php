@@ -42,19 +42,3 @@
         </div>
     </div>
 @endsection
-
-@section('javascript')
-    <script>
-        // $('form').submit(function (e) {
-        //     e.preventDefault();
-        //     var data = $('form').serializeArray();
-        //     $.ajax({
-        //         type: "POST",
-        //         url: url,
-        //         data: data,
-        //         success: success,
-        //         dataType: dataType
-        //      });
-        // });
-    </script>
-@endsection

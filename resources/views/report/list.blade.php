@@ -9,21 +9,21 @@
                 <div class="form-row">
                     <div class="col-md-1 mb-3">
                         {!! Form::number('id', null, [
-                        'class' => 'form-control',
-                        'placeholder' => 'ID'
+                            'class' => 'form-control',
+                            'placeholder' => 'ID'
                         ]) !!}
                     </div>
                     <div class="col-md-3 mb-3">
                         <select class="custom-select" name="server" onchange='this.form.submit()'>
+                            <option>All servers</option>
                             @foreach($servers_list as $server)
-                                <option>Select server</option>
-                                <option value="{{ $server->id }}" @if($server->id == $selected_server) selected @endif >{{ $server->name }}</option>
+                                <option value="{{ $server->id }}">{{ $server->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         {!! Form::select('type', [
-                            null => 'Select report type',
+                            null => 'All report type',
                             'player_report' => 'Complaint on player',
                             'admin_report' => 'Complaint on admin',
                             'bug_report' => 'Bug report',
@@ -77,4 +77,20 @@
     @else
         Reports not found
     @endif
+@endsection
+
+@section('javascript')
+{{--    <script>--}}
+{{--        $('form').submit(function (e) {--}}
+{{--            e.preventDefault();--}}
+{{--            var data = $('form').serializeArray();--}}
+{{--            var url = "{{ route('report.sort') }}";--}}
+{{--            $.ajax({--}}
+{{--                type: "POST",--}}
+{{--                url: url,--}}
+{{--                data:  data,--}}
+{{--                dataType: "json"--}}
+{{--             });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection

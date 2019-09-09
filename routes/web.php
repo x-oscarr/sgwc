@@ -34,6 +34,7 @@ Route::get('rating', 'RatingController@index')->name('rating');
 Route::any('report/add', 'ReportController@add')->name('report.add');
 Route::get('report/list', 'ReportController@index')->name('report.list');
 Route::get('report/{id}', 'ReportController@single')->name('report.single');
+//Route::post('report/sort', 'ReportController@sort')->name('report.sort');
 
 //DEV
 Route::get('dev', 'MainController@dev')->name('dev');

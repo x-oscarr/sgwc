@@ -12,12 +12,30 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Syntax\SteamApi\Facades\SteamApi;
+use function MongoDB\BSON\toJSON;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reports = Report::all();
+//        $reports = Report::all();
+
+        if ($request->all()) {
+            //dd($request->all());
+            $qb = [];
+            $request->get('id') ? $qb[] = "where('id', ".$request->get('id').")" : null;
+            $request->get('server') ? $qb[] = "where('server', ".$request->get('server').")" : null;
+            $request->get('type') ? $qb[] = "where('type', '".$request->get('type')."')" : null;
+            $qb = '$result = Report::'.implode( '->',$qb);
+//            eval($qb);
+//            dd($result);
+
+        }
+        else {
+            $reports = Report::all();
+        }
+
+
         return view('report/list', [
             'reports' => $reports
         ]);
@@ -96,5 +114,32 @@ class ReportController extends Controller
             'sender_url' => $sender_url ?? null,
             'perpetrator_url' => $perpetrator_url ?? null
         ]);
+    }
+
+    public function sort(Request $request)
+    {
+        if ($request->ajax()) {
+            $reports = [];
+            if($request->get('id')) {
+                $reports[] = Report::find($request->get('id'));
+            }
+            if($request->get('server')) {
+                $reports[] = Report::where('server', $request->get('server'));
+            }
+            if($request->get('type')) {
+                $reports[] = Report::where('type', $request->get('type'));
+            }
+//            if($request->get('user')) {
+//
+//            }
+//            if($request->get('date')) {
+//
+//            }
+            return json_encode($reports);
+        }
+        else {
+            dd($request->attributes);
+        }
+
     }
 }
