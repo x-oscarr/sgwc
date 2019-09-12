@@ -18,9 +18,11 @@ class CreateReportsTable extends Migration
             $table->integer('server_id')->unsigned();
             $table->string('type');
             $table->text('description');
-            $table->string('sender')->nullable(true);
+            $table->string('sender_name')->nullable(true);
+            $table->string('sender_auth')->nullable(true);
             $table->integer('sender_id')->unsigned()->nullable(true);
-            $table->string('perpetrator')->nullable(true);
+            $table->string('perpetrator_name')->nullable(true);
+            $table->string('perpetrator_auth')->nullable(true);
             $table->integer('perpetrator_id')->unsigned()->nullable(true);
             $table->string('file')->nullable(true);
             $table->boolean('status')->nullable(true);

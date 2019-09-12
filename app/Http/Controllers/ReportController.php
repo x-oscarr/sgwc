@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Syntax\SteamApi\Facades\SteamApi;
-use function MongoDB\BSON\toJSON;
 
 class ReportController extends Controller
 {
@@ -21,15 +20,32 @@ class ReportController extends Controller
 //        $reports = Report::all();
 
         if ($request->all()) {
-            //dd($request->all());
-            $qb = [];
-            $request->get('id') ? $qb[] = "where('id', ".$request->get('id').")" : null;
-            $request->get('server') ? $qb[] = "where('server', ".$request->get('server').")" : null;
-            $request->get('type') ? $qb[] = "where('type', '".$request->get('type')."')" : null;
-            $qb = '$result = Report::'.implode( '->',$qb);
-//            eval($qb);
-//            dd($result);
-
+            $qb = Report::where(null);
+            if($request->get('id')) {
+                $qb->where('id', $request->get('id'));
+            }
+            else {
+                $request->get('type') ? $qb->where('type', $request->get('type')) : null;
+                $request->get('server') ?  $qb->where('server_id', $request->get('server')) : null;
+                if($request->get('date')) {
+                    $date = Carbon::parse($request->get('date'))->format('Y-m-d');
+                    $qb->whereDate('time', $date)
+                        ->orWhereDate('created_at', $date);
+                }
+                if($request->get('user')) {
+                    $user = $request->get('user');
+                    $qb->where('sender_name', 'like','%'.$user.'%')
+                        ->orWhere('sender_auth', $user)
+                        ->orWhere('perpetrator_name', 'like', '%'.$user.'%')
+                        ->orWhere('perpetrator_auth', $user);
+                }
+                if ($request->get('order')) {
+                    $order_by = explode('.', $request->get('order'));
+                    $qb->orderBy($order_by[0], $order_by[1]);
+                }
+                else $qb->orderBy('id', 'desc');
+            }
+            $reports = $qb->get();
         }
         else {
             $reports = Report::all();
@@ -37,7 +53,7 @@ class ReportController extends Controller
 
 
         return view('report/list', [
-            'reports' => $reports
+            'reports' => $reports,
         ]);
     }
 
@@ -61,16 +77,27 @@ class ReportController extends Controller
                 $report->server_id = $valid_data['server'];
                 $report->type = $valid_data['type'];
                 $report->description = $valid_data['info'];
+
+                // Sender authentication
                 if (isSteamId($valid_data['sender'])) {
-                    $report->sender = SteamApi::convertId($valid_data['sender'], 'ID32');
-                    $report->sender_id = User::where('steam32', $report->sender)->select('id')->value('id');
+                    $report->sender_auth = SteamApi::convertId($valid_data['sender'], 'ID32');
+                    $report->sender_name = SteamApi::user($report->sender_auth)->GetPlayerSummaries()[0]->personaName;
+                    $report->sender_id = User::where('steam32', $report->sender_auth)->select('id')->value('id');
                 }
-                else $report->sender = $valid_data['sender'];
+                else {
+                    $report->sender_name = $valid_data['sender'];
+                }
+
+                // Perpetrator authentication
                 if (isSteamId($valid_data['perpetrator'])) {
-                    $report->perpetrator = SteamApi::convertId($valid_data['perpetrator'], 'ID32');
-                    $report->perpetrator_id = User::where('steam32', $report->perpetrator)->select('id')->value('id');
+                    $report->perpetrator_auth = SteamApi::convertId($valid_data['perpetrator'], 'ID32');
+                    $report->perpetrator_name = SteamApi::user($report->perpetrator_auth)->GetPlayerSummaries()[0]->personaName;
+                    $report->perpetrator_id = User::where('steam32', $report->perpetrator_auth)->select('id')->value('id');
                 }
-                else $report->perpetrator = $valid_data['perpetrator'];
+                else {
+                    $report->perpetrator_name = $valid_data['perpetrator'];
+                }
+
                 $report->is_anon = $valid_data['anonymously'] ?? false;
                 $report->time = Carbon::parse($valid_data['date'].' '.$valid_data['time'])->toDateTimeString();
                 if($request->hasFile('image')) {
@@ -80,7 +107,6 @@ class ReportController extends Controller
                 if($report->save()) {
                     return redirect()->route('report.single', ['id' => $report->id]);
                 }
-
             }
         }
 
@@ -94,17 +120,16 @@ class ReportController extends Controller
         $report = Report::findOrFail($id);
         $server = $report->server;
 
-        if(isSteamId($report->sender)) {
-            $sender = SteamApi::user($report->sender)->GetPlayerSummaries()[0]->personaName;
-            $sender_url = route('steamid', $report->sender);
+        if ($report->is_anon) {
+            $sender = '<i class="fas fa-eye-slash"></i> Anonymously';
         }
-        else $sender = $report->sender;
+        else {
+            $sender = $report->sender_name;
+            isSteamId($report->sender_auth) ? $sender_url = route('steamid', $report->sender_auth) : null;
+        }
 
-        if(isSteamId($report->perpetrator)) {
-            $perpetrator = SteamApi::user($report->perpetrator)->GetPlayerSummaries()[0]->personaName;
-            $perpetrator_url = route('steamid', $report->perpetrator);
-        }
-        else $perpetrator = $report->perpetrator;
+        $perpetrator = $report->perpetrator_name;
+        isSteamId($report->perpetrator_auth) ? $perpetrator_url = route('steamid', $report->perpetrator_auth) : null;
 
         return view('report/single', [
             'report' => $report,
@@ -116,30 +141,15 @@ class ReportController extends Controller
         ]);
     }
 
-    public function sort(Request $request)
+    public function myReports()
     {
-        if ($request->ajax()) {
-            $reports = [];
-            if($request->get('id')) {
-                $reports[] = Report::find($request->get('id'));
-            }
-            if($request->get('server')) {
-                $reports[] = Report::where('server', $request->get('server'));
-            }
-            if($request->get('type')) {
-                $reports[] = Report::where('type', $request->get('type'));
-            }
-//            if($request->get('user')) {
-//
-//            }
-//            if($request->get('date')) {
-//
-//            }
-            return json_encode($reports);
-        }
-        else {
-            dd($request->attributes);
-        }
+        $user = Auth::user();
+        dd($user->sendByUser);
+    }
 
+    public function punishments()
+    {
+        $user = Auth::user();
+        dd($user->perpetrateByUser);
     }
 }

@@ -4135,6 +4135,7 @@ input[type="button"].btn-block {
     background: none;
     border: none;
     border-bottom: 2px solid var(--primary, #ced4da);
+    border-radius: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

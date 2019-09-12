@@ -40,10 +40,14 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $servers = Server::where('display', true)->get();
-
+            $servers_arr = [];
+            foreach ($servers as $server) {
+                $servers_arr[$server->id] = $server->name;
+            }
             $view->with([
                 'settings' => $settings,
                 'servers_list' => $servers,
+                'servers_arr' => $servers_arr,
                 'selected_server' => $request->get('server') ?? env('DEFAULT_SERVER', 1)
             ]);
         });

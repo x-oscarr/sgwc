@@ -33,8 +33,13 @@ Route::get('rating', 'RatingController@index')->name('rating');
 //Report Controller
 Route::any('report/add', 'ReportController@add')->name('report.add');
 Route::get('report/list', 'ReportController@index')->name('report.list');
+Route::get('report/my-reports', 'ReportController@myReports')->name('report.my-reports');
+Route::get('report/punishments', 'ReportController@punishments')->name('report.punishments');
 Route::get('report/{id}', 'ReportController@single')->name('report.single');
 //Route::post('report/sort', 'ReportController@sort')->name('report.sort');
+
+//Helpers
+//Route::get('d/{url}', 'FileController@download')->name('file.download');
 
 //DEV
 Route::get('dev', 'MainController@dev')->name('dev');

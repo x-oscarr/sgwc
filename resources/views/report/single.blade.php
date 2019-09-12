@@ -1,7 +1,7 @@
 @extends('builder.default')
 
 @section('content')
-    <div class="blockcontent">
+    <section>
         <div class="blockcontent">
             <div class="row">
                 <div class="col-12 text-right mb-2">
@@ -33,12 +33,21 @@
                     </div>
                     <div class="report-info-block">
                         <div>Sender:</div>
-                        <a href="{{ $sender_url }}" class="text-secondary @if(!$sender_url) dis-link @endif">{{ $sender }}</a>
+                        <a href="{{ $sender_url }}" class="text-secondary @if(!$sender_url) dis-link @endif">{!! $sender !!}</a>
                         <div>Perpetrator:</div>
-                        <a href="{{ $perpetrator_url }}" class="text-secondary @if(!$perpetrator_url) dis-link @endif">{{ $perpetrator }}</a>
+                        <a href="{{ $perpetrator_url }}" class="text-secondary @if(!$perpetrator_url) dis-link @endif">{!! $perpetrator !!}</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+{{--        @if(Auth::user()->steam32)--}}
+{{--            <div class="blockcontent">--}}
+{{--                Dispute--}}
+{{--            </div>--}}
+{{--        @endif--}}
+    </section>
+@endsection
+
+@section('sidebar')
+    @include('report.sidebar')
 @endsection
