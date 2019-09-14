@@ -12,4 +12,9 @@ class Server extends Model
     {
         return $this->hasMany('App\Report');
     }
+
+    public function rules()
+    {
+        return $this->hasMany('App\RulesCategory');
+    }
 }

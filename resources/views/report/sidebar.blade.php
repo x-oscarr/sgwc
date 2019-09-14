@@ -11,8 +11,8 @@
         <i class="fas fa-exclamation-triangle"></i>
         <span class="sidebar-description">My reports</span>
     </a>
-    <a href="{{ route('report.punishments') }}">
+    <a href="{{ route('report.my-violations') }}">
         <i class="fas fa-ban"></i>
-        <span class="sidebar-description">Punishments</span>
+        <span class="sidebar-description">My violations</span>
     </a>
 @endif

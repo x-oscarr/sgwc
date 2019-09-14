@@ -147,7 +147,7 @@ class ReportController extends Controller
         dd($user->sendByUser);
     }
 
-    public function punishments()
+    public function myViolations()
     {
         $user = Auth::user();
         dd($user->perpetrateByUser);

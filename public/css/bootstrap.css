@@ -4509,13 +4509,14 @@ input[type="button"].btn-block {
 }
 
 .nav-pills .nav-link {
-    border-radius: 0.25rem;
+
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #158CBA;
+    border-bottom: 3px solid var(--primary, #512da8);
+    background: var(--rgba-background, rgba(255, 255, 255, 0.05));
 }
 
 .nav-fill .nav-item {
