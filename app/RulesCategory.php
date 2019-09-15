@@ -13,6 +13,16 @@ class RulesCategory extends Model
 
     public function rules()
     {
-        return $this->hasMany('App\RulesItems');
+        return $this->hasMany('App\RulesItem', 'rules_categories_id', 'id');
+    }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo('App\RulesCategory', 'parent_id', 'id');
+    }
+
+    public function subCategory()
+    {
+        return $this->hasMany('App\RulesCategory', 'parent_id', 'id');
     }
 }

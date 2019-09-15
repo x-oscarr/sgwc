@@ -1,6 +1,5 @@
 <?php
 
-use App\Report;
 use Illuminate\Database\Seeder;
 
 class DevSeeder extends Seeder

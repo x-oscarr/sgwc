@@ -26,6 +26,18 @@ a:hover {
     color: white;
 }
 
+ol {
+    list-style-type: none; /* Убираем исходные маркеры */
+    counter-reset: num; /* Задаём имя счетчика */
+    padding-left: 10px;
+}
+ol li::before {
+    content: counter(num) '. '; /* Выводим число */
+    counter-increment: num; /* Увеличиваем значение счётчика */
+    color: var(--additional, #B39DDB);
+    font-weight: bolder;
+}
+
 div.preloader {
     position: fixed;
     top: 0;
@@ -327,9 +339,50 @@ section, .blockcontent {
     color: white;
     padding: 20px;
     border: var(--block-border, 1px) solid #fff;
-    z-index: 10;
     background: rgba(255, 255, 255, 0.05);
     overflow: hidden;
+}
+
+.blockcontent-list {
+    color: white;
+    margin-top: 10px;
+    border: var(--block-border, 1px) solid #fff;
+    margin-bottom: 20px;
+}
+
+.blockcontent-list .head {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 3px solid var(--primary, #512da8);
+    padding: 5px 5px 5px 10px;
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.blockcontent-list .body {
+
+}
+
+.blockcontent-list .element, .blockcontent-list .title {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    margin: 2px 0;
+}
+
+.blockcontent-list .element span {
+    display: inline-block;
+    padding: 0 5px;
+    margin-right: 5px;
+    min-width: 30px;
+    font-weight: bolder;
+    background: var(--primary, #512da8);
+}
+.blockcontent-list .sub-category {
+    margin-top: 10px;
+}
+
+.blockcontent-list small {
+    color: #ff6859;
+    font-weight: bolder;
 }
 
 .blockcontent-hover:hover {

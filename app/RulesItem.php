@@ -8,6 +8,6 @@ class RulesItem extends Model
 {
     public function category()
     {
-        return $this->belongsTo('App\RulesCategory');
+        return $this->belongsTo('App\RulesCategory', 'rules_categories_id', 'id');
     }
 }

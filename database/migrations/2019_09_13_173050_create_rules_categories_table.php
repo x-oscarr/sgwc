@@ -15,12 +15,14 @@ class CreateRulesCategoriesTable extends Migration
     {
         Schema::create('rules_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('server_id')->unsigned();
+            $table->integer('server_id')->unsigned()->nullable();
             $table->integer('parent_id')->unsigned()->nullable();
-            $table->text('title');
+            $table->string('title');
             $table->text('description');
             $table->string('type');
-            $table->boolean('is_selectable')->default(true);
+            $table->string('slug');
+            $table->boolean('is_report_selectable')->default(false);
+            $table->boolean('is_appeal_selectable')->default(false);
             $table->timestamps();
         });
 

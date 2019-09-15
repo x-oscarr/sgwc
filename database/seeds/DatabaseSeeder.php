@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         else {
             $this->call(KTMSeeder::class);
         }
-
+        $this->call(DevSeeder::class);
     }
 }
