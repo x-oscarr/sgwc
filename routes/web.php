@@ -31,14 +31,31 @@ Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
 Route::get('rating', 'RatingController@index')->name('rating');
 
 //Report Controller
-Route::any('report/add', 'ReportController@add')->name('report.add');
-Route::get('report/list', 'ReportController@index')->name('report.list');
-Route::get('report/my-reports', 'ReportController@myReports')->name('report.my-reports');
-Route::get('report/my-violations', 'ReportController@myViolations')->name('report.my-violations');
-Route::get('report/{id}', 'ReportController@single')->name('report.single');
+Route::group(['prefix' => 'report', 'middleware' => 'site.module:report'], function () {
+    Route::get('/', 'ReportController@index')->name('report.list');
+    Route::any('add', 'ReportController@add')->name('report.add');
+    Route::get('my-reports', 'ReportController@myReports')->name('report.my-reports');
+    Route::get('my-violations', 'ReportController@myViolations')->name('report.my-violations');
+    Route::get('{id}', 'ReportController@single')->name('report.single');
+});
 
 //Rules Controller
 Route::get('rules', 'RulesController@index')->name('rules.list');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/panel', [
+        'uses' => 'Adminpanel@index',
+        'middleware' => ['auth', 'rbac:can,page.admin.panel']
+    ]);
+    Route::get('/settings', [
+        'uses' => 'Settings@index',
+        'middleware' => ['auth', 'rbac:can,page.settings']
+    ]);
+    Route::get('/tools', [
+        'uses' => 'Tools@index',
+        'middleware' => ['auth', 'rbac:can,page.tools']
+    ]);
+});
 
 //Helpers
 //Route::get('d/{url}', 'FileController@download')->name('file.download');

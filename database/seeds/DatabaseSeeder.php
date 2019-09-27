@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(SettingSeeder::class);
+        $this->call(RoleSeeder::class);
         if(!class_exists(KTMSeeder::class)) {
             $this->call(PModuleSeeder::class);
         }

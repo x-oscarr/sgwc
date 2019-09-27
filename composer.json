@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
         "syntax/steam-api": "^2.0",
+        "visualappeal/laravel-rbac": "^0.7.1",
         "xpaw/php-source-query-class": "^1.0"
     },
     "require-dev": {
