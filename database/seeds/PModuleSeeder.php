@@ -8,7 +8,7 @@ class PModuleSeeder extends Seeder
         [
             'name' => 'Shop',
             'plugin' => 'shop',
-            'server' => '',
+            'server_id' => 1,
             'db_host' => 'localhost',
             'db_port' => '3306',
             'db' => '',
@@ -19,7 +19,7 @@ class PModuleSeeder extends Seeder
         [
             'name' => 'VIP',
             'plugin' => 'vip_riko',
-            'server' => '',
+            'server_id' => 1,
             'db_host' => 'localhost',
             'db_port' => '3306',
             'db' => '',
@@ -30,7 +30,7 @@ class PModuleSeeder extends Seeder
         [
             'name' => 'LK',
             'plugin' => 'lk_1mpulse',
-            'server' => '',
+            'server_id' => 1,
             'db_host' => 'localhost',
             'db_port' => '3306',
             'db' => '',
@@ -41,7 +41,7 @@ class PModuleSeeder extends Seeder
         [
             'name' => 'LR',
             'plugin' => 'levelranks',
-            'server' => '',
+            'server_id' => 1,
             'db_host' => 'localhost',
             'db_port' => '3306',
             'db' => '',
@@ -52,7 +52,7 @@ class PModuleSeeder extends Seeder
         [
             'name' => 'Shavit',
             'plugin' => 'shavit',
-            'server' => '',
+            'server_id' => 1,
             'db_host' => 'localhost',
             'db_port' => '3306',
             'db' => '',
@@ -67,7 +67,7 @@ class PModuleSeeder extends Seeder
         foreach ($this->plugins as $plugin) {
             DB::table('plugin_modules')->insert([
                 'name' => $plugin['name'],
-                'server' => $plugin['server'],
+                'server_id' => $plugin['server_id'],
                 'plugin' => $plugin['plugin'],
                 'db' => $plugin['db'],
                 'db_host' => $plugin['db_host'],

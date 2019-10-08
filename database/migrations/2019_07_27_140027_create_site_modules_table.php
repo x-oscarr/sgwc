@@ -16,13 +16,9 @@ class CreateSiteModulesTable extends Migration
         Schema::create('site_modules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('access');
-            $table->string('main_element');
-            $table->string('route');
-            $table->string('menu_alt_element');
-            $table->string('alt_route');
-            $table->json('data');
-            $table->boolean('is_enabled');
+            $table->text('description')->nullable(true);
+            $table->string('version')->nullable(true);
+            $table->boolean('is_enabled')->default(true);
         });
     }
 

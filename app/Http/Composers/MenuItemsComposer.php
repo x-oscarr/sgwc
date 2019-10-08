@@ -2,10 +2,10 @@
 
 namespace App\Http\Composers;
 
-use App\SiteModule;
+use App\MenuItem;
 use Illuminate\View\View;
 
-class SiteModuleComposer
+class MenuItemsComposer
 {
     protected $elements;
     /**
@@ -34,8 +34,8 @@ class SiteModuleComposer
     ];
     public function __construct()
     {
-//        $this->elements = SiteModule::where('is_enabled', true)->get()->toArray();
-//        dd($this->elements);
+       $menu_items = $this->elements = MenuItem::all();
+       dd($menu_items[0]->child());
     }
 
     public function compose(View $view)

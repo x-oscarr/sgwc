@@ -24,6 +24,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('builder.menu', 'App\Http\Composers\SiteModuleComposer');
+        View::composer('builder.menu', 'App\Http\Composers\MenuItemsComposer');
     }
 }

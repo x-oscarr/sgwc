@@ -31,12 +31,13 @@ Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
 Route::get('rating', 'RatingController@index')->name('rating');
 
 //Report Controller
-Route::group(['prefix' => 'report', 'middleware' => 'site.module:report'], function () {
+Route::group(['prefix' => 'report'], function () {
     Route::get('/', 'ReportController@index')->name('report.list');
     Route::any('add', 'ReportController@add')->name('report.add');
     Route::get('my-reports', 'ReportController@myReports')->name('report.my-reports');
     Route::get('my-violations', 'ReportController@myViolations')->name('report.my-violations');
     Route::get('{id}', 'ReportController@single')->name('report.single');
+    Route::get('panel', ['uses' => 'ReportController@adminpannel', 'middleware' => 'site.module:report'])->name('report.panel');
 });
 
 //Rules Controller

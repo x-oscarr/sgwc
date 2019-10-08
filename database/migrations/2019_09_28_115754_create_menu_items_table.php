@@ -15,21 +15,21 @@ class CreateMenuItemsTable extends Migration
     {
         Schema::create('menu_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('site_module_id')->unsigned();
+            $table->integer('site_module_id')->unsigned()->nullable(true);
             $table->text('text');
             $table->string('route');
-            $table->json('route_params')->nullable();
-            $table->string('access')->nullable();
-            $table->string('access_params')->nullable();
-            $table->string('child_id')->nullable();
+            $table->json('route_params')->nullable(true);
+            $table->string('access')->nullable(true);
+            $table->string('access_params')->nullable(true);
+            $table->integer('parent_id')->unsigned()->nullable(true);
             $table->integer('position')->default(0);
         });
 
-        Schema::table('menu_items', function($table) {
+        Schema::table('menu_items', function(Blueprint $table) {
             $table->foreign('site_module_id')
                 ->references('id')->on('site_modules')
                 ->onDelete('cascade');
-            $table->foreign('child_id')
+            $table->foreign('parent_id')
                 ->references('id')->on('menu_items')
                 ->onDelete('cascade');
         });
