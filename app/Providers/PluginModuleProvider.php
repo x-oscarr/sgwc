@@ -46,13 +46,12 @@ class PluginModuleProvider extends ServiceProvider
             if(Auth::user()) {
                 $request = app(\Illuminate\Http\Request::class);
                 $PMData = PMHandler::load($request, Auth::user()->steam32);
+                $view->with([
+                    'plugin_user_data'=> $PMData['user_data'],
+                    'plugin_custom_data' => $PMData['custom_data'],
+                    'plugin_params' => $PMData['params'],
+                ]);
             }
-
-            $view->with([
-                'plugin_user_data'=> $PMData['user_data'],
-                'plugin_custom_data' => $PMData['custom_data'],
-                'plugin_params' => $PMData['params'],
-            ]);
         });
     }
 }

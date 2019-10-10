@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteModule extends Model
 {
+    public $timestamps = false;
+
     public function menuItems()
     {
         $menu_items = $this->hasMany('App\MenuItem');

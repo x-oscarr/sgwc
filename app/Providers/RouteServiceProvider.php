@@ -24,10 +24,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(
-            'builder.menu', 'App\Http\Composers\MenuItemsComposer'
-        );
-
         parent::boot();
     }
 
