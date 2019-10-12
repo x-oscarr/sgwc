@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Report;
+use App\RulesCategory;
+use App\SiteModule;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -59,6 +61,15 @@ class ReportController extends Controller
 
     public function add(Request $request, File $file)
     {
+        $rulesModule = SiteModule::where('slug', 'rules_list')->where('is_enabled', true)->first();
+        if($rulesModule) {
+            $rulesData = RulesCategory::where('is_report_selectable', true)->where('parent_id', '!=', null)->get();
+            foreach ($rulesData as $rulesCategory) {
+                foreach ($rulesCategory->rules as $rulesItem)
+                $rulesOption[$rulesCategory->title][$rulesItem->id] = $rulesItem->text;
+            }
+        }
+
         if($request->all()) {
             $validator = Validator::make(Input::all(), [
                 'sender'  => 'required|max:50',
@@ -100,6 +111,7 @@ class ReportController extends Controller
 
                 $report->is_anon = $valid_data['anonymously'] ?? false;
                 $report->time = Carbon::parse($valid_data['date'].' '.$valid_data['time'])->toDateTimeString();
+                $report->rule_id = $valid_data['rule'];
                 if($request->hasFile('image')) {
                     $path = $request->file('image')->store('report', 'public');
                     $report->file = Storage::url($path);
@@ -111,7 +123,8 @@ class ReportController extends Controller
         }
 
         return view('report/add', [
-
+            'rules_module' => $rulesModule,
+            'rules_option' => $rulesOption ?? null
         ]);
     }
 

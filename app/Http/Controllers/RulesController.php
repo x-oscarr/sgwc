@@ -10,16 +10,16 @@ class RulesController extends Controller
 {
     public function index()
     {
-        $rules_data = RulesCategory::all();
-        foreach ($rules_data as $rules_category) {
-            if ($rules_category->parent_id == null) {
-                $primary_categories[] = $rules_category;
+        $rulesData = RulesCategory::all();
+        if($rulesData->isNotEmpty()) {
+            foreach ($rulesData as $rulesCategory) {
+                if ($rulesCategory->parent_id == null) {
+                    $primaryCategories[] = $rulesCategory;
+                }
             }
         }
-
-        //dd($primary_categories);
         return view('rules.index', [
-            'primary_categories' => $primary_categories,
+            'primary_categories' => $primaryCategories ?? null,
         ]);
     }
 

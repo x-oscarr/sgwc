@@ -27,6 +27,7 @@ class CreateReportsTable extends Migration
             $table->string('file')->nullable(true);
             $table->boolean('status')->nullable(true);
             $table->boolean('is_anon')->default(false);
+            $table->integer('rule_id')->unsigned()->nullable(true);
             $table->timestamp('time');
             $table->timestamps();
         });
@@ -42,6 +43,10 @@ class CreateReportsTable extends Migration
 
             $table->foreign('perpetrator_id')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('rule_id')
+                ->references('id')->on('rules_items')
                 ->onDelete('cascade');
         });
     }

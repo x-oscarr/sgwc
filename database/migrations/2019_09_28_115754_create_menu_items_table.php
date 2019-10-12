@@ -23,7 +23,7 @@ class CreateMenuItemsTable extends Migration
             $table->string('access_params')->nullable(true);
             $table->integer('parent_id')->unsigned()->nullable(true);
             $table->integer('position')->default(0);
-            $table->string('type')->default('main');
+            $table->integer('type')->default(1);
         });
 
         Schema::table('menu_items', function(Blueprint $table) {

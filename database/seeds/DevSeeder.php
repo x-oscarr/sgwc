@@ -15,5 +15,9 @@ class DevSeeder extends Seeder
         foreach ($reports as $report) {
             $report->save();
         }
+
+//        $user = \App\User::where('steam32', 'STEAM_1:0:72120179');
+//        $rootRole = \PHPZen\LaravelRbac\Model\Role::where('slug', 'root');
+//        $user->roles()->attach($rootRole->id);
     }
 }

@@ -6,37 +6,39 @@ class SModuleSeeder extends Seeder
 {
     protected $module = [
         [
-            'name' => 'report_system',
+            'name' => 'Report System',
             'description' => 'Reporting system that allows you to create reports',
             'version' => '1.0',
+            'slug' => 'report_system',
             'is_enabled' => true,
             'menu_items' => [
                 [
                     'text' => '<i class="fas fa-flag"></i> Подать жалобу',
-                    'route' => 'page.reports.panel',
+                    'route' => 'report.add',
                     'route_params' => null,
                     'access' => null,
                     'access_params' => null,
                     'child' => null,
                     'position' => 4,
-                    'type' => 'main'
+                    'type' => \App\MenuItem::ITEM_TYPE_MAIN
                 ],
                 [
                     'text' => '<i class="fas fa-angry"></i> Репорты',
-                    'route' => '#',
+                    'route' => 'dev',
                     'route_params' => null,
                     'access' => 'permission',
                     'access_params' => 'page.reports.panel',
                     'child' => null,
                     'position' => 4,
-                    'type' => 'adminpanel'
+                    'type' => \App\MenuItem::ITEM_TYPE_ADMIN
                 ]
             ]
         ],
         [
-            'name' => 'rules_list',
+            'name' => 'Rules List',
             'description' => 'Game project rules list',
             'version' => '1.0',
+            'slug' => 'rules_list',
             'is_enabled' => true,
             'menu_items' => [
                 [
@@ -47,14 +49,15 @@ class SModuleSeeder extends Seeder
                     'access_params' => null,
                     'child' => null,
                     'position' => 3,
-                    'type' => 'main'
+                    'type' => \App\MenuItem::ITEM_TYPE_MAIN
                 ],
             ]
         ],
         [
-            'name' => 'players_rating',
+            'name' => 'Players Rating',
             'description' => 'Rating of players on game servers',
             'version' => '1.0',
+            'slug' => 'players_rating',
             'is_enabled' => true,
             'menu_items' => [
                 [
@@ -65,7 +68,7 @@ class SModuleSeeder extends Seeder
                     'access_params' => null,
                     'child' => null,
                     'position' => 2,
-                    'type' => 'main'
+                    'type' => \App\MenuItem::ITEM_TYPE_MAIN
                 ],
             ]
         ]
@@ -78,6 +81,7 @@ class SModuleSeeder extends Seeder
             $siteModule->name = $module['name'];
             $siteModule->description = $module['description'];
             $siteModule->version = $module['version'];
+            $siteModule->slug = $module['slug'];
             $siteModule->is_enabled = $module['is_enabled'];
             $siteModule->save();
 

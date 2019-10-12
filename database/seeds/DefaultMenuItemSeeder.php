@@ -12,7 +12,7 @@ class DefaultMenuItemSeeder extends Seeder
             'access' => 'auth',
             'access_params' => true,
             'position' => 1,
-            'type' => 'main',
+            'type' => \App\MenuItem::ITEM_TYPE_MAIN,
             'child' => [
                 'text' => '<i class="fas fa-user"></i> Профиль',
                 'route' => 'auth',
@@ -20,7 +20,7 @@ class DefaultMenuItemSeeder extends Seeder
                 'access' => null,
                 'access_params' => null,
                 'position' => 1,
-                'type' => 'main',
+                'type' => \App\MenuItem::ITEM_TYPE_MAIN,
             ]
         ],
         [
@@ -30,7 +30,7 @@ class DefaultMenuItemSeeder extends Seeder
             'access' => 'permission',
             'access_params' => 'page.admin.panel',
             'position' => 1,
-            'type' => 'adminpanel',
+            'type' => \App\MenuItem::ITEM_TYPE_ADMIN,
             'child' => null
         ],
         [
@@ -40,7 +40,7 @@ class DefaultMenuItemSeeder extends Seeder
             'access' => 'permission',
             'access_params' => 'page.settings',
             'position' => 2,
-            'type' => 'adminpanel',
+            'type' => \App\MenuItem::ITEM_TYPE_ADMIN,
             'child' => null
         ],
         [
@@ -50,7 +50,7 @@ class DefaultMenuItemSeeder extends Seeder
             'access' => 'permission',
             'access_params' => 'page.tools',
             'position' => 3,
-            'type' => 'adminpanel',
+            'type' => \App\MenuItem::ITEM_TYPE_ADMIN,
             'child' => null
         ],
 

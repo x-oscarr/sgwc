@@ -7,6 +7,7 @@ class PModuleSeeder extends Seeder
     protected $plugins = [
         [
             'name' => 'Shop',
+            'description' => '',
             'plugin' => 'shop',
             'server_id' => 1,
             'db_host' => 'localhost',
@@ -18,6 +19,7 @@ class PModuleSeeder extends Seeder
         ],
         [
             'name' => 'VIP',
+            'description' => '',
             'plugin' => 'vip_riko',
             'server_id' => 1,
             'db_host' => 'localhost',
@@ -29,6 +31,7 @@ class PModuleSeeder extends Seeder
         ],
         [
             'name' => 'LK',
+            'description' => '',
             'plugin' => 'lk_1mpulse',
             'server_id' => 1,
             'db_host' => 'localhost',
@@ -40,6 +43,7 @@ class PModuleSeeder extends Seeder
         ],
         [
             'name' => 'LR',
+            'description' => '',
             'plugin' => 'levelranks',
             'server_id' => 1,
             'db_host' => 'localhost',
@@ -51,6 +55,7 @@ class PModuleSeeder extends Seeder
         ],
         [
             'name' => 'Shavit',
+            'description' => '',
             'plugin' => 'shavit',
             'server_id' => 1,
             'db_host' => 'localhost',
@@ -67,6 +72,7 @@ class PModuleSeeder extends Seeder
         foreach ($this->plugins as $plugin) {
             DB::table('plugin_modules')->insert([
                 'name' => $plugin['name'],
+                'description' => $plugin['description'],
                 'server_id' => $plugin['server_id'],
                 'plugin' => $plugin['plugin'],
                 'db' => $plugin['db'],

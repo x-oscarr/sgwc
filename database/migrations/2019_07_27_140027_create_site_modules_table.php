@@ -18,6 +18,7 @@ class CreateSiteModulesTable extends Migration
             $table->string('name');
             $table->text('description')->nullable(true);
             $table->string('version')->nullable(true);
+            $table->string('slug');
             $table->boolean('is_enabled')->default(true);
         });
     }

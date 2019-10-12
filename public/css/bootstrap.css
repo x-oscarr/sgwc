@@ -4186,7 +4186,10 @@ input[type="button"].btn-block {
 
 .custom-select option,
 .custom-select-sm option,
-.custom-select-lg option {
+.custom-select-lg option,
+.custom-select optgroup,
+.custom-select-sm optgroup,
+.custom-select-lg optgroup{
     background: #333333;
 }
 

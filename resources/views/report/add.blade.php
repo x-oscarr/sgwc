@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-2 mb-3">
                         {!! Form::label('date', 'Report date') !!}
                         {!! Form::date('date', \Carbon\Carbon::now(), [
                             'class' => 'form-control '.($errors->any() ? $errors->has('date') ? 'is-invalid' : 'is-valid' : ""),
@@ -71,6 +71,17 @@
                             </div>
                         @endif
                     </div>
+                    @if($rules_module && $rules_option)
+                        <div class="col-md-8 mb-3">
+                            {!! Form::label('rule', 'Violation of the rule (if need)') !!}
+                            {!! Form::select('rule', array(null => 'Choose rule') + $rules_option, null, ['class' => 'custom-select']) !!}
+                            @if($errors->has('time'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('rule') }}
+                                </div>
+                            @endif
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     {!! Form::textarea('info', null, [

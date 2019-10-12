@@ -17,40 +17,46 @@
 {{--                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Повседневная практика показывает, что дальнейшее развитие различных форм деятельности требуют от нас анализа модели развития. Задача организации, в особенности же рамки и место обучения кадров позволяет оценить значение соответствующий условий активизации. Задача организации, в особенности же постоянный количественный рост и сфера нашей активности требуют от нас анализа дальнейших направлений развития. Разнообразный и богатый опыт реализация намеченных плановых заданий представляет собой интересный эксперимент проверки форм развития.</div>--}}
 {{--            </div>--}}
 {{--        </div>--}}
-        @foreach($primary_categories as $category)
-            <h3 class="text-center">{{ $category->title }}</h3>
-            <div class="blockcontent-list" id="{{ $category->slug }}">
-                <div class="body">
-                    @php $sub_num = 1 @endphp
-                    @foreach($category->subCategory as $subCategory)
-                        <div class="sub-category">
-                            <div class="head">{{ $subCategory->title }}</div>
-                            @php $rule_num = 1 @endphp
-                            @foreach($subCategory->rules as $rule)
-                                <div class="element">
-                                    <div>
-                                        <span>{{ $sub_num }}.{{ $rule_num++ }}</span>
-                                        {{ $rule->text }}
+        @if($primary_categories)
+            @foreach($primary_categories as $category)
+                <h3 class="text-center">{{ $category->title }}</h3>
+                <div class="blockcontent-list" id="{{ $category->slug }}">
+                    <div class="body">
+                        @php $sub_num = 1 @endphp
+                        @foreach($category->subCategory as $subCategory)
+                            <div class="sub-category">
+                                <div class="head">{{ $subCategory->title }}</div>
+                                @php $rule_num = 1 @endphp
+                                @foreach($subCategory->rules as $rule)
+                                    <div class="element">
+                                        <div>
+                                            <span>{{ $sub_num }}.{{ $rule_num++ }}</span>
+                                            {{ $rule->text }}
+                                        </div>
+                                        <small>{{ $rule->penalty ?? null }}</small>
                                     </div>
-                                    <small>{{ $rule->penalty ?? null }}</small>
-                                </div>
-                            @endforeach
-                            @php $sub_num++ @endphp
-                        </div>
-                    @endforeach
+                                @endforeach
+                                @php $sub_num++ @endphp
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @else
+            <h3 class="text-center">Rules not find :(</h3>
+        @endif
     </section>
 @endsection
 
-@section('sidebar')
-    @foreach($primary_categories as $category)
-    <a href="{{ route('rules.list').'#'.$category->slug }}">
-        <span class="sidebar-description">{{ $category->title }}</span>
-    </a>
-    @endforeach
-@endsection
+@if($primary_categories)
+    @section('sidebar')
+        @foreach($primary_categories as $category)
+        <a href="{{ route('rules.list').'#'.$category->slug }}">
+            <span class="sidebar-description">{{ $category->title }}</span>
+        </a>
+        @endforeach
+    @endsection
+@endif
 
 @section('javascript')
     <script>
