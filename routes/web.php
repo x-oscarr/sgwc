@@ -38,6 +38,7 @@ Route::group(['prefix' => 'report'], function () {
     Route::get('my-violations', 'ReportController@myViolations')->name('report.my-violations');
     Route::get('{id}', 'ReportController@single')->name('report.single');
     Route::get('panel', ['uses' => 'ReportController@adminpannel', 'middleware' => 'site.module:report'])->name('report.panel');
+    Route::post('{id}/dispute', 'ReportController@dispute')->name('report.dispute');
 });
 
 //Rules Controller

@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Report', 'perpetrator_id', 'id');
     }
+
+    public static function findUser($string)
+    {
+
+    }
 }

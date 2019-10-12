@@ -5030,7 +5030,7 @@ input[type="button"].btn-block {
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
+    /*border-radius: 0.25rem;*/
 }
 
 .card > hr {
@@ -6380,9 +6380,10 @@ a.close.disabled {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: #fff;
+    background-color: var(--modal-window-background, #18191c);
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--modal-window-color, #fff);
     outline: 0;
 }
 
@@ -6415,7 +6416,7 @@ a.close.disabled {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 1rem 1rem;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: var(--modal-window-border, 1px solid #33353a);
     border-top-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
 }
@@ -6426,6 +6427,7 @@ a.close.disabled {
 }
 
 .modal-title {
+    color: var(--modal-window-color, #fff);
     margin-bottom: 0;
     line-height: 1.5;
 }
@@ -6449,7 +6451,7 @@ a.close.disabled {
     -ms-flex-pack: end;
     justify-content: flex-end;
     padding: 1rem;
-    border-top: 1px solid #dee2e6;
+    border-top: var(--modal-window-border, 1px solid #33353a);
     border-bottom-right-radius: 0.3rem;
     border-bottom-left-radius: 0.3rem;
 }

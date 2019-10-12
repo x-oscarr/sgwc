@@ -32,9 +32,9 @@
                     <div class="col-md-3 mb-3">
                         {!! Form::select('status', [
                             null => 'All statuses',
-                            'new' => 'New',
-                            true => 'Accepted',
-                            false => 'Denied'
+                            \App\Report::STATUS_NEW => 'New',
+                            \App\Report::STATUS_ACCEPTED => 'Accepted',
+                            \App\Report::STATUS_DENIED => 'Denied'
                         ], app('request')->get('status') ?? null, ['class' => 'custom-select']) !!}
                     </div>
                 </div>
@@ -66,12 +66,12 @@
                 @foreach($reports as $report)
                     <a class="blockcontent row text-decoration-none blockcontent-hover" href="{{ route('report.single', $report->id) }}">
                         <div class="col-sm-2 col-md-1 d-none d-sm-block">
-                            @if($report->status === 1)
-                                <span class="badge badge-success">accepted</span>
-                            @elseif($report->status === 0)
-                                <span class="badge badge-danger">denied</span>
-                            @elseif($report->status === null)
+                            @if($report->status === \App\Report::STATUS_NEW)
                                 <span class="badge badge-light">new</span>
+                            @elseif($report->status === \App\Report::STATUS_ACCEPTED)
+                                <span class="badge badge-success">accepted</span>
+                            @elseif($report->status === \App\Report::STATUS_DENIED)
+                                <span class="badge badge-danger">denied</span>
                             @endif
                         </div>
                         <div class="col-12 col-sm-7 col-lg-7">
@@ -81,16 +81,16 @@
                             </span>
                         </div>
                         <div class="col-4 d-block d-sm-none mt-2">
-                            @if($report->status === 1)
-                                <span class="badge badge-success">accepted</span>
-                            @elseif($report->status === 0)
-                                <span class="badge badge-danger">denied</span>
-                            @elseif($report->status === null)
+                            @if($report->status === \App\Report::STATUS_NEW)
                                 <span class="badge badge-light">new</span>
+                            @elseif($report->status === \App\Report::STATUS_ACCEPTED)
+                                <span class="badge badge-success">accepted</span>
+                            @elseif($report->status === \App\Report::STATUS_DENIED)
+                                <span class="badge badge-danger">denied</span>
                             @endif
                         </div>
                         <div class="col-4 col-sm-3 col-lg-2 mt-2 mt-sm-0">
-                            <span>{{ $report->type }}</span>
+                            <span>{{ $report->created_at }}</span>
                         </div>
                         <div class="col-4 col-lg-2 d-inline-block d-sm-none d-lg-inline-block mt-2 mt-sm-0">
                             <span>{{ Str::limit($report->perpetrator_name, 20), '...' }}</span>

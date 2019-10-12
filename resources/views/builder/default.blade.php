@@ -17,4 +17,6 @@
             </style>
         @endif
     </div>
+
+    @yield('modal.window')
 @endsection

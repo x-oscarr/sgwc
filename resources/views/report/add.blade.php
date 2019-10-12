@@ -16,10 +16,10 @@
                     <div class="col-md-3 mb-3">
                         {!! Form::label('type', 'Report type') !!}
                         {!! Form::select('type', [
-                            'player_report' => 'Complaint on player',
-                            'admin_report' => 'Complaint on admin',
-                            'bug_report' => 'Bug report',
-                            'tech_report' => 'Technical problems'
+                            \App\Report::TYPE_PLAYER_REPORT => 'Complaint on player',
+                            \App\Report::TYPE_ADMIN_REPORT => 'Complaint on admin',
+                            \App\Report::TYPE_BUG_REPORT => 'Bug report',
+                            \App\Report::TYPE_TECH_REPORT=> 'Technical problems'
                         ], null, ['class' => 'custom-select']) !!}
                     </div>
                     <div class="col-md-3 mb-3">

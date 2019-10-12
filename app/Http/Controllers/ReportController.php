@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Report;
+use App\ReportDispute;
 use App\RulesCategory;
 use App\SiteModule;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -27,8 +29,9 @@ class ReportController extends Controller
                 $qb->where('id', $request->get('id'));
             }
             else {
-                $request->get('type') ? $qb->where('type', $request->get('type')) : null;
                 $request->get('server') ?  $qb->where('server_id', $request->get('server')) : null;
+                $request->get('status') ? $qb->where('status', $request->get('status')) : null;
+                $request->get('status') ? $qb->where('status', $request->get('status')) : null;
                 if($request->get('date')) {
                     $date = Carbon::parse($request->get('date'))->format('Y-m-d');
                     $qb->whereDate('time', $date)
@@ -73,7 +76,7 @@ class ReportController extends Controller
         if($request->all()) {
             $validator = Validator::make(Input::all(), [
                 'sender'  => 'required|max:50',
-                'perpetrator' => 'max:50'.($request->get('type') == 'player_report' || $request->get('type') == 'admin_report' ? '|required' : ''),
+                'perpetrator' => 'max:50'.($request->get('type') == Report::TYPE_PLAYER_REPORT || $request->get('type') == Report::TYPE_ADMIN_REPORT ? '|required' : ''),
                 'date' => 'required',
                 'time' => 'required',
                 'info' => 'required|min:30|max:600',
@@ -128,7 +131,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function single($id)
+    public function single($id, Request $request)
     {
         $report = Report::findOrFail($id);
         $server = $report->server;
@@ -144,13 +147,24 @@ class ReportController extends Controller
         $perpetrator = $report->perpetrator_name;
         isSteamId($report->perpetrator_auth) ? $perpetrator_url = route('steamid', $report->perpetrator_auth) : null;
 
+        if ($report->dispute) {
+            $isSendDispute = true;
+        }
+        if($report->perpetrateByUser == Auth::user() || $report->perpetraror_auth == Auth::user()->steam32) {
+            $isUserPerpetrator = true;
+        }
+
+
         return view('report/single', [
+            'id' => $id,
             'report' => $report,
             'server' => $server,
             'sender' => $sender,
             'perpetrator' => $perpetrator,
             'sender_url' => $sender_url ?? null,
-            'perpetrator_url' => $perpetrator_url ?? null
+            'perpetrator_url' => $perpetrator_url ?? null,
+            'is_send_dispute' => $isSendDispute ?? null,
+            'is_user_perpetrator' => $isUserPerpetrator ?? null
         ]);
     }
 
@@ -164,5 +178,37 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         dd($user->perpetrateByUser);
+    }
+
+    public function dispute(Request $request)
+    {
+        if($request->ajax() && $request->all()) {
+            $validator = Validator::make(Input::all(), [
+                'info' => 'required|min:30|max:600',
+                'image' => 'image|max:2048'
+            ]);
+            $validator->validate();
+
+            if (!$validator->fails()) {
+                $valid_data = $validator->valid();
+
+                $dispute = new ReportDispute();
+                $dispute->report_id = $valid_data['id'];
+                $dispute->info = $valid_data['info'];
+
+                if($request->hasFile('image')) {
+                    dd($request->file('image')->store('report', 'public'));
+                    $path = $request->file('image')->store('dispute', 'public');
+                    $dispute->file = Storage::url($path);
+                }
+
+                if($dispute->save()) {
+                    return \response()->json(['status' => true], '200');
+                }
+
+                return \response()->json(['status' => false, 'error' => 'Failed to load data into the database.'], '500');
+            }
+        }
+        return \response()->json(['error'], '500');
     }
 }

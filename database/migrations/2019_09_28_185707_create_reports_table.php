@@ -25,7 +25,7 @@ class CreateReportsTable extends Migration
             $table->string('perpetrator_auth')->nullable(true);
             $table->integer('perpetrator_id')->unsigned()->nullable(true);
             $table->string('file')->nullable(true);
-            $table->boolean('status')->nullable(true);
+            $table->integer('status')->default(1);
             $table->boolean('is_anon')->default(false);
             $table->integer('rule_id')->unsigned()->nullable(true);
             $table->timestamp('time');
