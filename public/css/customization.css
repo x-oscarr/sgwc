@@ -73,9 +73,19 @@
     --font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+    --border-primary: 3px solid #512da8;
+
+
     --modal-window-background: #18191c;
     --modal-window-color: #fff;
     --modal-window-border: 1px solid #33353a;
+
+    --card-background: #232528;
+    --card-header-background: rgba(0, 0, 0, 0.08);
+    --card--color: #fff;
+    --card--border: 1px solid #33353a;
+
+    --jumbotron-background: #232528;
 
     --rgba-success: rgba(40, 182, 44, 0.9);
     --rgba-success-btn: rgba(72, 193, 76, 0.5);

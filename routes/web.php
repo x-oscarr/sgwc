@@ -46,15 +46,18 @@ Route::get('rules', 'RulesController@index')->name('rules.list');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/panel', [
-        'uses' => 'Adminpanel@index',
+        'uses' => 'AdminpanelController@index',
         'middleware' => ['auth', 'rbac:can,page.admin.panel']
     ]);
-    Route::get('/settings', [
-        'uses' => 'Settings@index',
-        'middleware' => ['auth', 'rbac:can,page.settings']
-    ]);
+    Route::group(['prefix' => 'settings', 'middleware' => ['auth', 'rbac:can,page.settings']], function () {
+        Route::get('/', 'SettingsController@index')->name('settings');
+        Route::get('/servers', 'SettingsController@servers')->name('settings.servers');
+        Route::get('/design', 'SettingsController@design')->name('settings.design');
+        Route::get('/web', 'SettingsController@web')->name('settings.web');
+    });
+
     Route::get('/tools', [
-        'uses' => 'Tools@index',
+        'uses' => 'ToolsController@index',
         'middleware' => ['auth', 'rbac:can,page.tools']
     ]);
 });
