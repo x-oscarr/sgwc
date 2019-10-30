@@ -58,6 +58,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/donate', 'SettingsController@web')->name('settings.donate');
         Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('settings.update.menu.item');
         Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('settings.get.menu.item');
+        Route::post('/update-settings', 'SettingsController@updateSettings')->name('settings.update');
     });
 
     Route::get('/tools', [

@@ -14,8 +14,8 @@ class SettingSeeder extends Seeder
             'value' => '• SGWC •'
         ],
         [
-            'parameter' => 'Ftitle',
-            'value' => 'SGWC Footer'
+            'parameter' => 'projectName',
+            'value' => 'Source Game Web Constructor'
         ],
         [
             'parameter' => 'Preloader',
