@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/builder.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700">
     @yield('css')
 

@@ -3,7 +3,7 @@
 @section('content')
     <section>
 
-{{--        <div class="d-block d-md-flex">--}}
+{{--        <div class="d-builder d-md-flex">--}}
 {{--            <div class="nav flex-md-column mb-3 mb-md-0 nav-pills" id="v-pills-tab" role="tablist">--}}
 {{--                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" role="tab" href="#v-pills-home" aria-controls="v-pills-home" aria-selected="true">{{ Str::limit('Rules for administrators', '25', '...') }}</a>--}}
 {{--                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" role="tab" href="#v-pills-profile" aria-controls="v-pills-profile" aria-selected="false">Profile</a>--}}

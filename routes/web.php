@@ -54,6 +54,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/servers', 'SettingsController@servers')->name('settings.servers');
         Route::get('/design', 'SettingsController@design')->name('settings.design');
         Route::get('/web', 'SettingsController@web')->name('settings.web');
+        Route::get('/seo', 'SettingsController@seo')->name('settings.seo');
+        Route::get('/donate', 'SettingsController@web')->name('settings.donate');
+        Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('settings.update.menu.item');
+        Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('settings.get.menu.item');
     });
 
     Route::get('/tools', [

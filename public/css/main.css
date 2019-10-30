@@ -455,16 +455,27 @@ section, .blockcontent {
 .tasks-wrapper{
     overflow: hidden;
     width: 100%;
+    padding: 0 0 10px;
+    color: white;
 }
-.task, .task-title{
+.task{
     box-sizing: border-box;
     padding: 10px 15px;
-    width: 98%;
+    width: 100%;
+    color: white;
+    cursor: grab;
+}
+
+.task, .task-title, .task-hr{
     background: #161619;
 }
 
 .task-title {
-    padding-bottom: 20px;
+    padding: 15px;
+}
+
+.task-hr {
+    padding: 1px 15px;
 }
 
 .over {
@@ -533,6 +544,13 @@ label.preloader-load {
 
 .color-scheme-block span {
     margin: 10px;
+}
+
+#menuItemText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 /*.table-def {*/
 /*    width: 100%;*/
