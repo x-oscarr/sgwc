@@ -1,3 +1,8 @@
+/************************* Index ************************/
+$(document).ready(function () {
+
+});
+
 // Inputs
 $("input[name='pTitle'], input[name='gTitle'], input[name='projectName']").change(function () {
     //console.log(this.value);
@@ -27,21 +32,20 @@ $(".task").click(function () {
 
             let menuItem = response.menuItem;
             let childItem = response.childMenuItem;
-
             // parent Item
-            $("#menuItemForm select[name='siteModule']").val(menuItem.site_module_id);
-            $("#menuItemForm select[name='access']").val(menuItem.access);
+            $("select[name='siteModule']").val(menuItem.site_module_id);
+            $("select[name='access']").val(menuItem.access);
+            $("select[name='route']").val(menuItem.route);
             $("input[name='itemId']").val(menuItem.id);
             $("input[name='text']").val(menuItem.text);
             $("input[name='accessParams']").val(menuItem.access_params);
-            $("input[name='route']").val(menuItem.route);
             $("input[name='routeParams']").val(menuItem.route_params);
 
             //child Item
             if (childItem) {
+                $("select[name='childRoute']").val(childItem.route);
                 $("input[name='itemChild']").val(true);
                 $("input[name='childText']").val(childItem.text);
-                $("input[name='childRoute']").val(childItem.route);
                 $("input[name='childRouteParams']").val(childItem.route_params);
 
                 $("#childItemForm").show();
@@ -146,6 +150,18 @@ $("#childItemDelete").click(function () {
     });
 });
 
+function updatePositionItems() {
+    let menuItem = $('.task');
+    menuItemsPosition = [];
+    for (let i = 0; i < menuItem.length; i++) {
+        //console.log('position = '+i+'; id = '+$(menuItem[i-1]).data('id'));
+        menuItemsPosition.push({
+            "id": $(menuItem[i]).data('id'),
+            "position": i + 1
+        });
+    }
+    return menuItemsPosition;
+}
 
 function sendItemData(data) {
     return (new Promise(function (resolve, reject) {
@@ -158,19 +174,6 @@ function sendItemData(data) {
             error: reject,
         });
     }));
-}
-
-function updatePositionItems() {
-    let menuItem = $('.task');
-    menuItemsPosition = [];
-    for (let i = 0; i < menuItem.length; i++) {
-        //console.log('position = '+i+'; id = '+$(menuItem[i-1]).data('id'));
-        menuItemsPosition.push({
-            "id": $(menuItem[i]).data('id'),
-            "position": i + 1
-        });
-    }
-    return menuItemsPosition;
 }
 
 function sendSettings(data) {

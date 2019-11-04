@@ -16,6 +16,7 @@
                 .content-grid {grid-template-columns: auto;}
             </style>
         @endif
+        @include('builder.footer')
     </div>
 
     @yield('modal.window')

@@ -109,8 +109,8 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     {!! Form::label('route', 'Route name') !!}
-                                    {!! Form::text('route',null, [
-                                        'class' => 'form-control'
+                                    {!! Form::select('route', $routeList, null, [
+                                            'class' => 'custom-select'
                                     ]) !!}
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
@@ -134,8 +134,8 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     {!! Form::label('childRoute', 'Route name') !!}
-                                    {!! Form::text('childRoute',null, [
-                                        'class' => 'form-control'
+                                    {!! Form::select('childRoute', $routeList, null, [
+                                            'class' => 'custom-select'
                                     ]) !!}
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
@@ -260,9 +260,8 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('newRoute', 'Route name') !!}
-                        {!! Form::text('newRoute',null, [
-                            'class' => 'form-control',
-                            'placeholder' => 'admin.settings'
+                        {!! Form::select('newRoute', array(null => '<Select url>') + $routeList, null, [
+                            'class' => 'custom-select'
                         ]) !!}
                     </div>
                     <div class="form-group">
@@ -316,9 +315,8 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('newChildRoute', 'Route name') !!}
-                        {!! Form::text('newChildRoute',null, [
-                            'class' => 'form-control',
-                            'placeholder' => 'admin.settings'
+                        {!! Form::select('newChildRoute', array(null => '<Select url>') + $routeList, null, [
+                            'class' => 'custom-select'
                         ]) !!}
                     </div>
                     <div class="form-group">
@@ -340,10 +338,8 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <script type="text/javascript">
-
         // Texts
         let modalCreateItemText = '<h2 class="text-center">Success! <i class="fas fa-check text-success"></i></h2><p class="text-center">Child menu item successfully create</p>';
         let modalCreateChildItemText = '<h2 class="text-center">Success! <i class="fas fa-check text-success"></i></h2><p class="text-center">Child menu item successfully create</p>';
@@ -355,7 +351,6 @@
         let routeGetMenuItem = '{{ route("settings.get.menu.item") }}';
         let routeUpdateMenuItem = '{{ route("settings.update.menu.item") }}';
         let routeUpdateSettings = '{{ route("settings.update") }}';
-
 
         $('#updateItemForm').hide();
         $('#menuItemLoader').hide();
@@ -381,7 +376,6 @@
                 //ui.draggable[0] - перетаскиваемый
                 //console.log(ui.draggable[0]);
                 $(e.target).after(ui.draggable[0]);
-
                 $(this).removeClass("over");
             },
             over: function (e, ui) {

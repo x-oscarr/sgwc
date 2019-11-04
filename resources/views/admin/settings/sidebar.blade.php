@@ -1,4 +1,4 @@
-<a href="{{ route('settings') }}">
+<a href="{{ route('settings.index') }}">
     <i class="fas fa-home"></i>
     <span class="sidebar-description">General</span>
 </a>

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Monitoring;
 use App\MenuItem;
+use App\PluginModule;
+use App\Server;
 use App\Setting;
 use App\SiteModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class SettingsController extends Controller
 {
@@ -19,17 +23,31 @@ class SettingsController extends Controller
             $siteModulesOptions[$siteModule->id] = $siteModule->name;
         }
 
+        $routeCollection = Route::getRoutes();
+        foreach ($routeCollection as $route) {
+            if($route->getName()) {
+                $routeList[$route->getName()] = $route->uri();
+            }
+        }
+
         return view('admin.settings.index', [
             'siteModulesOptions' => $siteModulesOptions,
+            'routeList' => $routeList
         ]);
     }
 
-    public function servers()
+    public function servers(Monitoring $monitoring)
     {
+        $servers = Server::all();
+        foreach ($servers as $server) {
+            $serversMonitoring[$server->id] = $monitoring->Online($server->ip, $server->port);
+        }
 
+        $pluginModules = PluginModule::all();
 
         return view('admin.settings.servers', [
-
+            'serversMonitoring' => $serversMonitoring,
+            'pluginModules' => $pluginModules
         ]);
     }
 
@@ -44,10 +62,9 @@ class SettingsController extends Controller
 
     public function web()
     {
-
-
+        $siteModules = SiteModule::all();
         return view('admin.settings.web', [
-
+            'siteModules' => $siteModules
         ]);
     }
 
@@ -68,6 +85,67 @@ class SettingsController extends Controller
     public function donate()
     {
         return 'dev';
+    }
+
+    public function getPM(Request $request) {
+        $id = $request->get('id');
+        if($id) {
+            $pluginModule = PluginModule::find($id);
+            if($pluginModule) {
+                return \response()->json(['status' => true, 'pluginModule' => $pluginModule], '200');
+            }
+            else {
+                $error = 'Plugin module';
+            }
+        }
+        return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
+    }
+
+    public function updateServers(Request $request) {
+        $serversDataArr = $request->get('serversData');
+        if($serversDataArr) {
+            foreach ($serversDataArr as $serverFormData) {
+                if ($serverFormData['name'] == '_token') continue;
+                $parseInput = explode('_', $serverFormData['name'], 2);
+                $id = $parseInput[1] ?? null;
+                $name = $parseInput[0] ?? null;
+                $value = $serverFormData['value'];
+                $serversData[$id][$name] = $value;
+            }
+            foreach ($serversData as $key => $serverData) {
+                $server = Server::find($key);
+                $server->ip = $serverData['ip'];
+                $server->port = $serverData['port'];
+                $server->display = $serverData['display'];
+                $server->monitoring = $serverData['monitoring'];
+                $server->save();
+            }
+
+            return \response()->json(['status' => true], '200');
+        }
+    }
+
+    public function updatePM(Request $request)
+    {
+        $id = $request->get('id');
+        $value = $request->get('value');
+        if($id) {
+            $pluginModule = PluginModule::find($id);
+            if($pluginModule) {
+                $pluginModule->is_enabled = $value ?? 0;
+                $saveResult = $pluginModule->save();
+                if($saveResult) {
+                    return \response()->json(['status' => true], '200');
+                }
+                else {
+                    $error = 'Save error';
+                }
+            }
+            else {
+                $error = 'Not found plugin module';
+            }
+        }
+        return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
     }
 
     public function updateSettings(Request $request)

@@ -86,165 +86,69 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/settings.js":
-/*!****************************************!*\
-  !*** ./resources/js/admin/settings.js ***!
-  \****************************************/
+/***/ "./resources/js/admin/servers.js":
+/*!***************************************!*\
+  !*** ./resources/js/admin/servers.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/************************* Index ************************/
-$(document).ready(function () {}); // Inputs
-
-$("input[name='pTitle'], input[name='gTitle'], input[name='projectName']").change(function () {
-  //console.log(this.value);
-  sendSettings({
-    "settingsData": $(this).serializeArray()
-  }).then(function (result) {
-    if (result.status) {}
-  });
-}); // Display menu item form
-
-$(".task").click(function () {
-  $('#menuItemText').hide();
-  $('#updateItemForm').hide();
-  $('#menuItemLoader').show();
-  var menuItemId = $(this).data("id");
-  $.ajax({
-    type: "POST",
-    url: routeGetMenuItem,
-    // dataType: 'json',
-    data: {
-      id: menuItemId
-    },
-    success: function success(response) {
-      var menuItem = response.menuItem;
-      var childItem = response.childMenuItem; // parent Item
-
-      $("select[name='siteModule']").val(menuItem.site_module_id);
-      $("select[name='access']").val(menuItem.access);
-      $("select[name='route']").val(menuItem.route);
-      $("input[name='itemId']").val(menuItem.id);
-      $("input[name='text']").val(menuItem.text);
-      $("input[name='accessParams']").val(menuItem.access_params);
-      $("input[name='routeParams']").val(menuItem.route_params); //child Item
-
-      if (childItem) {
-        $("select[name='childRoute']").val(childItem.route);
-        $("input[name='itemChild']").val(true);
-        $("input[name='childText']").val(childItem.text);
-        $("input[name='childRouteParams']").val(childItem.route_params);
-        $("#childItemForm").show();
-        $("#childItemText").hide();
-      } else {
-        $("input[name='itemChild']").val(false);
-        $("input[name='newChildItemParentId']").val(menuItem.id);
-        $("#parentItemId").html(menuItem.text);
-        $("#childItemText").show();
-        $("#childItemForm").hide();
-      }
-
-      $('#menuItemLoader').hide();
-      $('#updateItemForm').show();
-    },
-    error: function error(response) {
-      console.log(response);
-    }
-  });
-}); // Save item
-
-$("#saveItem").click(function () {
+/************************* Servers ************************/
+// Update servers
+$("#saveServers").click(function () {
   var thisButton = $(this);
-  $(thisButton).html(buttonPreloader + " Saving..."); //console.log($(this));
-
+  $(thisButton).html(buttonPreloader + " Saving...");
   $(thisButton)[0].classList.add("disabled");
-  var itemsPosition = updatePositionItems();
-  sendItemData({
-    "itemData": $("#menuItemForm").serializeArray(),
-    "itemsPosition": itemsPosition
+  sendServers({
+    "serversData": $("#serversForm").serializeArray()
   }).then(function (result) {
+    //console.log(result);
     if (result.status) {
-      $("#saveItem").html(buttonSuccess + " Saved");
+      $("#saveServers").html(buttonSuccess + " Saved");
       setTimeout(function () {
         $(thisButton)[0].classList.remove('disabled');
         $(thisButton).html("Save changes");
-      }, 1000); //location.reload();
+      }, 1000);
     }
   });
-}); // Add item
+}); // Enable/Disable plugin module
 
-$("#submitItem").click(function () {
-  $('#submitItem').hide();
-  var itemForm = $("#addItemForm").serializeArray();
-  $('#modalAddItemBody').html(modalPreloader);
-  sendItemData({
-    "newItemData": itemForm
+$(".pmEnable").change(function () {
+  var pmId = $(this).data('id');
+  var pmEnable = $(this).prop('checked');
+  sendPModules({
+    'id': pmId,
+    'value': pmEnable ? 1 : 0
   }).then(function (result) {
     if (result.status) {
-      $('#modalAddItemBody').html(modalCreateItemText);
-      setTimeout(function () {
-        location.reload();
-      }, 1500);
+      $('#pmStatus_' + pmId).html(pmEnable ? pmStatusEnable : pmStatusDisable);
     }
   });
-}); // Add Child Item
+}); //Get Plugin Modules Data
 
-$("#submitChildItem").click(function () {
-  $('#submitChildItem').hide();
-  var itemChildForm = $("#addChildItemForm").serializeArray();
-  $('#modalAddChildItemBody').html(modalPreloader);
-  sendItemData({
-    "itemChildData": itemChildForm
+$(".pmSettings").click(function () {
+  var pmId = $(this).data('id');
+  getPModules({
+    'id': pmId
   }).then(function (result) {
     if (result.status) {
-      $('#modalAddChildItemBody').html(modalCreateItemText);
-      setTimeout(function () {
-        location.reload();
-      }, 1500);
-    }
-  });
-}); // Delete Item
-
-$("#menuItemDelete").click(function () {
-  sendItemData({
-    "itemDelete": $("#menuItemForm").serializeArray()
-  }).then(function (result) {
-    if (result.status) {
-      location.reload();
-    }
-  });
-}); // Delete child
-
-$("#childItemDelete").click(function () {
-  sendItemData({
-    "childItemDelete": $("#menuItemForm").serializeArray()
-  }).then(function (result) {
-    if (result.status) {
-      location.reload();
+      var pmData = result.pluginModule;
+      $("textarea[name='description']").val(pmData.description);
+      $("input[name='server']").val(pmData.server_id);
+      $("input[name='pmName']").val(pmData.name);
+      $("input[name='dbHost']").val(pmData.db_host);
+      $("input[name='dbUser']").val(pmData.db_username);
+      $("input[name='dbPassword']").val(pmData.db_password);
+      $("input[name='dbName']").val(pmData.db);
     }
   });
 });
 
-function updatePositionItems() {
-  var menuItem = $('.task');
-  menuItemsPosition = [];
-
-  for (var i = 0; i < menuItem.length; i++) {
-    //console.log('position = '+i+'; id = '+$(menuItem[i-1]).data('id'));
-    menuItemsPosition.push({
-      "id": $(menuItem[i]).data('id'),
-      "position": i + 1
-    });
-  }
-
-  return menuItemsPosition;
-}
-
-function sendItemData(data) {
+function sendServers(data) {
   return new Promise(function (resolve, reject) {
     $.ajax({
       type: "POST",
-      url: routeUpdateMenuItem,
+      url: routeServersUpdate,
       // dataType: 'json',
       data: data,
       success: resolve,
@@ -253,12 +157,25 @@ function sendItemData(data) {
   });
 }
 
-function sendSettings(data) {
+function getPModules(data) {
   return new Promise(function (resolve, reject) {
     $.ajax({
       type: "POST",
-      url: routeUpdateSettings,
-      // dataType: 'json',
+      url: routePModuleGet,
+      //dataType: 'json',
+      data: data,
+      success: resolve,
+      error: reject
+    });
+  });
+}
+
+function sendPModules(data) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      type: "POST",
+      url: routePModuleUpdate,
+      //dataType: 'json',
       data: data,
       success: resolve,
       error: reject
@@ -280,13 +197,13 @@ function sendSettings(data) {
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************!*\
-  !*** multi ./resources/js/admin/settings.js ./resources/sass/animations.scss ***!
-  \*******************************************************************************/
+/*!******************************************************************************!*\
+  !*** multi ./resources/js/admin/servers.js ./resources/sass/animations.scss ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/settings.js */"./resources/js/admin/settings.js");
+__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/servers.js */"./resources/js/admin/servers.js");
 module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/sass/animations.scss */"./resources/sass/animations.scss");
 
 

@@ -3,109 +3,85 @@
 @section('content')
     <section>
         <h3 class="blockcontent-title">Servers</h3>
-        {!! Form::open(['files' => true, 'method' => 'post']) !!}
-        <div class="row blockserver mb-4">
-            <div class="col-12 col-md-3 mb-2">
-                <h6>|KTM| Minigame</h6>
-                {!! Form::text('ip', null, [
-                    'class' => 'form-control '.($errors->any() ? $errors->has('pTitle') ? 'is-invalid' : 'is-valid' : ""),
-                    'placeholder' => 'ip address'
-                ]) !!}
-                {!! Form::text('port', null, [
-                    'class' => 'form-control '.($errors->any() ? $errors->has('gTitle') ? 'is-invalid' : 'is-valid' : ""),
-                    'placeholder' => 'port'
-                ]) !!}
-            </div>
-            <div class="col-6 col-md-3 mb-2">
-                <div class="custom-control custom-switch mb-2">
-                    {!! Form::checkbox('monitoring', true, true, ['class' => 'custom-control-input', 'id' => 'monitoring']) !!}
-                    {!! Form::label('monitoring', 'Monitoring', ['class' => 'custom-control-label']) !!}
+        {!! Form::open(['method' => 'post', 'id' => 'serversForm']) !!}
+            @foreach($servers_list as $server)
+                <div class="row blockserver mb-4">
+                    <div class="col-12 col-md-3 mb-2">
+                        <h6>{{ $server->name }}</h6>
+                        {!! Form::text('ip_'.$server->id, $server->ip, [
+                            'class' => 'form-control',
+                            'placeholder' => 'ip address'
+                        ]) !!}
+                        {!! Form::text('port_'.$server->id, $server->port, [
+                            'class' => 'form-control',
+                            'placeholder' => 'port'
+                        ]) !!}
+                    </div>
+                    <div class="col-6 col-md-4 mb-2">
+                        <div class="custom-control custom-switch mb-2">
+                            {!! Form::checkbox('monitoring_'.$server->id, true, $server->display, ['class' => 'custom-control-input', 'id' => 'monitoring_'.$server->id]) !!}
+                            {!! Form::label('monitoring_'.$server->id, 'Monitoring', ['class' => 'custom-control-label']) !!}
+                        </div>
+                        <div class="custom-control custom-switch mb-2">
+                            {!! Form::checkbox('display_'.$server->id, true, $server->monitoring, ['class' => 'custom-control-input', 'id' => 'display_'.$server->id]) !!}
+                            {!! Form::label('display_'.$server->id, 'Display', ['class' => 'custom-control-label']) !!}
+                        </div>
+                        <div class="">Connection: <strong>{{ $serversMonitoring[$server->id]['online'] ? 'Connected' : 'No connection' }}</strong></div>
+                        <div class="">Online:
+                            <strong>
+                                @if($serversMonitoring[$server->id]['online'])
+                                    {{ $serversMonitoring[$server->id]['info']['players'] }} / {{ $serversMonitoring[$server->id]['info']['max_players'] }}
+                                @else
+                                    OFF
+                                @endif
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-5">
+                        <button type="button" class="btn btn-outline-danger server-delete float-right"><i class="fas fa-trash-alt"></i> Delete</button>
+                    </div>
                 </div>
-                <div class="custom-control custom-switch mb-2">
-                    {!! Form::checkbox('display', true, true, ['class' => 'custom-control-input', 'id' => 'display']) !!}
-                    {!! Form::label('display', 'Display', ['class' => 'custom-control-label']) !!}
-                </div>
-                <div class="">Connection: <strong>Connected</strong></div>
-                <div class="">Online: <strong>12 / 25</strong></div>
+            @endforeach
+            <div class="d-flex justify-content-center mt-3">
+                <button type="button" class="btn btn-primary server-add" data-toggle="modal" data-target="#addServer">Add server</button>
+                <button type="button" class="btn btn-secondary server-submit" id="saveServers">Save cahnges</button>
             </div>
-            <div class="col-6">
-                <button type="button" class="btn btn-outline-danger server-delete float-right"><i class="fas fa-trash-alt"></i> Delete</button>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center mt-3">
-            <button type="button" class="btn btn-primary server-add" data-toggle="modal" data-target="#addServer">Add server</button>
-            <button type="button" class="btn btn-secondary server-submit">Save cahnges</button>
-        </div>
         {!! Form::close() !!}
     </section>
     <section>
         <h3 class="blockcontent-title">Plugin modules</h3>
         <div class="row">
-            <div class="col-12 col-md-4">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Shop Minigame <span class="badge badge-success float-right mt-1">Enable</span></div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <div class="pm-card-server-name">|KTM| Minigame</div>
-                            <div class="pm-card-server-addr">186.367.46.346:25554</div>
+            @foreach($pluginModules as $pluginModule)
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="card border-primary mb-4 card-item">
+                        <div class="card-header">{{ $pluginModule->name }}
+                            <span class="float-right" id="pmStatus_{{ $pluginModule->id }}">
+                            @if($pluginModule->is_enabled)
+                                <span class="badge badge-success">Enable</span>
+                            @else
+                                <span class="badge badge-danger">Disable</span>
+                            @endif
+                            </span>
                         </div>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div class="row">
-                            <div class="col-6 custom-control custom-switch">
-                                {!! Form::checkbox('pmEnable', true, true, ['class' => 'custom-control-input', 'id' => 'pmEnable']) !!}
-                                {!! Form::label('pmEnable', 'Enable', ['class' => 'custom-control-label']) !!}
+                        <div class="card-body position-relative">
+                            <div class="mb-3">
+                                <div class="pm-card-server-name">{{ $pluginModule->server['name'] }}</div>
+                                <div class="pm-card-server-addr">{{ $pluginModule->server['ip'] }}:{{ $pluginModule->server['port'] }}</div>
                             </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-outline-primary database-setting" id="pm1" data-toggle="modal" data-target="#pmSettings">Settings</button>
+                            <p class="card-text">{{ Str::limit($pluginModule->description, 70, '...') }}</p>
+                            <div class="d-flex justify-content-between">
+                                <div class="custom-control custom-switch">
+                                    {!! Form::checkbox('pmEnable_'.$pluginModule->id, true, $pluginModule->is_enabled, ['class' => 'custom-control-input pmEnable', 'data-id' => $pluginModule->id,'id' => 'pmEnable_'.$pluginModule->id]) !!}
+                                    {!! Form::label('pmEnable_'.$pluginModule->id, 'Enable', ['class' => 'custom-control-label']) !!}
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-outline-primary pmSettings" data-toggle="modal" data-target="#pmSettings" data-id="{{ $pluginModule->id }}">Settings</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Shop Minigame <span class="badge badge-success float-right mt-1">Enable</span></div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <div class="pm-card-server-name">|KTM| Minigame</div>
-                            <div class="pm-card-server-addr">186.367.46.346:25554</div>
-                        </div>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div class="row">
-                            <div class="col-6 custom-control custom-switch">
-                                {!! Form::checkbox('pmEnable', true, true, ['class' => 'custom-control-input', 'id' => 'pmEnable']) !!}
-                                {!! Form::label('pmEnable', 'Enable', ['class' => 'custom-control-label']) !!}
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-outline-primary database-setting" id="pm1" data-toggle="modal" data-target="#pmSettings">Settings</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Shop Minigame <span class="badge badge-success float-right mt-1">Enable</span></div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <div class="pm-card-server-name">|KTM| Minigame</div>
-                            <div class="pm-card-server-addr">186.367.46.346:25554</div>
-                        </div>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div class="row">
-                            <div class="col-6 custom-control custom-switch">
-                                {!! Form::checkbox('pmEnable', true, true, ['class' => 'custom-control-input', 'id' => 'pmEnable']) !!}
-                                {!! Form::label('pmEnable', 'Enable', ['class' => 'custom-control-label']) !!}
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-outline-primary database-setting" id="pm1" data-toggle="modal" data-target="#pmSettings">Settings</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection
@@ -124,14 +100,14 @@
                 <div class="modal-body">
                     <div class="form-group">
                         {!! Form::label('server', 'Server') !!}
-                        {!! Form::select('server', ['1' => '|KTM|Minigame'], null, [
-                            'class' => 'form-control',
+                        {!! Form::select('server', $servers_arr, null, [
+                            'class' => 'custom-select'
                         ]) !!}
                         <div class="invalid-feedback" id="feedback-server"></div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('name', 'Module info') !!}
-                        {!! Form::text('name', null, [
+                        {!! Form::label('pmName', 'Module name') !!}
+                        {!! Form::text('pmName', null, [
                             'class' => 'form-control',
                             'placeholder' => 'Plugin Module'
                         ]) !!}
@@ -197,8 +173,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        {!! Form::label('name', 'Server name') !!}
-                        {!! Form::text('name', null, [
+                        {!! Form::label('serverName', 'Server name') !!}
+                        {!! Form::text('serverName', null, [
                             'class' => 'form-control',
                             'placeholder' => 'My new server'
                         ]) !!}
@@ -248,4 +224,20 @@
 
 @section('sidebar')
     @include('admin.settings.sidebar')
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        // Routes
+        let routeServersUpdate = "{{ route('settings.servers.update') }}";
+        let routePModuleUpdate = "{{ route('settings.pm.update') }}";
+        let routePModuleGet = "{{ route('settings.pm.get') }}";
+        // Texts
+        let buttonPreloader = '<i class="fas fa-spinner fa-pulse"></i>';
+        let buttonSuccess = '<i class="fas fa-plus"></i>';
+        let pmStatusEnable = '<span class="badge badge-success float-right mt-1">Enable</span>';
+        let pmStatusDisable = '<span class="badge badge-danger float-right mt-1">Disable</span>';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('js/admin/servers.js') }}"></script>
 @endsection

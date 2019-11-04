@@ -334,13 +334,17 @@ a.dis-link {
     color: #fff;
 }
 
-section, .blockcontent {
+section, .blockcontent, footer {
     margin-top: 20px;
     color: white;
     padding: 20px;
     border: var(--block-border, 1px) solid #fff;
     background: rgba(255, 255, 255, 0.05);
     overflow: hidden;
+}
+
+footer {
+    border-top: var(--border-primary, 3px solid #512da8);
 }
 
 .blockcontent-list {
@@ -449,6 +453,10 @@ section, .blockcontent {
 
 .preloader-grid > .preloader-block {
     width: 100%;
+}
+
+.card-text {
+    height: 100px;
 }
 
 /* MENU ITEMS */

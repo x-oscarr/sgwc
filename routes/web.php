@@ -49,16 +49,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         'uses' => 'AdminpanelController@index',
         'middleware' => ['auth', 'rbac:can,page.admin.panel']
     ]);
-    Route::group(['prefix' => 'settings', 'middleware' => ['auth', 'rbac:can,page.settings']], function () {
-        Route::get('/', 'SettingsController@index')->name('settings');
-        Route::get('/servers', 'SettingsController@servers')->name('settings.servers');
-        Route::get('/design', 'SettingsController@design')->name('settings.design');
-        Route::get('/web', 'SettingsController@web')->name('settings.web');
-        Route::get('/seo', 'SettingsController@seo')->name('settings.seo');
-        Route::get('/donate', 'SettingsController@web')->name('settings.donate');
-        Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('settings.update.menu.item');
-        Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('settings.get.menu.item');
-        Route::post('/update-settings', 'SettingsController@updateSettings')->name('settings.update');
+    Route::group(['prefix' => 'settings', 'as' => 'settings.', 'middleware' => ['auth', 'rbac:can,page.settings']], function () {
+        Route::get('/', 'SettingsController@index')->name('index');
+        Route::get('/servers', 'SettingsController@servers')->name('servers');
+        Route::get('/design', 'SettingsController@design')->name('design');
+        Route::get('/web', 'SettingsController@web')->name('web');
+        Route::get('/seo', 'SettingsController@seo')->name('seo');
+        Route::get('/donate', 'SettingsController@web')->name('donate');
+        Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('update.menu.item');
+        Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('get.menu.item');
+        Route::post('/update-settings', 'SettingsController@updateSettings')->name('update');
+        Route::post('/update-servers', 'SettingsController@updateServers')->name('servers.update');
+        Route::post('/update-pm', 'SettingsController@updatePM')->name('pm.update');
+        Route::post('/get-pm', 'SettingsController@getPM')->name('pm.get');
     });
 
     Route::get('/tools', [
