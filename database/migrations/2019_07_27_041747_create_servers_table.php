@@ -19,8 +19,9 @@ class CreateServersTable extends Migration
             $table->string('reduction');
             $table->string('ip');
             $table->integer('port');
-            $table->string('rcon');
-            $table->boolean('display');
+            $table->string('rcon')->nullable(true);
+            $table->boolean('display')->default(true);
+            $table->boolean('monitoring')->default(true);
         });
     }
 

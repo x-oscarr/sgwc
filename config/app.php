@@ -171,10 +171,13 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\PluginModuleProvider::class,
+        App\Providers\ViewServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Syntax\SteamApi\SteamApiServiceProvider::class,
+        PHPZen\LaravelRbac\RbacServiceProvider::class,
 
     ],
 

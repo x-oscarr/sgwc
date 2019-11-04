@@ -8,8 +8,8 @@
     </div>
 
     <!-- Monitoring -->
-    @if($servers != null)
-        @foreach($servers as $server)
+    @if($monitoringServers)
+        @foreach($monitoringServers as $server)
             <div class="row content-center monitoring">
                 <div class="col-4 col-sm-1 p-2">
                     @if($server['online'])
@@ -45,7 +45,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="server_info_title">{{ $server['info']['hostname'] }}</h5>
+                                <h5 class="modal-title" id="server_info_title">{{ $server['name'] }}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

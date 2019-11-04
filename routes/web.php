@@ -31,9 +31,47 @@ Route::get('steamid/{steamid}', 'UserController@steamid')->name('steamid');
 Route::get('rating', 'RatingController@index')->name('rating');
 
 //Report Controller
-Route::any('report/add', 'ReportController@add')->name('report.add');
-Route::get('report/list', 'ReportController@index')->name('report.list');
-Route::get('report/{id}', 'ReportController@single')->name('report.single');
+Route::group(['prefix' => 'report'], function () {
+    Route::get('/', 'ReportController@index')->name('report.list');
+    Route::any('add', 'ReportController@add')->name('report.add');
+    Route::get('my-reports', 'ReportController@myReports')->name('report.my-reports');
+    Route::get('my-violations', 'ReportController@myViolations')->name('report.my-violations');
+    Route::get('{id}', 'ReportController@single')->name('report.single');
+    Route::get('panel', ['uses' => 'ReportController@adminpannel', 'middleware' => 'site.module:report'])->name('report.panel');
+    Route::post('{id}/dispute', 'ReportController@dispute')->name('report.dispute');
+});
+
+//Rules Controller
+Route::get('rules', 'RulesController@index')->name('rules.list');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/panel', [
+        'uses' => 'AdminpanelController@index',
+        'middleware' => ['auth', 'rbac:can,page.admin.panel']
+    ]);
+    Route::group(['prefix' => 'settings', 'as' => 'settings.', 'middleware' => ['auth', 'rbac:can,page.settings']], function () {
+        Route::get('/', 'SettingsController@index')->name('index');
+        Route::get('/servers', 'SettingsController@servers')->name('servers');
+        Route::get('/design', 'SettingsController@design')->name('design');
+        Route::get('/web', 'SettingsController@web')->name('web');
+        Route::get('/seo', 'SettingsController@seo')->name('seo');
+        Route::get('/donate', 'SettingsController@web')->name('donate');
+        Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('update.menu.item');
+        Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('get.menu.item');
+        Route::post('/update-settings', 'SettingsController@updateSettings')->name('update');
+        Route::post('/update-servers', 'SettingsController@updateServers')->name('servers.update');
+        Route::post('/update-pm', 'SettingsController@updatePM')->name('pm.update');
+        Route::post('/get-pm', 'SettingsController@getPM')->name('pm.get');
+    });
+
+    Route::get('/tools', [
+        'uses' => 'ToolsController@index',
+        'middleware' => ['auth', 'rbac:can,page.tools']
+    ]);
+});
+
+//Helpers
+//Route::get('d/{url}', 'FileController@download')->name('file.download');
 
 //DEV
 Route::get('dev', 'MainController@dev')->name('dev');

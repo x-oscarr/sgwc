@@ -20,14 +20,18 @@
     color: white;
     overflow: hidden;
     margin-top: 20px;
-    padding: 10px;
     border: var(--block-border, 1px) solid #fff;
     background: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar-grid > a {
     display: block;
-    padding: 5px;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+.sidebar-grid:hover a:hover  {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* SECTION: index_builder */
@@ -58,8 +62,18 @@
     }
 
     .sidebar-grid {
-        display: grid;
-        grid-template-columns: 70px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .sidebar-grid > a {
+        padding: 15px 0;
+        min-width: 50px;
+    }
+
+    .sidebar-grid .sidebar-description {
+        display: none;
     }
 }
 @media (min-width: 1200px) {

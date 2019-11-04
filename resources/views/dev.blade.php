@@ -1,6 +1,9 @@
 @extends('builder.default')
 
 @section('content')
-    <img href="{{ $url }}" >
+    <section>
+        <i class="material-icons">face</i>
+        <i class="far fa-smile-beam"></i>
+    </section>
 @endsection
 

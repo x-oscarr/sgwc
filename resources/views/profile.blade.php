@@ -78,15 +78,15 @@
 @section('sidebar')
     <a href="#">
         <i class="fas fa-sliders-h"></i>
-        <span class="sidebar-dectription">Settings</span>
+        <span class="sidebar-description">Settings</span>
     </a>
     <a href="#">
         <i class="fas fa-exclamation-triangle"></i>
-        <span class="sidebar-dectription">My reports</span>
+        <span class="sidebar-description">My reports</span>
     </a>
     <a href="#">
         <i class="fas fa-ban"></i>
-        <span class="sidebar-dectription">Punishments</span>
+        <span class="sidebar-description">Punishments</span>
     </a>
     <a href="#">
         <div class="progress position-relative">

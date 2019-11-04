@@ -8,7 +8,19 @@ class Setting extends Model
 {
     public $timestamps = false;
 
-    public function getParam($parameter) {
+    public static function getParam($parameter, $returnObject = false) {
+       $setting = Setting::where('parameter', $parameter)->first();
+       if($returnObject) {
+           return $setting;
+       }
+       return $setting ? $setting->value : null;
+    }
 
+    public static function params() {
+        $settingsData = Setting::all();
+        foreach ($settingsData as $setting) {
+            $settings[$setting->parameter] = $setting->value;
+        }
+        return $settings ?? null;
     }
 }

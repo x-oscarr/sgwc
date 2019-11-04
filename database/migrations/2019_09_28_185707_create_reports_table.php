@@ -18,13 +18,16 @@ class CreateReportsTable extends Migration
             $table->integer('server_id')->unsigned();
             $table->string('type');
             $table->text('description');
-            $table->string('sender')->nullable(true);
+            $table->string('sender_name')->nullable(true);
+            $table->string('sender_auth')->nullable(true);
             $table->integer('sender_id')->unsigned()->nullable(true);
-            $table->string('perpetrator')->nullable(true);
+            $table->string('perpetrator_name')->nullable(true);
+            $table->string('perpetrator_auth')->nullable(true);
             $table->integer('perpetrator_id')->unsigned()->nullable(true);
             $table->string('file')->nullable(true);
-            $table->boolean('status')->nullable(true);
+            $table->integer('status')->default(1);
             $table->boolean('is_anon')->default(false);
+            $table->integer('rule_id')->unsigned()->nullable(true);
             $table->timestamp('time');
             $table->timestamps();
         });
@@ -40,6 +43,10 @@ class CreateReportsTable extends Migration
 
             $table->foreign('perpetrator_id')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('rule_id')
+                ->references('id')->on('rules_items')
                 ->onDelete('cascade');
         });
     }

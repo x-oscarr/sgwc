@@ -16,8 +16,10 @@ class CreateSiteModulesTable extends Migration
         Schema::create('site_modules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('value');
-            $table->boolean('is_enabled');
+            $table->text('description')->nullable(true);
+            $table->string('version')->nullable(true);
+            $table->string('slug');
+            $table->boolean('is_enabled')->default(true);
         });
     }
 

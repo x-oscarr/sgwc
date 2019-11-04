@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\PMLoader;
+use App\SiteModule;
 use Auth;
 use App\Helpers\Monitoring;
 use App\Server;
@@ -17,28 +18,27 @@ class MainController extends Controller
 {
     public function index(Request $request, Monitoring $monitoring) {
 
-        $serverlist = Server::where('display', 1)->get();
+        $serverlist = Server::where('monitoring', 1)->get();
 
-        for($i = 0; $i < count($serverlist); $i++) {
-            $server_data = $monitoring->Online($serverlist[$i]['ip'], $serverlist[$i]['port']);
-            $servers[$i]['id'] = $serverlist[$i]['id'];
-            $servers[$i]['name'] = $serverlist[$i]['name'];
-            $servers[$i]['ip'] = $serverlist[$i]['ip'];
-            $servers[$i]['port'] = $serverlist[$i]['port'];
-            $servers[$i] += $server_data;
+        foreach ($serverlist as $server) {
+            $monitoringServers[] = [
+                'id' => $server->id,
+                'name' => $server->name,
+                'ip' => $server->ip,
+                'port' => $server->port
+            ] + $monitoring->Online($server->ip, $server->port);
         }
 
+        //dd($monitoringServers);
+
         return view('index', [
-            'servers' => $servers ?? null
+            'monitoringServers' => $monitoringServers ?? null
         ]);
     }
 
     public function dev() {
-        $url = Storage::url('uploads/reports/AIUi4jPXTndKWtXp86Doj59GUdAbOTPC4Mn4RK5E.png');
+        return view('dev', [
 
-        return view('dev', ['url' => $url]);
-
-//       dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
-//        dump(PMLoader::getData(DB::table('plugin_modules')->find(1), 'STEAM_1:0:72120179')->getTopUserData());
+        ]);
     }
 }

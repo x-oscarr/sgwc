@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PluginModule extends Model
 {
+    public $timestamps = false;
+
     public function server()
     {
-        return $this->hasMany('App\Server', 'id');
+        return $this->belongsTo('App\Server', 'server_id', 'id');
     }
 }

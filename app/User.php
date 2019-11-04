@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    use Rbac;
     /**
      * The attributes that are mass assignable.
      *
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function perpetrateByUser()
     {
         return $this->hasMany('App\Report', 'perpetrator_id', 'id');
+    }
+
+    public static function findUser($string)
+    {
+
     }
 }

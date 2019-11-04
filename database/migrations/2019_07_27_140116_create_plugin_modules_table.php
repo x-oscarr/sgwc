@@ -15,8 +15,9 @@ class CreatePluginModulesTable extends Migration
     {
         Schema::create('plugin_modules', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->integer('server_id')->unsigned();
+            $table->string('name');
+            $table->string('description')->nullable(true);
             $table->string('plugin');
             $table->string('db');
             $table->string('db_host');
