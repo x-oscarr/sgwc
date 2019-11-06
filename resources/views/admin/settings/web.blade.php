@@ -38,3 +38,15 @@
 @section('sidebar')
     @include('admin.settings.sidebar')
 @endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        // Routes
+        let routeSModuleUpdate = "{{ route('settings.sm.update') }}";
+        // Texts
+        let smStatusEnable = '<span class="badge badge-success float-right mt-1">Enable</span>';
+        let smStatusDisable = '<span class="badge badge-danger float-right mt-1">Disable</span>';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('js/admin/web.js') }}"></script>
+@endsection

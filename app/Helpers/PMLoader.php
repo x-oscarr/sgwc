@@ -25,6 +25,12 @@ class PMLoader
     }
 
     static public function getParams($pluginObject) {
+        $plugin_modules_library = self::getLibrary();
+        $plugin_settings = $plugin_modules_library[$pluginObject->plugin];
+        return $plugin_settings;
+    }
+
+    static public function getLibrary() {
         $plugin_modules_json = env('PLUGIN_MODULES_JSON', 'plugin_modules.json');
         if (!file_exists($plugin_modules_json)) {
             Throw new Exception($plugin_modules_json.' not found!' );
@@ -32,7 +38,6 @@ class PMLoader
         $plugin_modules_library = file_get_contents($plugin_modules_json);
         $plugin_modules_library = json_decode($plugin_modules_library, true);
 
-        $plugin_settings = $plugin_modules_library[$pluginObject->plugin];
-        return $plugin_settings;
+        return $plugin_modules_library;
     }
 }

@@ -62,6 +62,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/update-servers', 'SettingsController@updateServers')->name('servers.update');
         Route::post('/update-pm', 'SettingsController@updatePM')->name('pm.update');
         Route::post('/get-pm', 'SettingsController@getPM')->name('pm.get');
+        Route::post('/update-sm', 'SettingsController@updateSM')->name('sm.update');
     });
 
     Route::get('/tools', [
