@@ -2151,6 +2151,17 @@ pre code {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
+input[type="color"].form-control {
+    width: calc(1.5em + 0.75rem);
+    padding: 0;
+    border: none;
+}
+
+input[type="color"].form-control + label {
+    display: block;
+    margin: 8px 10px 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .form-control {
         -webkit-transition: none;
@@ -11105,6 +11116,10 @@ a.text-primary:hover, a.text-primary:focus {
 
 a.text-secondary:hover, a.text-secondary:focus {
     color: #cacaca !important;
+}
+
+.text-additional {
+    color: var(--additional, #b39ddb) !important;
 }
 
 .text-success {

@@ -3,7 +3,7 @@
 @section('content')
     <section>
         <h3 class="blockcontent-title">Color scheme</h3>
-        {!! Form::open(['files' => true, 'method' => 'post']) !!}
+        {!! Form::open(['files' => true, 'method' => 'post', 'name' => 'preloader']) !!}
         <div class="row mb-4">
             <div class="col-12 col-md-6">
                 <div class="color-scheme-block">
@@ -41,7 +41,7 @@
     </section>
     <section>
         <h3 class="blockcontent-title">Design elements</h3>
-        <h6>Preloaders</h6>
+        <h5 class="mt-4 mb-2 text-additional">Preloaders</h5>
         {!! Form::open(['files' => true, 'method' => 'post']) !!}
             <div class="preloader-grid">
                 <label for="penguin" class="preloader-block">
@@ -70,6 +70,65 @@
                 </div>
             </div>
         {!! Form::close() !!}
+        <div class="row">
+            <div class="col-12 col-md-4">
+                {!! Form::open(['files' => true, 'method' => 'post']) !!}
+                <h5 class="mt-4 mb-2 text-additional">Header logo</h5>
+                <h5 class="mt-4 mb-2 text-additional">Background</h5>
+                <div class="form-group d-flex">
+                    {!! Form::color('bgColor', $settings['bgColor'], ['class' => 'form-control']) !!}
+                    {!! Form::label('bgColor', 'Background color') !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgPicture', 'Background picture') !!}
+                    {!! Form::file('bgPicture', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgSize', 'Background size') !!}
+                    {!! Form::text('bgSize', $settings['bgSize'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgPosition', 'Background position') !!}
+                    {!! Form::text('bgPosition', $settings['bgPosition'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgRepeat', 'Background color') !!}
+                    {!! Form::text('bgRepeat', $settings['bgRepeat'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgAnimation', 'Background animation') !!}
+                    {!! Form::select('bgAnimation', [
+                        null => 'None',
+                        1 => 'Jumping items',
+                        2 => 'Particles',
+                        3 => 'Snow',
+                        4 => 'NASA',
+                        5 => 'Bubble'
+                    ], $settings['bgAnimation'], ['class' => 'form-control']) !!}
+                </div>
+                <h5 class="mt-4 mb-2 text-additional">Block content</h5>
+                <div class="form-group">
+                    {!! Form::label('bcBackground', 'Background color') !!}
+                    {!! Form::text('bgRepeat', $settings['bgRepeat'], ['class' => 'form-control']) !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="prewiev-content" >
+                    <h5 class="mt-4 mb-2">Preview</h5>
+                    <div id="bgPreview" style="
+                        background-color: {{ $settings['bgColor'] }};
+                        background-size: {{ $settings['bgSize'] }};
+                        background-repeat: {{ $settings['bgRepeat'] }};
+                        background-position: {{ $settings['bgPosition'] }};
+                    ">
+                        <div class="preview-block"></div>
+                        <div class="preview-block"></div>
+                        <div class="preview-block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 
@@ -158,4 +217,8 @@
 
 @section('sidebar')
     @include('admin.settings.sidebar')
+@endsection
+
+@section('javascript')
+    <script type="text/javascript" src="{{ asset('js/admin/design.js') }}"></script>
 @endsection

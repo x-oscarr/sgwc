@@ -59,7 +59,6 @@ div.preloader {
 div.preloader .penguin {
     width: 200px;
     height: 200px;
-    background-image: url(../img/penguin.gif);
     background-position: center center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -340,7 +339,7 @@ section, .blockcontent, footer {
     padding: 20px;
     border: var(--block-border, 1px) solid #fff;
     background: rgba(255, 255, 255, 0.05);
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 footer {
@@ -534,25 +533,25 @@ label.preloader-load {
     z-index: -1;
 }
 
-.color-scheme-block {
-    display: flex;
+.prewiev-content {
+    position: sticky;
+    top: 10px;
 }
 
-.color-scheme-block label {
-    display: block;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+#bgPreview {
+    height: 380px;
+    padding: 30px 0 10px;
 }
 
-.color-scheme-block input[type=text] {
-    width: 100px;
-    margin: 0 10px;
+#bgPreview > .preview-block {
+    margin: 5px auto;
+    background: rgba(255, 255, 255, 0.05);
+    width: 350px;
 }
 
-.color-scheme-block span {
-    margin: 10px;
-}
+#bgPreview > .preview-block:nth-child(1) {height: calc(30% - 10px);}
+#bgPreview > .preview-block:nth-child(2) {height: calc(65% - 10px);}
+#bgPreview > .preview-block:nth-child(3) {height: calc(5%);}
 
 #menuItemText {
     display: flex;

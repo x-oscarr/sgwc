@@ -60,7 +60,6 @@ class SettingsController extends Controller
     public function design()
     {
 
-
         return view('admin.settings.design', [
 
         ]);

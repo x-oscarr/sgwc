@@ -20,9 +20,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="preloader" class="preloader">
-    <div class="penguin"></div>
-</div>
+
+@include('builder.preloader')
 
 @include('builder.menu')
 
@@ -36,18 +35,9 @@
     @endif
 </div>
 
-<div class="particle">
-    <div class="item item-circle item-anim-1"></div>
-    <div class="item item-triangle item-anim-2"></div>
-    <div class="item item-cross item-anim-3"></div>
-    <div class="item item-circle item-anim-4"></div>
-    <div class="item item-cube item-anim-5"></div>
-    <div class="item item-triangle item-anim-6"></div>
-    <div class="item item-cross item-anim-7"></div>
-</div>
+@include('builder.background')
 
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('js/script.min.js') }}"></script>
 {{--<script src="{{ asset('js/monitoring.js') }}"></script>--}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
