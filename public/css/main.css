@@ -55,6 +55,7 @@ div.preloader {
     height: 100vh;
     background: #18181c;
     z-index: 9999;
+    transition: 2s ease;
 }
 div.preloader .penguin {
     width: 200px;
@@ -64,7 +65,9 @@ div.preloader .penguin {
     background-size: cover;
 }
 div.preloader_disable {
-    display: none;
+    /*opacity: 0;*/
+    /*z-index: -9999;*/
+    top: -2000px;
 }
 div.header {
     position: relative;
@@ -454,6 +457,10 @@ footer {
     width: 100%;
 }
 
+.preloader-pic-loaded {
+    border: 3px solid var(--primary, #512da8);
+}
+
 .card-text {
     height: 100px;
 }
@@ -506,14 +513,14 @@ footer {
 
 .radio-image[type=radio] + img:hover, .preloader-load:hover {
     border-radius: 7px;
-    background: var(--rgba-background, rgba(255, 255, 255, 0.04));
+    background-color: var(--rgba-background, rgba(255, 255, 255, 0.04));
 }
 
 /* CHECKED STYLES */
 .radio-image[type=radio]:checked + img {
     border-radius: 7px;
     border: var(--border-primary);
-    background: var(--rgba-background, rgba(255, 255, 255, 0.05));
+    background-color: var(--rgba-background, rgba(255, 255, 255, 0.05));
 }
 
 label.preloader-load {
@@ -523,7 +530,9 @@ label.preloader-load {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.02);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .preloader-load[type=file] {
@@ -538,6 +547,11 @@ label.preloader-load {
     top: 10px;
 }
 
+.preview-select {
+    width: auto;
+    margin-right: 15px;
+}
+
 #bgPreview {
     height: 380px;
     padding: 30px 0 10px;
@@ -548,6 +562,25 @@ label.preloader-load {
     background: rgba(255, 255, 255, 0.05);
     width: 350px;
 }
+
+.color-picker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.color-group {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.color-group label{
+    margin: 5px 0 5px 10px;
+    display: block;
+}
+
+.picker_editor {width: 20rem !important;}
 
 #bgPreview > .preview-block:nth-child(1) {height: calc(30% - 10px);}
 #bgPreview > .preview-block:nth-child(2) {height: calc(65% - 10px);}

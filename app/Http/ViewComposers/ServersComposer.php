@@ -3,7 +3,6 @@
 namespace App\Http\ViewComposers;
 
 use App\Server;
-use App\Setting;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 

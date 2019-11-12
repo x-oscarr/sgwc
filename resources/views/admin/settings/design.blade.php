@@ -1,6 +1,9 @@
 @extends('builder.default')
 
 @section('content')
+    {!! Form::macro('colorPick', function($name, $value) {
+        return '<input type="hidden" name="'.$name.'" value="'.$value.'"><div class="color-picker" style="background-color: '.$value.';" data-name="'.$name.'" data-color="'.$value.'"></div>';
+    }) !!}
     <section>
         <h3 class="blockcontent-title">Color scheme</h3>
         {!! Form::open(['files' => true, 'method' => 'post', 'name' => 'preloader']) !!}
@@ -35,7 +38,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
-            <button type="button" class="btn btn-secondary server-submit">Save cahnges</button>
+            <button type="button" class="btn btn-secondary server-submit">Save changes</button>
         </div>
         {!! Form::close() !!}
     </section>
@@ -60,11 +63,11 @@
                 </label>
 
                 <div class="preloader-block">
-                    <label for="file" class="preloader-load">
+                    <label for="preloaderFile" class="preloader-load">
                         <i class="fas fa-plus fa-3x"></i>
                     </label>
-                    {!! Form::file('file', [
-                        'id' => 'file',
+                    {!! Form::file('preloaderFile', [
+                        'id' => 'preloaderFile',
                         'class' => 'preloader-load'
                     ]) !!}
                 </div>
@@ -75,8 +78,8 @@
                 {!! Form::open(['files' => true, 'method' => 'post']) !!}
                 <h5 class="mt-4 mb-2 text-additional">Header logo</h5>
                 <h5 class="mt-4 mb-2 text-additional">Background</h5>
-                <div class="form-group d-flex">
-                    {!! Form::color('bgColor', $settings['bgColor'], ['class' => 'form-control']) !!}
+                <div class="color-group">
+                    {!! Form::colorPick('bgColor', $settings['bgColor']) !!}
                     {!! Form::label('bgColor', 'Background color') !!}
                 </div>
                 <div class="form-group">
@@ -106,10 +109,19 @@
                         5 => 'Bubble'
                     ], $settings['bgAnimation'], ['class' => 'form-control']) !!}
                 </div>
-                <h5 class="mt-4 mb-2 text-additional">Block content</h5>
+                <h5 class="mt-4 mb-2 text-additional">Section content</h5>
+                <div class="color-group">
+                    {!! Form::colorPick('bcBackground', $settings['bcBackground']) !!}
+                    {!! Form::label('bcBackground', 'Section background color') !!}
+                </div>
                 <div class="form-group">
-                    {!! Form::label('bcBackground', 'Background color') !!}
-                    {!! Form::text('bgRepeat', $settings['bgRepeat'], ['class' => 'form-control']) !!}
+                    {!! Form::label('bcBorder', 'Section border size') !!}
+                    {!! Form::range('bcBorder', 0, [
+                        'class' => 'form-control',
+                        'min' => 0,
+                        'max' => 3,
+                        'step' => 0.1
+                    ]) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -125,6 +137,16 @@
                         <div class="preview-block"></div>
                         <div class="preview-block"></div>
                         <div class="preview-block"></div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        {!! Form::select('previewPage', [
+                            1 => 'Content page',
+                            2 => 'Index page',
+                            3 => 'Preloader'
+                        ], null, [
+                        'class' => 'form-control preview-select'
+                        ]) !!}
+                        <button type="button" class="btn btn-outline-success server-submit">Save changes</button>
                     </div>
                 </div>
             </div>
