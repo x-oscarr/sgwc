@@ -2,7 +2,14 @@
 
 @section('content')
     {!! Form::macro('colorPick', function($name, $value) {
-        return '<input type="hidden" name="'.$name.'" value="'.$value.'"><div class="color-picker" style="background-color: '.$value.';" data-name="'.$name.'" data-color="'.$value.'"></div>';
+        return '<input type="hidden" name="'.$name.'" value="'.$value.'">
+                <div class="color-picker" style="background-color: '.$value.';" data-name="'.$name.'" data-color="'.$value.'"></div>';
+    }) !!}
+    {!! Form::macro('preloader', function ($filename, $pathname) {
+        return '<label for="'.$filename.'" class="preloader-block">
+                    <input type="radio" name="preloader" id="'.$filename.'" value="'.$filename.'" class="radio-image">
+                    <img src="'.asset($pathname).'" alt="'.$filename.'">
+                </label>';
     }) !!}
     <section>
         <h3 class="blockcontent-title">Color scheme</h3>
@@ -47,21 +54,9 @@
         <h5 class="mt-4 mb-2 text-additional">Preloaders</h5>
         {!! Form::open(['files' => true, 'method' => 'post']) !!}
             <div class="preloader-grid">
-                <label for="penguin" class="preloader-block">
-                    {!! Form::radio('preloader', null, true, [
-                        'id' => 'penguin',
-                        'class' => 'radio-image'
-                    ]) !!}
-                    <img src="{{ asset('img/preloaders/penguin.gif') }}" alt="penguin">
-                </label>
-                <label for="cat" class="preloader-block">
-                    {!! Form::radio('preloader', null, false, [
-                        'id' => 'cat',
-                        'class' => 'radio-image'
-                    ]) !!}
-                    <img src="{{ asset('img/preloaders/nyancat.gif') }}" alt="penguin">
-                </label>
-
+                @foreach($preloaders as $preloader)
+                    {!! Form::preloader($preloader->getFilename(), $preloader->getPathname()) !!}
+                @endforeach
                 <div class="preloader-block">
                     <label for="preloaderFile" class="preloader-load">
                         <i class="fas fa-plus fa-3x"></i>
@@ -111,7 +106,7 @@
                 </div>
                 <h5 class="mt-4 mb-2 text-additional">Section content</h5>
                 <div class="color-group">
-                    {!! Form::colorPick('bcBackground', $settings['bcBackground']) !!}
+                    {!! Form::colorPick('bcBackground', $settings['sectionBackground']) !!}
                     {!! Form::label('bcBackground', 'Section background color') !!}
                 </div>
                 <div class="form-group">
@@ -134,14 +129,22 @@
                         background-repeat: {{ $settings['bgRepeat'] }};
                         background-position: {{ $settings['bgPosition'] }};
                     ">
-                        <div class="preview-block"></div>
-                        <div class="preview-block"></div>
-                        <div class="preview-block"></div>
+                        <div class="preview-preloader">
+                            <div class="preview-preloader-block"></div>
+                        </div>
+                        <div class="preview-index">
+
+                        </div>
+                        <div class="preview-base">
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         {!! Form::select('previewPage', [
-                            1 => 'Content page',
-                            2 => 'Index page',
+                            1 => 'Index page',
+                            2 => 'Content page',
                             3 => 'Preloader'
                         ], null, [
                         'class' => 'form-control preview-select'
@@ -242,5 +245,8 @@
 @endsection
 
 @section('javascript')
+    <script type="text/javascript">
+        const preloaderPath = '{{ asset($preloaderPath) }}';
+    </script>
     <script type="text/javascript" src="{{ asset('js/admin/design.js') }}"></script>
 @endsection

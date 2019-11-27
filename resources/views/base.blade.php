@@ -18,6 +18,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            @if($settings['bgColor']) --bgColor: {{ $settings['bgColor'] }}; @endif
+            @if($settings['bgPicture']) --bgPicture: {{ $settings['bgPicture'] }}; @endif
+            @if($settings['bgSize']) --bgSize: {{ $settings['bgSize'] }}; @endif
+            @if($settings['bgPosition']) --bgPosition: {{ $settings['bgPosition'] }}; @endif
+            @if($settings['bgRepeat']) --bgRepeat: {{ $settings['bgRepeat'] }}; @endif
+        }
+
+        section, .blockcontent {
+            @if($settings['sectionBackground']) --sectionBackground: {{ $settings['sectionBackground'] }} @endif
+        }
+    </style>
 </head>
 <body>
 
@@ -25,13 +39,13 @@
 
 @include('builder.menu')
 
+@hasSection('index_builder')
+    @yield('index_builder')
+@endif
+
 <div class="content">
     @hasSection('default_builder')
         @yield('default_builder')
-    @endif
-
-    @hasSection('index_builder')
-        @yield('index_builder')
     @endif
 </div>
 

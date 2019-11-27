@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/settings.js":
-/*!****************************************!*\
-  !*** ./resources/js/admin/settings.js ***!
-  \****************************************/
+/***/ "./resources/js/pages/admin/settings.js":
+/*!**********************************************!*\
+  !*** ./resources/js/pages/admin/settings.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -280,13 +280,13 @@ function sendSettings(data) {
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************!*\
-  !*** multi ./resources/js/admin/settings.js ./resources/sass/animations.scss ***!
-  \*******************************************************************************/
+/*!*************************************************************************************!*\
+  !*** multi ./resources/js/pages/admin/settings.js ./resources/sass/animations.scss ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/settings.js */"./resources/js/admin/settings.js");
+__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/admin/settings.js */"./resources/js/pages/admin/settings.js");
 module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/sass/animations.scss */"./resources/sass/animations.scss");
 
 

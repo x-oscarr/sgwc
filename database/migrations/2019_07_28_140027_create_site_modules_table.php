@@ -19,7 +19,14 @@ class CreateSiteModulesTable extends Migration
             $table->text('description')->nullable(true);
             $table->string('version')->nullable(true);
             $table->string('slug');
+            $table->integer('plugin_module_id')->unsigned()->nullable(true);
             $table->boolean('is_enabled')->default(true);
+        });
+
+        Schema::table('site_modules', function(Blueprint $table) {
+            $table->foreign('plugin_module_id')
+                ->references('id')->on('plugin_modules')
+                ->onDelete('cascade');
         });
     }
 

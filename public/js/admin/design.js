@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1093,10 +1093,10 @@ var Picker = function () {
 
 /***/ }),
 
-/***/ "./resources/js/admin/design.js":
-/*!**************************************!*\
-  !*** ./resources/js/admin/design.js ***!
-  \**************************************/
+/***/ "./resources/js/pages/admin/design.js":
+/*!********************************************!*\
+  !*** ./resources/js/pages/admin/design.js ***!
+  \********************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1113,7 +1113,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 var customPreloader = $("label.preloader-load");
-var defaultPreloaderInputs = $("input.radio-image");
+var defaultPreloaderInputs = $("input[name='preloader']");
+var preloaderBlock = $(".preview-preloader-block");
 var bg = $("#bgPreview");
 var section = $(".preview-block"); //preloader
 
@@ -1123,9 +1124,16 @@ $("input[name='preloaderFile']").change(function () {
   customPreloader.addClass('preloader-pic-loaded');
   defaultPreloaderInputs.prop('checked', false);
   readURL(this, customPreloader);
-});
+  readURL(this, preloaderBlock);
+  previewDisplayPreloader();
+}); // $("input[name='preloader']").change(function () {
+//     preloaderBlock.css('image-background', '');
+// });
+
 defaultPreloaderInputs.change(function () {
   customPreloader.removeClass('preloader-pic-loaded');
+  preloaderBlock.css('background-image', 'url(' + preloaderPath + '/' + $("input[name='preloader']:checked").val() + ')');
+  previewDisplayPreloader();
 }); // Background
 
 $("input[name='bgSize']").change(function () {
@@ -1147,7 +1155,42 @@ $("input[name='bgAnimation']").change(function () {});
 $("input[name='bcBorder']").change(function () {
   var bcBorder = $(this).val();
   section.css('border', bcBorder + 'px solid #fff');
+  previewDisplayContent();
 });
+$("select[name='previewPage']").change(function () {
+  var previewPage = $(this).val();
+
+  if (previewPage == 1) {
+    previewDisplayIndex();
+  } else if (previewPage == 2) {
+    previewDisplayContent();
+  } else if (previewPage == 3) {
+    previewDisplayPreloader();
+  }
+});
+$(document).ready(function () {
+  $('.preview-base').show();
+  $('.preview-index').hide();
+  $('.preview-preloader').hide();
+});
+
+function previewDisplayIndex() {
+  $('.preview-index').show();
+  $('.preview-base').hide();
+  $('.preview-preloader').hide();
+}
+
+function previewDisplayContent() {
+  $('.preview-index').hide();
+  $('.preview-base').show();
+  $('.preview-preloader').hide();
+}
+
+function previewDisplayPreloader() {
+  $('.preview-index').hide();
+  $('.preview-base').hide();
+  $('.preview-preloader').show();
+}
 
 function readURL(input, block) {
   if (input.files && input.files[0]) {
@@ -1192,6 +1235,7 @@ var _loop = function _loop() {
 
         if (wrapper.dataset.name == 'bcBackground') {
           section.css('background-color', color.rgbaString);
+          previewDisplayContent();
         }
       };
     }
@@ -1206,26 +1250,14 @@ for (var _i = 0, _arr = _toConsumableArray(colorPickerWrappers); _i < _arr.lengt
 
 /***/ }),
 
-/***/ "./resources/sass/animations.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/animations.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*****************************************************************************!*\
-  !*** multi ./resources/js/admin/design.js ./resources/sass/animations.scss ***!
-  \*****************************************************************************/
+/***/ 1:
+/*!**************************************************!*\
+  !*** multi ./resources/js/pages/admin/design.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/design.js */"./resources/js/admin/design.js");
-module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/sass/animations.scss */"./resources/sass/animations.scss");
+module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/admin/design.js */"./resources/js/pages/admin/design.js");
 
 
 /***/ })

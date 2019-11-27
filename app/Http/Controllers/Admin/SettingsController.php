@@ -12,10 +12,17 @@ use App\SiteModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
+    // public/@path
+    const DEFAULT_PRELOADER_PATH = 'img/preloaders';
+    // public/storage/@path
+    const CUSTOM_PRELOADER_PATH = 'design/preloaders';
+
     public function index()
     {
         $siteModules = SiteModule::all();
@@ -59,9 +66,11 @@ class SettingsController extends Controller
 
     public function design()
     {
-
+        $preloaders = File::files(self::DEFAULT_PRELOADER_PATH);
+        //dd($preloaders);
         return view('admin.settings.design', [
-
+            'preloaderPath' => self::DEFAULT_PRELOADER_PATH,
+            'preloaders' => $preloaders,
         ]);
     }
 

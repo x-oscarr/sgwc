@@ -3,7 +3,7 @@
 @section('content')
     <section>
         <h3 class="blockcontent-title">Rating list</h3>
-        <table class="table-def">
+        <table class="table">
             <thead>
                 <tr>
                     @foreach($rating_columns as $col)
@@ -25,7 +25,8 @@
 @section('sidebar')
     @foreach($plugin_modules_names as $plugin_name)
         <a href="{{ route('rating', ['pm' => $plugin_name['plugin']]) }}">
-            {{ $plugin_name['name'] }}
+            <i>[{{ Str::limit($plugin_name['name'], 1, '') }}]</i>
+            <span class="sidebar-description">{{ $plugin_name['name'] }}</span>
         </a>
     @endforeach
 @endsection

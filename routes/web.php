@@ -44,6 +44,7 @@ Route::group(['prefix' => 'report'], function () {
 //Rules Controller
 Route::get('rules', 'RulesController@index')->name('rules.list');
 
+// Admin Controllers
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/panel', [
         'uses' => 'AdminpanelController@index',
@@ -73,6 +74,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 //Helpers
 //Route::get('d/{url}', 'FileController@download')->name('file.download');
-
+Route::post('/monitoring', 'MainController@monitoring')->name('helper.monitoring');
 //DEV
 Route::get('dev', 'MainController@dev')->name('dev');

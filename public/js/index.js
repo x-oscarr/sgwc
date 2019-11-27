@@ -81,41 +81,64 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/pages/admin/web.js":
-/*!*****************************************!*\
-  !*** ./resources/js/pages/admin/web.js ***!
-  \*****************************************/
+/***/ "./resources/js/pages/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/pages/index.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// Enable/Disable plugin module
-$(".smEnable").change(function () {
-  var pmId = $(this).data('id');
-  var smEnable = $(this).prop('checked');
-  sendSModules({
-    smEnable: {
-      'id': pmId,
-      'value': smEnable ? 1 : 0
-    }
-  }).then(function (result) {
-    if (result.status) {
-      $('#pmStatus_' + pmId).html(smEnable ? smStatusEnable : smStatusDisable);
-    }
-  });
+slider('.slides');
+$(document).ready(function () {
+  monitoringCharts = setMonitoring();
+  updateMonitoring(monitoringServers, monitoringCharts);
 });
 
-function sendSModules(data) {
+function setMonitoring() {
+  var serverBlocks = $(".server-block");
+  var monitoringCharts = [];
+  serverBlocks.each(function () {
+    if ($(this).data('id')) {
+      monitoringCharts[$(this).data('id')] = new DonutChart(".server-block[data-id='".concat($(this).data('id'), "']"));
+      monitoringCharts[$(this).data('id')].builder($(this).data('description'));
+    }
+  });
+  return monitoringCharts;
+}
+
+function updateMonitoring(monitoringServers, monitoringCharts) {
+  monitoringServers.forEach(function (server) {
+    var id = server.id,
+        info = server.info;
+
+    if (info) {
+      monitoringCharts[id].update(info.players, info.max_players);
+    } else {
+      monitoringCharts[id].update(false);
+    }
+  });
+}
+
+function updateMonitoringAjax(monitoringCharts) {
+  getMonitoringData().then(function (result) {
+    var monitoringServers = result.monitoringServers;
+
+    if (result.status) {
+      updateMonitoring(monitoringServers, monitoringCharts);
+    }
+  });
+}
+
+function getMonitoringData() {
   return new Promise(function (resolve, reject) {
     $.ajax({
       type: "POST",
-      url: routeSModuleUpdate,
-      //dataType: 'json',
-      data: data,
+      url: monitoringURL,
       success: resolve,
       error: reject
     });
@@ -124,14 +147,14 @@ function sendSModules(data) {
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************************!*\
-  !*** multi ./resources/js/pages/admin/web.js ***!
-  \***********************************************/
+/***/ 4:
+/*!*******************************************!*\
+  !*** multi ./resources/js/pages/index.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/admin/web.js */"./resources/js/pages/admin/web.js");
+module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/index.js */"./resources/js/pages/index.js");
 
 
 /***/ })

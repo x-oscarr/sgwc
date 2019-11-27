@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\PMLoader;
+use App\Helpers\VDF;
 use App\SiteModule;
 use Auth;
 use App\Helpers\Monitoring;
@@ -32,13 +33,33 @@ class MainController extends Controller
         //dd($monitoringServers);
 
         return view('index', [
-            'monitoringServers' => $monitoringServers ?? null
+            'monitoringServers' => $monitoringServers ?? null,
+            'monitoringServersJson' => json_encode($monitoringServers ?? null)
         ]);
     }
 
     public function dev() {
+        $vdfData = VDF::parse('storage/admin_groups.cfg');
+        dd($vdfData);
+
         return view('dev', [
 
         ]);
+    }
+
+    public function monitoring(Monitoring $monitoring)
+    {
+        $serverList = Server::where('monitoring', 1)->get();
+
+        foreach ($serverList as $server) {
+            $monitoringServers[] = [
+                    'id' => $server->id,
+                    'name' => $server->name,
+                    'ip' => $server->ip,
+                    'port' => $server->port
+            ] + $monitoring->Online($server->ip, $server->port);
+        }
+
+        return \response(['status' => true, 'monitoringServers' => $monitoringServers ?? null], 200);
     }
 }

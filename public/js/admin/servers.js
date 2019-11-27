@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/servers.js":
-/*!***************************************!*\
-  !*** ./resources/js/admin/servers.js ***!
-  \***************************************/
+/***/ "./resources/js/pages/admin/servers.js":
+/*!*********************************************!*\
+  !*** ./resources/js/pages/admin/servers.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -236,26 +236,14 @@ function sendPModules(data) {
 
 /***/ }),
 
-/***/ "./resources/sass/animations.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/animations.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!******************************************************************************!*\
-  !*** multi ./resources/js/admin/servers.js ./resources/sass/animations.scss ***!
-  \******************************************************************************/
+/***/ 2:
+/*!***************************************************!*\
+  !*** multi ./resources/js/pages/admin/servers.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/servers.js */"./resources/js/admin/servers.js");
-module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/sass/animations.scss */"./resources/sass/animations.scss");
+module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/admin/servers.js */"./resources/js/pages/admin/servers.js");
 
 
 /***/ })
