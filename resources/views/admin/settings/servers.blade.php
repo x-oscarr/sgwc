@@ -75,7 +75,8 @@
                                     {!! Form::label('pmEnable_'.$pluginModule->id, 'Enable', ['class' => 'custom-control-label']) !!}
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-outline-primary pmSettings" data-toggle="modal" data-target="#pmSettings" data-id="{{ $pluginModule->id }}">Settings</button>
+                                    <a href="#" class="btn btn-secondary" title="Plugin modules settings"><i class="fas fa-cog"></i></a>
+                                    <button type="button" class="btn btn-primary pmSettings" data-toggle="modal" data-target="#pmSettings" data-id="{{ $pluginModule->id }}" title="Connections settings"><i class="fas fa-plug"></i></button>
                                 </div>
                             </div>
                         </div>

@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/web', 'SettingsController@web')->name('web');
         Route::get('/seo', 'SettingsController@seo')->name('seo');
         Route::get('/donate', 'SettingsController@web')->name('donate');
+        Route::get('/plugin-module/{id}', 'PluginModuleController@settings')->name('plugin.module');
         Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('update.menu.item');
         Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('get.menu.item');
         Route::post('/update-settings', 'SettingsController@updateSettings')->name('update');
@@ -71,6 +72,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         'middleware' => ['auth', 'rbac:can,page.tools']
     ]);
 });
+
+
+// Plugin modules controllers
+foreach(\App\Helpers\PMLoader::getRoutes() as $route) {
+
+}
+
 
 //Helpers
 //Route::get('d/{url}', 'FileController@download')->name('file.download');

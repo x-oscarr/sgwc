@@ -312,7 +312,7 @@ a.dis-link {
     color: #fff;
 }
 
-section, .blockcontent, footer {
+section, .blockcontent, footer, .index-blockcontent {
     margin-top: 20px;
     color: white;
     padding: 20px;
@@ -323,6 +323,13 @@ section, .blockcontent, footer {
 
 footer {
     border-top: var(--border-primary, 3px solid #512da8);
+}
+
+.index-blockcontent {
+    margin-top: 50px;
+    padding: 33px 33px 0 33px;
+    width: 100%;
+    height: 100%;
 }
 
 .blockcontent-list {
@@ -338,10 +345,6 @@ footer {
     padding: 5px 5px 5px 10px;
     font-weight: bolder;
     font-size: 1.2em;
-}
-
-.blockcontent-list .body {
-
 }
 
 .blockcontent-list .element, .blockcontent-list .title {
@@ -712,6 +715,7 @@ label.preloader-load {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .donut-chart svg{
@@ -737,8 +741,13 @@ label.preloader-load {
     text-transform: uppercase;
 }
 
+.donut-chart-offline {
+    cursor: not-allowed;
+}
+
 .server-image {
     width: 22px;
+    margin-right: 4px;
 }
 
 .donut-hole {
@@ -746,7 +755,11 @@ label.preloader-load {
 }
 
 .donut-hole:hover {
-    fill: rgba(255,255,255, 0.05);
+    fill: rgba(255,255,255, 0.1);
+}
+
+.big-modal {
+    max-width: 800px;
 }
 
 @media (max-width:1024px) {
@@ -787,6 +800,39 @@ label.preloader-load {
     }
 
 }
+
+/* Blog */
+.blog-content {
+    background: var(--rgba-background, rgba(255,255,255,0.05));
+    width: 100%;
+}
+
+.blog-title {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+.blog-title h2{
+    display: inline;
+    background: black;
+}
+
+.blog-subtitle {
+    margin: 10px 20px;
+    font-size: small;
+    font-weight: 300;
+    color: var(--gray);
+    text-align: right;
+}
+
+.blog-text {
+    padding: 0 20px 20px 20px;
+    text-align: justify;
+}
+
+
 
 @media (max-width: 576px) {
     .profile-header {

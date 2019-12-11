@@ -103,9 +103,11 @@ function setMonitoring() {
   var serverBlocks = $(".server-block");
   var monitoringCharts = [];
   serverBlocks.each(function () {
-    if ($(this).data('id')) {
-      monitoringCharts[$(this).data('id')] = new DonutChart(".server-block[data-id='".concat($(this).data('id'), "']"));
-      monitoringCharts[$(this).data('id')].builder($(this).data('description'));
+    serverId = $(this).data('id');
+
+    if (serverId) {
+      monitoringCharts[serverId] = new DonutChart(".server-block[data-id='".concat(serverId, "']"), "#server-info".concat(serverId));
+      monitoringCharts[serverId].builder($(this).data('description'));
     }
   });
   return monitoringCharts;
@@ -117,7 +119,7 @@ function updateMonitoring(monitoringServers, monitoringCharts) {
         info = server.info;
 
     if (info) {
-      monitoringCharts[id].update(info.players, info.max_players);
+      monitoringCharts[id].update(info);
     } else {
       monitoringCharts[id].update(false);
     }

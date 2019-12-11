@@ -1,6 +1,9 @@
 class DonutChart {
-    constructor(boxSelector) {
+    constructor(boxSelector, modalSelectror = null) {
         this.box = document.querySelector(boxSelector);
+        this.modal = modalSelectror;
+        let siteUrl = window.location.href.split("/");
+        this.siteUrl = `${siteUrl[0]}//${siteUrl[2]}`;
     }
 
     builder(description) {
@@ -9,10 +12,14 @@ class DonutChart {
         let cy = '21';
         let r = '15.91549430918954';
 
+        const { box, modal } = this;
+
         // building donut chart
         let donutChart = document.createElement('div');
         donutChart.className = 'donut-chart';
-        this.box.appendChild(donutChart);
+        donutChart.setAttribute('data-toggle', 'modal');
+        donutChart.setAttribute('data-target', modal);
+        box.appendChild(donutChart);
 
         let donutText = document.createElement('div');
         donutText.className = 'donut-text';
@@ -89,20 +96,38 @@ class DonutChart {
         this.box.appendChild(donutDescription);
     }
 
-    update(players = false, maxPlayers = null) {
-        const  { box }  = this;
+    update(serverInfo) {
+        const { box, siteUrl } = this;
 
-        if (players && maxPlayers) {
-            const percent = Math.ceil(players*100/maxPlayers);
-            const donutSegment = box.querySelector('.donut-segment');
+        if (serverInfo) {
+            const percent = Math.ceil(serverInfo.players*100/serverInfo.max_players);
+            let donutSegment = box.querySelector('.donut-segment');
             setTimeout(() => {
-                box.querySelector('.donut-text').innerText = `${players} / ${maxPlayers}`;
+                box.querySelector('.donut-text').innerText = `${serverInfo.players} / ${serverInfo.max_players}`;
                 let linecap = (percent == 0 ? 'butt' : 'round');
                 donutSegment.setAttribute('stroke-linecap', linecap);
                 donutSegment.setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
-            }, 50);
+
+                let donutDescription = box.querySelector('.donut-description');
+                let serverImage = box.querySelector('.server-image');
+                if(!serverImage) {
+                    serverImage = document.createElement('img');
+                    serverImage.className = 'server-image';
+                    donutDescription.prepend(serverImage);
+                }
+                serverImage.src = `${siteUrl}/${serverInfo.map_mod_img}`;
+                serverImage.setAttribute('data-toggle', 'popover');
+                serverImage.setAttribute('data-placement', 'right');
+                serverImage.setAttribute('data-content', serverInfo.map_mod_name);
+                console.log(serverInfo);
+                // serverImage.setAttribute('title', serverInfo.map_mod_name);
+                $(serverImage).popover();
+            }, 500);
         }
         else {
+            let donutChart = box.querySelector('.donut-chart');
+            donutChart.classList.add('donut-chart-offline');
+
             box.querySelector('.donut-text').innerText = 'OFF';
         }
 

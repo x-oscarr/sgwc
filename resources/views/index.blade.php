@@ -102,22 +102,21 @@
                     </div>
                 </div>
                 <div class="servers-list">
-                        <div class="server-block">
-                            <div class="donut-chart">
-                                <svg viewBox="0 0 42 42">
-                                    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#232323" stroke-width="3"></circle>
-                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="url(#chart-gradient)" filter="url(#chart-blur)" stroke-width="4" stroke-linecap="round" stroke-dasharray="73 27" stroke-dashoffset="25"></circle>
-                                    <circle class="donut-hole" cx="21" cy="21" r="14" fill="rgba(0,0,0,0)" filter="url(#chart-blur)"></circle>
-                                </svg>
-                                <div class="donut-text">
-                                    13/24
-                                </div>
-                            </div>
-                            <div class="donut-description">
-                                <img src="{{ asset('img/game_type/dz.png') }}" title="mg_" class="server-image">
-                                |KTM| Minigame Server
-                            </div>
-                        </div>
+{{--                        <div class="server-block">--}}
+{{--                            <div class="donut-chart">--}}
+{{--                                <svg viewBox="0 0 42 42">--}}
+{{--                                    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#232323" stroke-width="3"></circle>--}}
+{{--                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="url(#chart-gradient)" filter="url(#chart-blur)" stroke-width="4" stroke-linecap="round" stroke-dasharray="73 27" stroke-dashoffset="25"></circle>--}}
+{{--                                    <circle class="donut-hole" cx="21" cy="21" r="14.2" fill="rgba(0,0,0,0)" filter="url(#chart-blur)"></circle>--}}
+{{--                                </svg>--}}
+{{--                                <div class="donut-text">--}}
+{{--                                    13/24--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="donut-description">--}}
+{{--                                <img class="server-image" src="http://127.0.0.1:8000/img/game_type/mg.png" data-toggle="popover" data-placement="right" data-content="MiniGames" title="MiniGames"> |KTM| Test--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     @foreach($monitoringServers as $server)
                         <div class="server-block" data-id="{{ $server['id'] }}" data-description="{{ $server['name'] }}"></div>
                     @endforeach
@@ -130,12 +129,63 @@
 
         </div>
     </section>
-    <section id="french"><span>Bonjour</span></section>
-    <section id="spanish" ><span>Hola</span></section>
-    <section id="hindi"><span>Namaste</span></section>
-    <section id="mandarin"><span>你好</span></section>
+    @include('index_modules.blog')
 </div>
 
+@endsection
+
+@section('modal.window')
+    @foreach($monitoringServers as $server)
+        <!-- Modal -->
+        @if($server['online'])
+            <div class="modal fade" id="server-info{{ $server['id'] }}" tabindex="-1" role="dialog" aria-labelledby="server_info_title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered big-modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="server_info_title">{{ $server['name'] }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6 col-md-4 d-flex flex-column justify-content-center align-items-center">
+                                    <div class="my-2">{{$server['ip']}}:{{$server['port']}}</div>
+                                    <div class="my-2">{{$server['info']['map']}}</div>
+                                    <div class="my-2">{{$server['info']['vac'] ? 'VAC' : 'noVAC'}}</div>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    @if(@isset($server['players']))
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Score</th>
+                                                <th scope="col">Playtime</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($server['players'] as $player)
+                                                <tr>
+                                                    <td>{{ $player['name'] }}</td>
+                                                    <td>{{ $player['score'] }}</td>
+                                                    <td>{{ $player['time'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        There is no player on the server
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endforeach
 @endsection
 
 @section('css')
@@ -145,7 +195,7 @@
 @section('javascript')
     <script type="text/javascript">
         const monitoringURL = '{{ route('helper.monitoring') }}';
-        const monitoringServers = JSON.parse('{!! $monitoringServersJson !!}');
+        const monitoringServers = JSON.parse(`{!! $monitoringServersJson !!}`);
     </script>
     <script type="text/javascript" src="{{ asset('js/slider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/chart.js') }}"></script>

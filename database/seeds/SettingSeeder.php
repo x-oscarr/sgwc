@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 class SettingSeeder extends Seeder
 {
     protected $settings = [
+        //design
         'Gtitle' => 'Source<span>Game</span> Web Constructor',
         'Ptitle' => '• SGWC •',
         'projectName' => 'Source Game Web Constructor',
@@ -17,6 +18,7 @@ class SettingSeeder extends Seeder
         'bgAnimation' => '2',
         'sectionBackground' => 'rgba(255, 255, 255, 0.05)',
         'sectionBorder' => 'none',
+        // pm
 
     ];
 

@@ -3,6 +3,12 @@
         "auth": "ID32",
         "class": "Shop",
         "template": "shop",
+        "routes": {
+            "settings": {
+                "action": "ShopController@settings",
+                "name": "shop.settings"
+            }
+        },
         "table_players": {
             "name": "shop_players",
             "col": "auth",
@@ -25,6 +31,12 @@
         "auth": "ID3_S",
         "class": "Vip",
         "template": "vip_riko",
+        "routes": {
+            "settings": {
+                "action": "VipController@settings",
+                "name": "vip.settings"
+            }
+        },
         "table_players": {
             "name": "vip_users",
             "col": "account_id"
@@ -34,6 +46,12 @@
         "auth": "ID32",
         "class": "LK",
         "template": "lk_1mpulse",
+        "routes": {
+            "settings": {
+                "action": "LkImpulseController@settings",
+                "name": "lk.impulse.settings"
+            }
+        },
         "table_players": {
             "name": "lk",
             "col": "auth",
@@ -48,6 +66,12 @@
         "auth": "ID32",
         "class": "Levelranks",
         "template": "levelranks",
+        "routes": {
+            "settings": {
+                "action": "LevelranksController@settings",
+                "name": "levelranks.settings"
+            }
+        },
         "table_players": {
             "name": "lvl_base",
             "col": "steam",
@@ -58,6 +82,12 @@
         "auth": "ID3",
         "class": "Shavit",
         "template": "shavit",
+        "routes": {
+            "settings": {
+                "action": "ShavitController@settings",
+                "name": "shavit.settings"
+            }
+        },
         "table_players": {
             "name": "users",
             "col": "auth"
@@ -71,6 +101,12 @@
         "auth": "ID32",
         "class": "Influx",
         "template": "influx",
+        "routes": {
+            "settings": {
+                "action": "InfluxController@settings",
+                "name": "influx.settings"
+            }
+        },
         "table_players": {
             "name": "ck_playerrank",
             "col": "steamid"
@@ -84,6 +120,12 @@
         "auth": "ID32",
         "class": "Sourcebans",
         "template": "sourcebans",
+        "routes": {
+            "settings": {
+                "action": "SourcebansController@settings",
+                "name": "sourcebans.settings"
+            }
+        },
         "table_bans": {
             "name": "sb_bans",
             "col": "authid"

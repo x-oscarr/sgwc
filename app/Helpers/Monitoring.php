@@ -57,6 +57,14 @@ class Monitoring
             $map_mod_name = $map_mod_library['en'][$map_mod] ?? $map_mod;
         }
 
+        if(!json_encode($server_data['info']['HostName'])) {
+            $server_data['info']['HostName'] = mb_convert_encoding(
+                $server_data['info']['HostName'],
+                'utf-8',
+                mb_detect_encoding($server_data['info']['HostName'])
+            );
+        }
+
         $server['info'] = [
             'hostname' => $server_data['info']['HostName'],
             'ip' => $ip,

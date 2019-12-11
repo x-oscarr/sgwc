@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\PMLoader;
 use App\Helpers\VDF;
+use App\ShopItem;
 use App\SiteModule;
 use Auth;
 use App\Helpers\Monitoring;
@@ -29,18 +30,14 @@ class MainController extends Controller
                 'port' => $server->port
             ] + $monitoring->Online($server->ip, $server->port);
         }
-
-        //dd($monitoringServers);
-
         return view('index', [
             'monitoringServers' => $monitoringServers ?? null,
-            'monitoringServersJson' => json_encode($monitoringServers ?? null)
+            'monitoringServersJson' => json_encode($monitoringServers)
         ]);
     }
 
     public function dev() {
-        $vdfData = VDF::parse('storage/admin_groups.cfg');
-        dd($vdfData);
+        dd(ShopItem::getByUser(3));
 
         return view('dev', [
 
