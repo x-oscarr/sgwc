@@ -5,8 +5,11 @@
         "template": "shop",
         "routes": {
             "settings": {
+                "path": "admin/settings/shop",
                 "action": "ShopController@settings",
-                "name": "shop.settings"
+                "name": "shop.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -33,8 +36,11 @@
         "template": "vip_riko",
         "routes": {
             "settings": {
+                "path": "admin/settings/vip",
                 "action": "VipController@settings",
-                "name": "vip.settings"
+                "name": "vip.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -48,8 +54,11 @@
         "template": "lk_1mpulse",
         "routes": {
             "settings": {
+                "path": "admin/settings/impulse",
                 "action": "LkImpulseController@settings",
-                "name": "lk.impulse.settings"
+                "name": "lk.impulse.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -68,8 +77,11 @@
         "template": "levelranks",
         "routes": {
             "settings": {
+                "path": "admin/settings/levelranks",
                 "action": "LevelranksController@settings",
-                "name": "levelranks.settings"
+                "name": "levelranks.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -84,8 +96,11 @@
         "template": "shavit",
         "routes": {
             "settings": {
+                "path": "admin/settings/shavit",
                 "action": "ShavitController@settings",
-                "name": "shavit.settings"
+                "name": "shavit.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -103,8 +118,11 @@
         "template": "influx",
         "routes": {
             "settings": {
+                "path": "admin/settings/influx",
                 "action": "InfluxController@settings",
-                "name": "influx.settings"
+                "name": "influx.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_players": {
@@ -122,8 +140,11 @@
         "template": "sourcebans",
         "routes": {
             "settings": {
+                "path": "admin/settings/sourcebans",
                 "action": "SourcebansController@settings",
-                "name": "sourcebans.settings"
+                "name": "sourcebans.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
             }
         },
         "table_bans": {

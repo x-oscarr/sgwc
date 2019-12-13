@@ -7,5 +7,8 @@ use App\Http\Controllers\Controller;
 
 class LevelranksController extends Controller
 {
-    //
+    public function settings()
+    {
+        dd('test');
+    }
 }

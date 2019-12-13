@@ -74,10 +74,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 });
 
 
-// Plugin modules controllers
-foreach(\App\Helpers\PMLoader::getRoutes() as $route) {
-
-}
+// Plugin modules routes
+\App\Helpers\PMLoader::getRoutes();
 
 
 //Helpers

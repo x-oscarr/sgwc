@@ -12,6 +12,7 @@ use App\Server;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Syntax\SteamApi\Facades\SteamApi;
 use Invisnik\LaravelSteamAuth\SteamAuth;
@@ -37,7 +38,7 @@ class MainController extends Controller
     }
 
     public function dev() {
-        dd(ShopItem::getByUser(3));
+        dd(Route::getRoutes()->getRoutes());
 
         return view('dev', [
 
