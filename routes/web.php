@@ -14,7 +14,8 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', 'MainController@index')->name('index');;
+
+Route::get('/', 'MainController@index')->name('index');
 
 // Auth Controller
 Route::get('auth', 'AuthController@handle')->name('auth');

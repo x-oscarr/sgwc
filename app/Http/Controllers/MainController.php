@@ -38,8 +38,6 @@ class MainController extends Controller
     }
 
     public function dev() {
-        dd(Route::getRoutes()->getRoutes());
-
         return view('dev', [
 
         ]);
