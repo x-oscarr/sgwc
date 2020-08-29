@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-6 col-md-5">
-                        <button type="button" class="btn btn-outline-danger server-delete float-right"><i class="fas fa-trash-alt"></i> Delete</button>
+                        <button type="button" class="btn btn-outline-danger server-delete float-right" data-id="{{ $server->id }}"><i class="fas fa-trash-alt"></i> Delete</button>
                     </div>
                 </div>
             @endforeach
@@ -75,7 +75,8 @@
                                     {!! Form::label('pmEnable_'.$pluginModule->id, 'Enable', ['class' => 'custom-control-label']) !!}
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-outline-primary pmSettings" data-toggle="modal" data-target="#pmSettings" data-id="{{ $pluginModule->id }}">Settings</button>
+                                    <a href="#" class="btn btn-secondary" title="Plugin modules settings"><i class="fas fa-cog"></i></a>
+                                    <button type="button" class="btn btn-primary pmSettings" data-toggle="modal" data-target="#pmSettings" data-id="{{ $pluginModule->id }}" title="Connections settings"><i class="fas fa-plug"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -90,14 +91,22 @@
     <div class="modal fade" id="pmSettings" tabindex="-1" role="dialog" aria-labelledby="pmSettingsLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                {!! Form::open(['files' => true, 'method' => 'post']) !!}
+                {!! Form::open(['method' => 'post', 'id' => 'pmFormUpdate']) !!}
+                {!! Form::hidden('pmId', null) !!}
                 <div class="modal-header">
-                    <h5 class="modal-title" id="pmSettingsLabel">Shop Minigame</h5>
+                    <h5 class="modal-title" id="pmSettingsLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        {!! Form::label('plugin', 'Plugin module') !!}
+                        {!! Form::select('plugin', $pluginModulesList, null, [
+                            'class' => 'custom-select'
+                        ]) !!}
+                        <div class="invalid-feedback" id="feedback-server"></div>
+                    </div>
                     <div class="form-group">
                         {!! Form::label('server', 'Server') !!}
                         {!! Form::select('server', $servers_arr, null, [
@@ -111,7 +120,7 @@
                             'class' => 'form-control',
                             'placeholder' => 'Plugin Module'
                         ]) !!}
-                        <div class="invalid-feedback" id="feedback-name"></div>
+                        <div class="invalid-feedback" id="feedback-pmName"></div>
                     </div>
                     <div class="form-group">
                         {!! Form::textarea('description', null, [
@@ -127,6 +136,14 @@
                             'placeholder' => 'localhost'
                         ]) !!}
                         <div class="invalid-feedback" id="feedback-dbHost"></div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('dbPort', 'Database Port') !!}
+                        {!! Form::text('dbPort', null, [
+                            'class' => 'form-control',
+                            'placeholder' => '3306'
+                        ]) !!}
+                        <div class="invalid-feedback" id="feedback-dbPort"></div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('dbUser', 'Database Username') !!}
@@ -165,58 +182,60 @@
     <div class="modal fade" id="addServer" tabindex="-1" role="dialog" aria-labelledby="addServerLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addServerLabel">Add new server</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        {!! Form::label('serverName', 'Server name') !!}
-                        {!! Form::text('serverName', null, [
-                            'class' => 'form-control',
-                            'placeholder' => 'My new server'
-                        ]) !!}
-                        <div class="invalid-feedback" id="feedback-name"></div>
+                {!! Form::open(['method' => 'post', 'id' => 'addServerForm']) !!}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addServerLabel">Add new server</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('slug', 'Server slug (short name without space)') !!}
-                        {!! Form::text('slug', null, [
-                            'class' => 'form-control',
-                            'placeholder' => 'go_mg'
-                        ]) !!}
-                        <div class="invalid-feedback" id="feedback-slug"></div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {!! Form::label('serverName', 'Server name') !!}
+                            {!! Form::text('serverName', null, [
+                                'class' => 'form-control',
+                                'placeholder' => 'My new server'
+                            ]) !!}
+                            <div class="invalid-feedback" id="feedback-name"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('slug', 'Server slug (short name without space)') !!}
+                            {!! Form::text('slug', null, [
+                                'class' => 'form-control',
+                                'placeholder' => 'go_mg'
+                            ]) !!}
+                            <div class="invalid-feedback" id="feedback-slug"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('ip', 'Server ip') !!}
+                            {!! Form::text('ip', null, [
+                                'class' => 'form-control',
+                                'placeholder' => '111.111.111.111'
+                            ]) !!}
+                            <div class="invalid-feedback" id="feedback-ip"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('port', 'Server port') !!}
+                            {!! Form::text('port', null, [
+                                'class' => 'form-control',
+                                'placeholder' => '27015'
+                            ]) !!}
+                            <div class="invalid-feedback" id="feedback-port"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('rcon', 'Server rcon password') !!}
+                            {!! Form::password('rcon', [
+                                'class' => 'form-control',
+                                'placeholder' => '********'
+                            ]) !!}
+                            <div class="invalid-feedback" id="feedback-rcon"></div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('ip', 'Server ip') !!}
-                        {!! Form::text('ip', null, [
-                            'class' => 'form-control',
-                            'placeholder' => '111.111.111.111'
-                        ]) !!}
-                        <div class="invalid-feedback" id="feedback-ip"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-outline-success" id="submitNewServer">Add server</button>
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('port', 'Server port') !!}
-                        {!! Form::text('port', null, [
-                            'class' => 'form-control',
-                            'placeholder' => '27015'
-                        ]) !!}
-                        <div class="invalid-feedback" id="feedback-port"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('rcon', 'Server rcon password') !!}
-                        {!! Form::password('rcon', [
-                            'class' => 'form-control',
-                            'placeholder' => '********'
-                        ]) !!}
-                        <div class="invalid-feedback" id="feedback-rcon"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-outline-success" id="submitPmSetting">Add server</button>
-                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
@@ -234,7 +253,7 @@
         let routePModuleGet = "{{ route('settings.pm.get') }}";
         // Texts
         let buttonPreloader = '<i class="fas fa-spinner fa-pulse"></i>';
-        let buttonSuccess = '<i class="fas fa-plus"></i>';
+        let buttonSuccess = '<i class="fas fa-check"></i>';
         let pmStatusEnable = '<span class="badge badge-success float-right mt-1">Enable</span>';
         let pmStatusDisable = '<span class="badge badge-danger float-right mt-1">Disable</span>';
     </script>

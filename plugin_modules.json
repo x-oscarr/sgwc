@@ -3,6 +3,15 @@
         "auth": "ID32",
         "class": "Shop",
         "template": "shop",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/shop",
+                "action": "ShopController@settings",
+                "name": "shop.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "shop_players",
             "col": "auth",
@@ -25,6 +34,15 @@
         "auth": "ID3_S",
         "class": "Vip",
         "template": "vip_riko",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/vip",
+                "action": "VipController@settings",
+                "name": "vip.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "vip_users",
             "col": "account_id"
@@ -34,6 +52,15 @@
         "auth": "ID32",
         "class": "LK",
         "template": "lk_1mpulse",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/impulse",
+                "action": "LkImpulseController@settings",
+                "name": "lk.impulse.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "lk",
             "col": "auth",
@@ -48,6 +75,15 @@
         "auth": "ID32",
         "class": "Levelranks",
         "template": "levelranks",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/levelranks",
+                "action": "LevelranksController@settings",
+                "name": "levelranks.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "lvl_base",
             "col": "steam",
@@ -58,6 +94,15 @@
         "auth": "ID3",
         "class": "Shavit",
         "template": "shavit",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/shavit",
+                "action": "ShavitController@settings",
+                "name": "shavit.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "users",
             "col": "auth"
@@ -71,6 +116,15 @@
         "auth": "ID32",
         "class": "Influx",
         "template": "influx",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/influx",
+                "action": "InfluxController@settings",
+                "name": "influx.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_players": {
             "name": "ck_playerrank",
             "col": "steamid"
@@ -84,6 +138,15 @@
         "auth": "ID32",
         "class": "Sourcebans",
         "template": "sourcebans",
+        "routes": {
+            "settings": {
+                "path": "admin/settings/sourcebans",
+                "action": "SourcebansController@settings",
+                "name": "sourcebans.settings",
+                "access": "permission",
+                "access_params": "page.plugin.modules"
+            }
+        },
         "table_bans": {
             "name": "sb_bans",
             "col": "authid"

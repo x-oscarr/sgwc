@@ -5,30 +5,29 @@ use Illuminate\Database\Seeder;
 class SettingSeeder extends Seeder
 {
     protected $settings = [
-        [
-            'parameter' => 'Gtitle',
-            'value' => 'Source<span>Game</span> Web Constructor'
-        ],
-        [
-            'parameter' => 'Ptitle',
-            'value' => '• SGWC •'
-        ],
-        [
-            'parameter' => 'projectName',
-            'value' => 'Source Game Web Constructor'
-        ],
-        [
-            'parameter' => 'Preloader',
-            'value' => 'penguin.gif'
-        ]
+        //design
+        'Gtitle' => 'Source<span>Game</span> Web Constructor',
+        'Ptitle' => '• SGWC •',
+        'projectName' => 'Source Game Web Constructor',
+        'preloaderPath' => 'img/preloaders/penguin.gif',
+        'bgColor' => '#18191c',
+        'bgPicture' => null,
+        'bgSize' => 'cover',
+        'bgPosition' => '50% 50%',
+        'bgRepeat' => 'no-repeat',
+        'bgAnimation' => '2',
+        'sectionBackground' => 'rgba(255, 255, 255, 0.05)',
+        'sectionBorder' => 'none',
+        // pm
+
     ];
 
     public function run()
     {
-        foreach ($this->settings as $setting) {
+        foreach ($this->settings as $parameter => $value) {
             DB::table('settings')->insert([
-                'parameter' => $setting['parameter'],
-                'value' => $setting['value'],
+                'parameter' => $parameter,
+                'value' => $value,
             ]);
         }
     }

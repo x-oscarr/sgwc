@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->integer('site_module_id')->unsigned()->nullable(true);
             $table->integer('plugin_module_id')->unsigned()->nullable(true);
+            $table->boolean('is_global')->default(1);
             $table->string('parameter');
             $table->text('value')->nullable(true);
         });

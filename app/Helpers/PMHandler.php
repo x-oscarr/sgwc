@@ -23,7 +23,7 @@ class PMHandler
 
         // Custom autoload data
 //        $plugin_custom_data = [
-//            'test' => isset($plugin_objects['shop']) ? PMLoader::getData($plugin_objects['shop'], $steamid)->test() : null,
+//            'shopInventory' => isset($plugin_objects['shop']) ? PMLoader::getData($plugin_objects['shop'], $steamid)->getUserInventory() : null,
 //        ];
 
         return [

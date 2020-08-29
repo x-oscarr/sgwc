@@ -2151,6 +2151,75 @@ pre code {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
+input[type="color"].form-control {
+    width: calc(1.5em + 0.75rem);
+    padding: 0;
+    border: none;
+}
+
+input[type="color"].form-control + label {
+    display: block;
+    margin: 8px 10px 0;
+}
+
+input[type=range].form-control {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    border-bottom: none;
+    box-shadow: none;
+}
+
+input[type=range].form-control:focus {
+    outline: none;
+}
+
+input[type=range].form-control::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range].form-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    background-color: white;
+    box-shadow: 0 0 3px #a1a1a1;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: #512da8;
+}
+
+/*input[type=range].form-control::-moz-range-thumb {*/
+/*    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+/*    border: 1px solid #000000;*/
+/*    height: 36px;*/
+/*    width: 16px;*/
+/*    border-radius: 3px;*/
+/*    background: #ffffff;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*input[type=range].form-control::-ms-thumb {*/
+/*    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+/*    border: 1px solid #000000;*/
+/*    height: 36px;*/
+/*    width: 16px;*/
+/*    border-radius: 3px;*/
+/*    background: #ffffff;*/
+/*    cursor: pointer;*/
+/*}*/
+
 @media (prefers-reduced-motion: reduce) {
     .form-control {
         -webkit-transition: none;
@@ -11105,6 +11174,10 @@ a.text-primary:hover, a.text-primary:focus {
 
 a.text-secondary:hover, a.text-secondary:focus {
     color: #cacaca !important;
+}
+
+.text-additional {
+    color: var(--additional, #b39ddb) !important;
 }
 
 .text-success {

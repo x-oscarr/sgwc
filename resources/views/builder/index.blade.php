@@ -1,7 +1,6 @@
 @extends('base')
 
 @section('index_builder')
-    <div class="index-content">
-        @yield('content')
-    </div>
+    @yield('content')
+    @yield('modal.window')
 @endsection

@@ -6,7 +6,7 @@ class PModuleSeeder extends Seeder
 {
     protected $plugins = [
         [
-            'name' => 'Shop',
+            'name' => 'ShopController',
             'description' => '',
             'plugin' => 'shop',
             'server_id' => 1,

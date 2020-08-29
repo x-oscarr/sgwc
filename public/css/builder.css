@@ -1,7 +1,7 @@
 /* SECTION: defaut_builder */
 
 .content {
-    z-index: 10;
+    padding-top: 50px;
 }
 
 .content-grid {

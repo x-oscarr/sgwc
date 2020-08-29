@@ -1,5 +1,5 @@
 @section('shop-inventory')
-    @isset($plugin_user_data['shop'])
+    @if(!empty($plugin_user_data['shop']['inventory']))
         <style>
             .inventory-grid {
                 display: grid;
@@ -70,70 +70,16 @@
         <div class="blockcontent">
             <h3 class="blockcontent-title">[Shop] Inventory</h3>
             <div class="inventory-grid">
+                @foreach($plugin_user_data['shop']['inventory'] as $item)
                 <a href="#">
-                    <img src="{{ asset('img/fixture/1.jpg') }}">
+                    <img class="inventory-image" src="{{ asset($item['itemData']->picture) }}" onerror="this.src='{{ asset('img/inventory-item.png') }}'">
                     <div class="item-title text-underline">
-                        <h5>Freeker</h5>
+                        <h5>{{ Str::limit($item['itemData']->name, $limit = 25, $end = '...') }}</h5>
                     </div>
-                    <div>Price: <strong>34000 RCC</strong></div>
+                    <div>Price: <strong>{{ $item['itemData']->price }} Credits</strong></div>
                     <div>Timeleft: <strong>25d</strong> 24dh 14m</div>
                 </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/2.jpg') }}">
-                    <div class="item-title text-underline">
-                        <h5>Freeker</h5>
-                    </div>
-                    <div>Price: <strong>1456 RCC</strong></div>
-                    <div>Timeleft: <strong>47d</strong> 24h 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/3.jpg') }}">
-                    <div class="item-title text-underline">
-                        <h5>Freeker</h5>
-                    </div>
-                    <div>Price: <strong>23 RCC</strong></div>
-                    <div>Timeleft: <strong>14d</strong> 24h 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/4.png') }}">
-                    <div class="item-title text-underline">
-                        <h5>{{ str_limit('Greddenation Floortrash', $limit = 25, $end = '...') }}</h5>
-                    </div>
-                    <div>Price: <strong>37484584 RCC</strong></div>
-                    <div>Timeleft: <strong>7d</strong> 24h 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/1.jpg') }}">
-                    <div class="item-title text-underline">
-                        <h5>Freeker</h5>
-                    </div>
-                    <div>Price: <strong>34000 RCC</strong></div>
-                    <div>Timeleft: <strong>25d</strong> 24dh 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/2.jpg') }}">
-                    <div class="item-title text-underline">
-                        <h5>Freeker</h5>
-                    </div>
-                    <div>Price: <strong>1456 RCC</strong></div>
-                    <div>Timeleft: <strong>47d</strong> 24h 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/3.jpg') }}">
-                    <div class="item-title text-underline">
-                        <h5>Freeker</h5>
-                    </div>
-                    <div>Price: <strong>23 RCC</strong></div>
-                    <div>Timeleft: <strong>14d</strong> 24h 14m</div>
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/fixture/4.png') }}">
-                    <div class="item-title text-underline">
-                        <h5>{{ str_limit('Greddenation Floortrash', $limit = 25, $end = '...') }}</h5>
-                    </div>
-                    <div>Price: <strong>37484584 RCC</strong></div>
-                    <div>Timeleft: <strong>14d</strong> 24h 14m</div>
-                </a>
+                @endforeach
             </div>
         </div>
     @endisset

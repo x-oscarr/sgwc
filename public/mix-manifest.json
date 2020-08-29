@@ -1,4 +1,8 @@
 {
+    "/js/admin/design.js": "/js/admin/design.js",
     "/js/admin/servers.js": "/js/admin/servers.js",
-    "/css/animations.css": "/css/animations.css"
+    "/js/admin/settings.js": "/js/admin/settings.js",
+    "/css/animations.css": "/css/animations.css",
+    "/js/admin/web.js": "/js/admin/web.js",
+    "/js/index.js": "/js/index.js"
 }

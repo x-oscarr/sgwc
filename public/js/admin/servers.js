@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/servers.js":
-/*!***************************************!*\
-  !*** ./resources/js/admin/servers.js ***!
-  \***************************************/
+/***/ "./resources/js/pages/admin/servers.js":
+/*!*********************************************!*\
+  !*** ./resources/js/pages/admin/servers.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -111,14 +111,44 @@ $("#saveServers").click(function () {
       }, 1000);
     }
   });
+}); // Add new server
+
+$("#submitNewServer").click(function () {
+  var thisButton = $(this);
+  $(thisButton).html(buttonPreloader + " Saving...");
+  $(thisButton)[0].classList.add("disabled");
+  sendServers({
+    "addServerData": $("#addServerForm").serializeArray()
+  }).then(function (result) {
+    if (result.status) {
+      $(thisButton).html(buttonSuccess + " Saved");
+      location.reload();
+    }
+  });
+}); // Delete server
+
+$(".server-delete").click(function () {
+  var thisButton = $(this);
+  $(thisButton).html(buttonPreloader + " Deleting...");
+  $(thisButton)[0].classList.add("disabled");
+  sendServers({
+    "deleteServer": thisButton.data('id')
+  }).then(function (result) {
+    if (result.status) {
+      $(thisButton).html(buttonSuccess + " Deleted");
+      location.reload();
+    }
+  });
 }); // Enable/Disable plugin module
 
 $(".pmEnable").change(function () {
   var pmId = $(this).data('id');
   var pmEnable = $(this).prop('checked');
   sendPModules({
-    'id': pmId,
-    'value': pmEnable ? 1 : 0
+    pmEnable: {
+      'id': pmId,
+      'value': pmEnable ? 1 : 0
+    }
   }).then(function (result) {
     if (result.status) {
       $('#pmStatus_' + pmId).html(pmEnable ? pmStatusEnable : pmStatusDisable);
@@ -133,13 +163,34 @@ $(".pmSettings").click(function () {
   }).then(function (result) {
     if (result.status) {
       var pmData = result.pluginModule;
+      $("#pmSettingsLabel").html(pmData.name);
       $("textarea[name='description']").val(pmData.description);
+      $("select[name='plugin']").val(pmData.plugin);
+      $("input[name='pmId']").val(pmData.id);
       $("input[name='server']").val(pmData.server_id);
       $("input[name='pmName']").val(pmData.name);
       $("input[name='dbHost']").val(pmData.db_host);
+      $("input[name='dbPost']").val(pmData.db_port);
       $("input[name='dbUser']").val(pmData.db_username);
       $("input[name='dbPassword']").val(pmData.db_password);
       $("input[name='dbName']").val(pmData.db);
+    }
+  });
+}); // Update plugin modules
+
+$("#submitPmSetting").click(function () {
+  var thisButton = $(this);
+  $(thisButton).html(buttonPreloader + " Saving...");
+  $(thisButton)[0].classList.add("disabled");
+  sendPModules({
+    "pmDataUpdate": $("#pmFormUpdate").serializeArray()
+  }).then(function (result) {
+    if (result.status) {
+      $(thisButton).html(buttonSuccess + " Saved");
+      setTimeout(function () {
+        $(thisButton)[0].classList.remove('disabled');
+        $(thisButton).remove();
+      }, 1000);
     }
   });
 });
@@ -185,26 +236,14 @@ function sendPModules(data) {
 
 /***/ }),
 
-/***/ "./resources/sass/animations.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/animations.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!******************************************************************************!*\
-  !*** multi ./resources/js/admin/servers.js ./resources/sass/animations.scss ***!
-  \******************************************************************************/
+/***/ 2:
+/*!***************************************************!*\
+  !*** multi ./resources/js/pages/admin/servers.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/admin/servers.js */"./resources/js/admin/servers.js");
-module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/sass/animations.scss */"./resources/sass/animations.scss");
+module.exports = __webpack_require__(/*! /Users/oscarr/Documents/sgwc/resources/js/pages/admin/servers.js */"./resources/js/pages/admin/servers.js");
 
 
 /***/ })

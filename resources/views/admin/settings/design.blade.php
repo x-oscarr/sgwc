@@ -1,9 +1,19 @@
 @extends('builder.default')
 
 @section('content')
+    {!! Form::macro('colorPick', function($name, $value) {
+        return '<input type="hidden" name="'.$name.'" value="'.$value.'">
+                <div class="color-picker" style="background-color: '.$value.';" data-name="'.$name.'" data-color="'.$value.'"></div>';
+    }) !!}
+    {!! Form::macro('preloader', function ($filename, $pathname) {
+        return '<label for="'.$filename.'" class="preloader-block">
+                    <input type="radio" name="preloader" id="'.$filename.'" value="'.$filename.'" class="radio-image">
+                    <img src="'.asset($pathname).'" alt="'.$filename.'">
+                </label>';
+    }) !!}
     <section>
         <h3 class="blockcontent-title">Color scheme</h3>
-        {!! Form::open(['files' => true, 'method' => 'post']) !!}
+        {!! Form::open(['files' => true, 'method' => 'post', 'name' => 'preloader']) !!}
         <div class="row mb-4">
             <div class="col-12 col-md-6">
                 <div class="color-scheme-block">
@@ -35,41 +45,115 @@
             </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
-            <button type="button" class="btn btn-secondary server-submit">Save cahnges</button>
+            <button type="button" class="btn btn-secondary server-submit">Save changes</button>
         </div>
         {!! Form::close() !!}
     </section>
     <section>
         <h3 class="blockcontent-title">Design elements</h3>
-        <h6>Preloaders</h6>
+        <h5 class="mt-4 mb-2 text-additional">Preloaders</h5>
         {!! Form::open(['files' => true, 'method' => 'post']) !!}
             <div class="preloader-grid">
-                <label for="penguin" class="preloader-block">
-                    {!! Form::radio('preloader', null, true, [
-                        'id' => 'penguin',
-                        'class' => 'radio-image'
-                    ]) !!}
-                    <img src="{{ asset('img/preloaders/penguin.gif') }}" alt="penguin">
-                </label>
-                <label for="cat" class="preloader-block">
-                    {!! Form::radio('preloader', null, false, [
-                        'id' => 'cat',
-                        'class' => 'radio-image'
-                    ]) !!}
-                    <img src="{{ asset('img/preloaders/nyancat.gif') }}" alt="penguin">
-                </label>
-
+                @foreach($preloaders as $preloader)
+                    {!! Form::preloader($preloader->getFilename(), $preloader->getPathname()) !!}
+                @endforeach
                 <div class="preloader-block">
-                    <label for="file" class="preloader-load">
+                    <label for="preloaderFile" class="preloader-load">
                         <i class="fas fa-plus fa-3x"></i>
                     </label>
-                    {!! Form::file('file', [
-                        'id' => 'file',
+                    {!! Form::file('preloaderFile', [
+                        'id' => 'preloaderFile',
                         'class' => 'preloader-load'
                     ]) !!}
                 </div>
             </div>
         {!! Form::close() !!}
+        <div class="row">
+            <div class="col-12 col-md-4">
+                {!! Form::open(['files' => true, 'method' => 'post']) !!}
+                <h5 class="mt-4 mb-2 text-additional">Header logo</h5>
+                <h5 class="mt-4 mb-2 text-additional">Background</h5>
+                <div class="color-group">
+                    {!! Form::colorPick('bgColor', $settings['bgColor']) !!}
+                    {!! Form::label('bgColor', 'Background color') !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgPicture', 'Background picture') !!}
+                    {!! Form::file('bgPicture', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgSize', 'Background size') !!}
+                    {!! Form::text('bgSize', $settings['bgSize'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgPosition', 'Background position') !!}
+                    {!! Form::text('bgPosition', $settings['bgPosition'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgRepeat', 'Background color') !!}
+                    {!! Form::text('bgRepeat', $settings['bgRepeat'], ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bgAnimation', 'Background animation') !!}
+                    {!! Form::select('bgAnimation', [
+                        null => 'None',
+                        1 => 'Jumping items',
+                        2 => 'Particles',
+                        3 => 'Snow',
+                        4 => 'NASA',
+                        5 => 'Bubble'
+                    ], $settings['bgAnimation'], ['class' => 'form-control']) !!}
+                </div>
+                <h5 class="mt-4 mb-2 text-additional">Section content</h5>
+                <div class="color-group">
+                    {!! Form::colorPick('bcBackground', $settings['sectionBackground']) !!}
+                    {!! Form::label('bcBackground', 'Section background color') !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('bcBorder', 'Section border size') !!}
+                    {!! Form::range('bcBorder', 0, [
+                        'class' => 'form-control',
+                        'min' => 0,
+                        'max' => 3,
+                        'step' => 0.1
+                    ]) !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="prewiev-content" >
+                    <h5 class="mt-4 mb-2">Preview</h5>
+                    <div id="bgPreview" style="
+                        background-color: {{ $settings['bgColor'] }};
+                        background-size: {{ $settings['bgSize'] }};
+                        background-repeat: {{ $settings['bgRepeat'] }};
+                        background-position: {{ $settings['bgPosition'] }};
+                    ">
+                        <div class="preview-preloader">
+                            <div class="preview-preloader-block"></div>
+                        </div>
+                        <div class="preview-index">
+
+                        </div>
+                        <div class="preview-base">
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                            <div class="preview-block" style="background-color: {{$settings['sectionBackground']}};"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        {!! Form::select('previewPage', [
+                            1 => 'Index page',
+                            2 => 'Content page',
+                            3 => 'Preloader'
+                        ], null, [
+                        'class' => 'form-control preview-select'
+                        ]) !!}
+                        <button type="button" class="btn btn-outline-success server-submit">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 
@@ -158,4 +242,11 @@
 
 @section('sidebar')
     @include('admin.settings.sidebar')
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        const preloaderPath = '{{ asset($preloaderPath) }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('js/admin/design.js') }}"></script>
 @endsection

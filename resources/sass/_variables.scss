@@ -7,6 +7,45 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
+$primary: #6000DB;
+$secondary: #9B26D1;
+$info: #56CCF2;
+$success: #27AE60;
+$warning: #F2C94C;
+$danger: #EB5757;
+
+$background: #23282E;
+$block: #1E2329;
+$block-alt: #15191C;
+$block-title: #1E2329;
+$text: #FFFFFF;
+$text-alt: #AFAFAF;
+$placeholder: #414B57;
+$money: #41CD7D;
+
+// Gradients
+$gradient-primary: linear-gradient(90deg, #7763D3 0%, #6510FE 103.69%);
+$gradient-secondary: linear-gradient(90deg, #A33FBC 0%, #8C05A2 100%);
+$gradient-info: linear-gradient(90deg, #57E0FE 0%, #2690FF 100%);
+$gradient-success: linear-gradient(90deg, #6EFE57 0%, #00B775 100%);
+$gradient-warning: linear-gradient(90deg, #FEB81F 0%, #FF692A 100%);
+$gradient-danger: linear-gradient(90deg, #E34848 0%, #F72222 100%);
+
+$lightskyblue: #57E0FE;
+$dodgerblue: #2690FF;
+$lime: #6EFE57;
+$darkcyan: #00B775;
+$orange: #FEB81F;
+$tomato: #FF692A;
+$indianred: #E34848;
+$crimson: #F62222;
+$pink: #9B26D1;
+$purple: #410095;
+$darkorchid: #A33FBC;
+$darkmagenta: #8C05A1;
+$slateblue: #7763D3;
+$blueviolet: #6510FE;
+
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;

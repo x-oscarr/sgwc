@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Monitoring;
+use App\Helpers\PMLoader;
 use App\MenuItem;
 use App\PluginModule;
 use App\Server;
@@ -11,10 +12,17 @@ use App\SiteModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
+    // public/@path
+    const DEFAULT_PRELOADER_PATH = 'img/preloaders';
+    // public/storage/@path
+    const CUSTOM_PRELOADER_PATH = 'design/preloaders';
+
     public function index()
     {
         $siteModules = SiteModule::all();
@@ -44,19 +52,25 @@ class SettingsController extends Controller
         }
 
         $pluginModules = PluginModule::all();
+        $pluginModulesLibrary = PMLoader::getLibrary();
+        foreach ($pluginModulesLibrary as $key => $value) {
+            $pluginModulesList[$key] = $value['class'];
+        }
 
         return view('admin.settings.servers', [
-            'serversMonitoring' => $serversMonitoring,
+            'serversMonitoring' => $serversMonitoring ?? null,
+            'pluginModulesList' => $pluginModulesList ?? null,
             'pluginModules' => $pluginModules
         ]);
     }
 
     public function design()
     {
-
-
+        $preloaders = File::files(self::DEFAULT_PRELOADER_PATH);
+        //dd($preloaders);
         return view('admin.settings.design', [
-
+            'preloaderPath' => self::DEFAULT_PRELOADER_PATH,
+            'preloaders' => $preloaders,
         ]);
     }
 
@@ -87,7 +101,34 @@ class SettingsController extends Controller
         return 'dev';
     }
 
-    public function getPM(Request $request) {
+    public function updateSM(Request $request)
+    {
+        $smEnable = $request->get('smEnable');
+        if($smEnable) {
+            $id = $smEnable['id'];
+            $value = $smEnable['value'];
+            if($id) {
+                $siteModule = SiteModule::find($id);
+                if($siteModule) {
+                    $siteModule->is_enabled = $value ?? 0;
+                    $saveResult = $siteModule->save();
+                    if($saveResult) {
+                        return \response()->json(['status' => true], '200');
+                    }
+                    else {
+                        $error = 'Save error';
+                    }
+                }
+                else {
+                    $error = 'Not found web module';
+                }
+            }
+        }
+        return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
+    }
+
+    public function getPM(Request $request)
+    {
         $id = $request->get('id');
         if($id) {
             $pluginModule = PluginModule::find($id);
@@ -101,8 +142,12 @@ class SettingsController extends Controller
         return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
     }
 
-    public function updateServers(Request $request) {
+    public function updateServers(Request $request)
+    {
         $serversDataArr = $request->get('serversData');
+        $addServersDataArr = $request->get('addServerData');
+        $deleteServer = $request->get('deleteServer');
+
         if($serversDataArr) {
             foreach ($serversDataArr as $serverFormData) {
                 if ($serverFormData['name'] == '_token') continue;
@@ -120,20 +165,51 @@ class SettingsController extends Controller
                 $server->monitoring = $serverData['monitoring'];
                 $server->save();
             }
+            return \response()->json(['status' => true], '200');
+        }
+        if($addServersDataArr) {
+            foreach ($addServersDataArr as $data) {
+                $addServersData[$data['name']] = $data['value'];
+            }
+            $server = new Server();
+            $server->name = $addServersData['serverName'];
+            $server->reduction = $addServersData['slug'];
+            $server->ip = $addServersData['ip'];
+            $server->port = $addServersData['port'];
+            $server->rcon = $addServersData['rcon'];
+            $server->save();
 
             return \response()->json(['status' => true], '200');
         }
+        if($deleteServer) {
+            Server::find($deleteServer)->delete();
+            return \response()->json(['status' => true], '200');
+        }
+
+        return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
     }
 
     public function updatePM(Request $request)
     {
-        $id = $request->get('id');
-        $value = $request->get('value');
-        if($id) {
-            $pluginModule = PluginModule::find($id);
+        $pmDataUpdateArr = $request->get('pmDataUpdate');
+        $pmEnable = $request->get('pmEnable');
+
+        if($pmDataUpdateArr) {
+            foreach ($pmDataUpdateArr as $data) {
+                $pmDataUpdate[$data['name']] = $data['value'];
+            }
+            $pluginModule = PluginModule::find($pmDataUpdate['pmId']);
             if($pluginModule) {
-                $pluginModule->is_enabled = $value ?? 0;
+                $pluginModule->plugin = $pmDataUpdate['plugin'];
+                $pluginModule->name = $pmDataUpdate['pmName'];
+                $pluginModule->description = $pmDataUpdate['description'];
+                $pluginModule->db = $pmDataUpdate['dbName'];
+                $pluginModule->db_host = $pmDataUpdate['dbHost'];
+                $pluginModule->db_port = $pmDataUpdate['dbPort'];
+                $pluginModule->db_username = $pmDataUpdate['dbUser'];
+                $pluginModule->db_password = $pmDataUpdate['dbPassword'];
                 $saveResult = $pluginModule->save();
+
                 if($saveResult) {
                     return \response()->json(['status' => true], '200');
                 }
@@ -145,6 +221,28 @@ class SettingsController extends Controller
                 $error = 'Not found plugin module';
             }
         }
+
+        if($pmEnable) {
+            $id = $pmEnable['id'];
+            $value = $pmEnable['value'];
+            if($id) {
+                $pluginModule = PluginModule::find($id);
+                if($pluginModule) {
+                    $pluginModule->is_enabled = $value ?? 0;
+                    $saveResult = $pluginModule->save();
+                    if($saveResult) {
+                        return \response()->json(['status' => true], '200');
+                    }
+                    else {
+                        $error = 'Save error';
+                    }
+                }
+                else {
+                    $error = 'Not found plugin module';
+                }
+            }
+        }
+
         return \response()->json(['status' => false, 'error' => $error ?? 'Not found data in request'], '500');
     }
 

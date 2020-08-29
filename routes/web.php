@@ -14,7 +14,8 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', 'MainController@index')->name('index');;
+
+Route::get('/', 'MainController@index')->name('index');
 
 // Auth Controller
 Route::get('auth', 'AuthController@handle')->name('auth');
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'report'], function () {
 //Rules Controller
 Route::get('rules', 'RulesController@index')->name('rules.list');
 
+// Admin Controllers
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/panel', [
         'uses' => 'AdminpanelController@index',
@@ -56,12 +58,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/web', 'SettingsController@web')->name('web');
         Route::get('/seo', 'SettingsController@seo')->name('seo');
         Route::get('/donate', 'SettingsController@web')->name('donate');
+        Route::get('/plugin-module/{id}', 'PluginModuleController@settings')->name('plugin.module');
         Route::post('/update-menu-item', 'SettingsController@updateMenuItem')->name('update.menu.item');
         Route::post('/get-menu-item', 'SettingsController@getMenuItem')->name('get.menu.item');
         Route::post('/update-settings', 'SettingsController@updateSettings')->name('update');
         Route::post('/update-servers', 'SettingsController@updateServers')->name('servers.update');
         Route::post('/update-pm', 'SettingsController@updatePM')->name('pm.update');
         Route::post('/get-pm', 'SettingsController@getPM')->name('pm.get');
+        Route::post('/update-sm', 'SettingsController@updateSM')->name('sm.update');
     });
 
     Route::get('/tools', [
@@ -70,8 +74,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     ]);
 });
 
+
+// Plugin modules routes
+\App\Helpers\PMLoader::getRoutes();
+
+
 //Helpers
 //Route::get('d/{url}', 'FileController@download')->name('file.download');
-
+Route::post('/monitoring', 'MainController@monitoring')->name('helper.monitoring');
 //DEV
 Route::get('dev', 'MainController@dev')->name('dev');
